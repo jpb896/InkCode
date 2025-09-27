@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "InkCode (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "InkCode (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
