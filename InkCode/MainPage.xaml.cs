@@ -49,7 +49,11 @@ namespace InkCode
 
         private void AddTabButtonClick(TabView sender, object args)
         {
+            var iconSource = new FontIconSource();
+            iconSource.Glyph = "\uE943";
             var tab = new TabViewItem();
+            tab.Content = "Untitled";
+            tab.IconSource = iconSource;
             sender.TabItems.Add(tab);
         }
 
