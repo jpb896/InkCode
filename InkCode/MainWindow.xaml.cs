@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -25,7 +26,8 @@ namespace InkCode
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            contentFrame.Content = new MainPage();
         }
     }
 }
