@@ -26,6 +26,7 @@ namespace InkCode
         public CodePage()
         {
             InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
     }
 }
