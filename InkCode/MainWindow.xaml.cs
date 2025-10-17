@@ -28,6 +28,9 @@ namespace InkCode
         {
             this.InitializeComponent();
             contentFrame.Content = new MainPage();
+            MicaBackdrop micaAlt = new MicaBackdrop();
+            micaAlt.Kind = MicaKind.BaseAlt;
+            this.SystemBackdrop = micaAlt;
         }
     }
 }
