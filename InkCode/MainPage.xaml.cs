@@ -52,7 +52,7 @@ namespace InkCode
             var iconSource = new FontIconSource();
             iconSource.Glyph = "\uE943";
             var tab = new TabViewItem();
-            tab.Content = "Untitled";
+            tab.Header = "Untitled";
             tab.IconSource = iconSource;
             sender.TabItems.Add(tab);
         }
