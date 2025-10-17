@@ -27,6 +27,12 @@ namespace InkCode
         {
             InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            if (ActualTheme == ElementTheme.Light)
+            {
+                monaco.EditorTheme = Monaco.EditorThemes.VisualStudioLight;
+            } else {
+                monaco.EditorTheme = Monaco.EditorThemes.VisualStudioDark;
+            }
         }
     }
 }

@@ -9,6 +9,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        <monaco:MonacoEditor Background="Transparent"/>
+        <monaco:MonacoEditor Background="Transparent" x:Name="monaco"/>
     </Grid>
 </Page>
