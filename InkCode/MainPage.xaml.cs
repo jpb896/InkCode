@@ -42,19 +42,40 @@ namespace InkCode
             CustomDragRegion.MinWidth = 188;
         }
 
-        public void AddTabToTabs(TabViewItem tab)
+        private void AddTabButtonClick(TabView sender, object args)
         {
+            MenuFlyoutItem newrtf = new MenuFlyoutItem();
+            MenuFlyoutItem newcode = new MenuFlyoutItem();
+            newrtf.Text = "New rich text document";
+            newrtf.Click += Newrtf_Click;
+            newcode.Text = "New code file";
+            newcode.Click += Newcode_Click;
+            MenuFlyout menuFlyout = new MenuFlyout();
+            menuFlyout.Items.Add(newcode);
+            menuFlyout.Items.Add(newrtf);
+            menuFlyout.ShowAt(sender);
+        }
+
+        private void Newrtf_Click(object sender, RoutedEventArgs e)
+        {
+            var iconSource = new FontIconSource();
+            iconSource.Glyph = "\uE8A5";
+            var tab = new TabViewItem();
+            tab.Header = "Untitled";
+            tab.IconSource = iconSource;
+            tab.Content = new RichTextPage();
             Tabs.TabItems.Add(tab);
         }
 
-        private void AddTabButtonClick(TabView sender, object args)
+        private void Newcode_Click(object sender, RoutedEventArgs e)
         {
             var iconSource = new FontIconSource();
             iconSource.Glyph = "\uE943";
             var tab = new TabViewItem();
             tab.Header = "Untitled";
             tab.IconSource = iconSource;
-            sender.TabItems.Add(tab);
+            tab.Content = new CodePage();
+            Tabs.TabItems.Add(tab);
         }
 
         private void TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
