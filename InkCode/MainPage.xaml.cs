@@ -74,7 +74,7 @@ namespace InkCode
             var tab = new TabViewItem();
             tab.Header = "Untitled";
             tab.IconSource = iconSource;
-            tab.Content = new CodePage();
+            tab.Content = new ScintillaCodePage();
             Tabs.TabItems.Add(tab);
         }
 
