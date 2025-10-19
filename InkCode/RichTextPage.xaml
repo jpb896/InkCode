@@ -12,7 +12,7 @@
         <controls:TabbedCommandBar x:Name="tcb" Padding="0,0,0,8">
             <controls:TabbedCommandBar.MenuItems>
                 <controls:TabbedCommandBarItem Header="e" HorizontalAlignment="Stretch">
-                    <AppBarElementContainer>
+                    <AppBarElementContainer HorizontalAlignment="Stretch">
                         <controls:RibbonCollapsibleGroup Label="placeholder group a" Background="Transparent">
                             <StackPanel Orientation="Vertical" Spacing="8">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
@@ -20,7 +20,7 @@
                                     <NumberBox/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ToggleButton Background="Transparent">
+                                    <ToggleButton Background="Transparent" BorderThickness="0">
                                         <FontIcon Glyph="&#xE8DD;" FontSize="14"/>
                                     </ToggleButton>
                                 </StackPanel>
