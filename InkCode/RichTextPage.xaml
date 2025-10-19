@@ -5,41 +5,115 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InkCode"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="PanelStyle"
+               TargetType="StackPanel">
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Spacing" Value="8" />
+            <Setter Property="animations:Implicit.HideAnimations" Value="{StaticResource ShowTransitions}" />
+        </Style>
 
-    <StackPanel Orientation="Vertical" Spacing="8">
-        <controls:TabbedCommandBar x:Name="tcb" Padding="0,0,0,8">
-            <controls:TabbedCommandBar.MenuItems>
-                <controls:TabbedCommandBarItem Header="e" HorizontalAlignment="Stretch">
-                    <AppBarElementContainer HorizontalAlignment="Stretch">
-                        <controls:RibbonCollapsibleGroup Label="placeholder group a" Background="Transparent">
-                            <StackPanel Orientation="Vertical" Spacing="8">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ComboBox/>
-                                    <NumberBox/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ToggleButton Background="Transparent" BorderThickness="0">
-                                        <FontIcon Glyph="&#xE8DD;" FontSize="14"/>
-                                    </ToggleButton>
+        <animations:ImplicitAnimationSet x:Name="ShowTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0,24,0"
+                                        To="0"
+                                        Duration="0:0:0.4" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="0"
+                                         To="1"
+                                         Duration="0:0:0.2" />
+        </animations:ImplicitAnimationSet>
+        <animations:ImplicitAnimationSet x:Name="HideTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0"
+                                        To="0,24,0"
+                                        Duration="0:0:0.2" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.1" />
+        </animations:ImplicitAnimationSet>
+    </Page.Resources>
+
+    <Grid VerticalAlignment="Stretch">
+        <StackPanel Orientation="Vertical" Spacing="8" VerticalAlignment="Stretch">
+            <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
+                            SelectedIndex="0" Style="{StaticResource PivotSegmentedStyle}">
+                <controls:SegmentedItem Tag="home" Content="Home"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="insert" Content="Insert"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="dev" Content="Developer"></controls:SegmentedItem>
+            </controls:Segmented>
+            <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}">
+                <controls:Case Value="home">
+                    <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Style="{StaticResource PanelStyle}">
+                        <controls:RibbonGroup Label="Clipboard">
+                            <StackPanel Orientation="Vertical">
+                                <SplitButton Background="Transparent" BorderThickness="0">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon Glyph="&#xE77F;" FontSize="12"/>
+                                        <TextBlock Text="Paste"/>
+                                    </StackPanel>
+                                    <SplitButton.Flyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem>Paste</MenuFlyoutItem>
+                                            <MenuFlyoutItem>Paste without formatting</MenuFlyoutItem>
+                                        </MenuFlyout>
+                                    </SplitButton.Flyout>
+                                </SplitButton>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Background="Transparent" BorderThickness="0">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <FontIcon Glyph="&#xE8C8;" FontSize="12"/>
+                                            <TextBlock>Copy</TextBlock>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button Background="Transparent" BorderThickness="0">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <FontIcon Glyph="&#xE8C6;" FontSize="12"/>
+                                            <TextBlock>Cut</TextBlock>
+                                        </StackPanel>
+                                    </Button>
                                 </StackPanel>
                             </StackPanel>
-                        </controls:RibbonCollapsibleGroup>
-                    </AppBarElementContainer>
-                </controls:TabbedCommandBarItem>
-                <controls:TabbedCommandBarItem IsContextual="True" Header="placeholder contextual">
-                    <AppBarElementContainer>
-                        <controls:RibbonCollapsibleGroup Label="placeholder group b" Background="Transparent">
-                            <StackPanel Orientation="Horizontal">
-                                <Button>d</Button>
-                                <AppBarButton Icon="Add">Add</AppBarButton>
-                            </StackPanel>
-                        </controls:RibbonCollapsibleGroup>
-                    </AppBarElementContainer>
-                </controls:TabbedCommandBarItem>
-            </controls:TabbedCommandBar.MenuItems>
-        </controls:TabbedCommandBar>
-        <RichEditBox x:Name="editor" VerticalAlignment="Stretch"/>
-    </StackPanel>
+                        </controls:RibbonGroup>
+                        <controls:RibbonCollapsibleGroup Label="Font"></controls:RibbonCollapsibleGroup>
+                        <controls:RibbonCollapsibleGroup Label="Paragraph"></controls:RibbonCollapsibleGroup>
+                    </controls:Ribbon>
+                </controls:Case>
+                <controls:Case Value="insert">
+                    <StackPanel animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Style="{StaticResource PanelStyle}">
+
+                        <Ellipse Width="24"
+                             Height="24"
+                             Fill="{ThemeResource AccentFillColorDefaultBrush}" />
+                        <TextBlock VerticalAlignment="Center"
+                               Text="This is the Circle panel" />
+                    </StackPanel>
+                </controls:Case>
+                <controls:Case Value="dev">
+                    <StackPanel animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Style="{StaticResource PanelStyle}">
+                        <Rectangle Width="48"
+                               Height="24"
+                               Fill="{ThemeResource AccentFillColorDefaultBrush}" />
+                        <TextBlock VerticalAlignment="Center"
+                               Text="This is the Rectangle panel" />
+                    </StackPanel>
+                </controls:Case>
+            </controls:SwitchPresenter>
+            <RichEditBox x:Name="editor" VerticalAlignment="Stretch"/>
+        </StackPanel>
+    </Grid>
 </Page>
