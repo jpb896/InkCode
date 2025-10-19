@@ -31,6 +31,9 @@ namespace InkCode
 
     public sealed partial class RichTextPage : Page
     {
+
+        public List<int> FontSizes = new List<int> { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72, 96 };
+
         public RichTextPage()
         {
             InitializeComponent();
@@ -113,6 +116,19 @@ namespace InkCode
                     StrikethroughButton.IsChecked = editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On;
                     args.Handled = true;
                     break;
+            }
+        }
+
+        private void fontBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            editor.Document.Selection.CharacterFormat.Name = fontBox.SelectedValue.ToString();
+        }
+
+        private void fontSizeBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+        {
+            if (editor != null)
+            {
+                editor.Document.Selection.CharacterFormat.Size = int.Parse(fontSizeBox.Text);
             }
         }
     }
