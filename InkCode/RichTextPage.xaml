@@ -48,12 +48,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8">
             <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
-                            SelectedIndex="0" Style="{StaticResource PivotSegmentedStyle}" Grid.Row="0">
+                SelectedIndex="0" Style="{StaticResource PivotSegmentedStyle}">
                 <controls:SegmentedItem Tag="home" Content="Home"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="insert" Content="Insert"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="dev" Content="Developer"></controls:SegmentedItem>
             </controls:Segmented>
+            <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent">Open</Button>
+            <Button Click="SaveButton_Click" Background="Transparent" BorderBrush="Transparent">Save</Button>
+        </StackPanel>
         <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}" x:Name="RibbonBar" Grid.Row="1" Margin="8,0,8,0" CornerRadius="8">
             <controls:Case Value="home">
                     <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"

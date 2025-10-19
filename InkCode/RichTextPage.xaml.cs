@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,6 +18,9 @@ using System.Windows.Input;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Provider;
+using Windows.Storage.Streams;
 using Windows.System;
 using WinUIEditor;
 
@@ -129,6 +133,80 @@ namespace InkCode
             if (editor != null)
             {
                 editor.Document.Selection.CharacterFormat.Size = int.Parse(fontSizeBox.Text);
+            }
+        }
+
+        private async void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Create the picker using the AppWindowId from the element
+                var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId)
+                {
+                    SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+                };
+
+                // Add file type filters
+                picker.FileTypeFilter.Add(".rtf");
+
+                // Show picker
+                PickFileResult result = await picker.PickSingleFileAsync();
+
+                if (result != null)
+                {
+                    // Open with StorageFile (needed for RichEditBox)
+                    StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+
+                    using IRandomAccessStream randAccStream =
+                        await file.OpenAsync(FileAccessMode.Read);
+
+                    // Load file into the RichEditBox
+                    editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
+                }
+            }
+        }
+
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Create the picker with AppWindowId
+                var savePicker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId)
+                {
+                    SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
+                    SuggestedFileName = "Untitled"
+                };
+
+                // Dropdown of file types the user can save the file as
+                savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+
+                // Show picker
+                PickFileResult result = await savePicker.PickSaveFileAsync();
+
+                if (result != null)
+                {
+                    // Convert PickSaveFileResult to StorageFile
+                    StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+
+                    // Prevent updates to the remote version of the file until complete
+                    CachedFileManager.DeferUpdates(file);
+
+                    // Write content into the file
+                    using IRandomAccessStream randAccStream =
+                        await file.OpenAsync(FileAccessMode.ReadWrite);
+
+                    editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
+
+                    // Finalize file updates
+                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+
+                    if (status != FileUpdateStatus.Complete)
+                    {
+                        var errorBox = new Windows.UI.Popups.MessageDialog(
+                            $"File {file.Name} couldn't be saved.");
+                        await errorBox.ShowAsync();
+                    }
+                }
             }
         }
     }
