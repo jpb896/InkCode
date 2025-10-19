@@ -42,22 +42,27 @@
         </animations:ImplicitAnimationSet>
     </Page.Resources>
 
-    <Grid VerticalAlignment="Stretch">
-        <StackPanel Orientation="Vertical" Spacing="8" VerticalAlignment="Stretch">
+    <Grid VerticalAlignment="Stretch" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
             <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
-                            SelectedIndex="0" Style="{StaticResource PivotSegmentedStyle}">
+                            SelectedIndex="0" Style="{StaticResource PivotSegmentedStyle}" Grid.Row="0">
                 <controls:SegmentedItem Tag="home" Content="Home"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="insert" Content="Insert"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="dev" Content="Developer"></controls:SegmentedItem>
             </controls:Segmented>
-            <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}">
-                <controls:Case Value="home">
+        <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}" x:Name="RibbonBar" Grid.Row="1" Margin="8,0,8,0" CornerRadius="8">
+            <controls:Case Value="home">
                     <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                             animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
-                            Style="{StaticResource PanelStyle}">
+                            Style="{StaticResource PanelStyle}"
+                                     CornerRadius="8">
                         <controls:RibbonGroup Label="Clipboard">
                             <StackPanel Orientation="Vertical">
-                                <SplitButton Background="Transparent" BorderThickness="0">
+                                <SplitButton Background="Transparent" BorderBrush="Transparent">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                         <FontIcon Glyph="&#xE77F;" FontSize="12"/>
                                         <TextBlock Text="Paste"/>
@@ -85,7 +90,28 @@
                                 </StackPanel>
                             </StackPanel>
                         </controls:RibbonGroup>
-                        <controls:RibbonCollapsibleGroup Label="Font"></controls:RibbonCollapsibleGroup>
+                        <controls:RibbonCollapsibleGroup Label="Font">
+                            <StackPanel Orientation="Vertical" Spacing="8">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <ComboBox x:Name="fontBox"/>
+                                    <NumberBox x:Name="fontSizeBox"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                        <FontIcon Glyph="&#xE8DD;" FontSize="12"/>
+                                    </ToggleButton>
+                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                        <FontIcon Glyph="&#xE8DB;" FontSize="12"/>
+                                    </ToggleButton>
+                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                        <FontIcon Glyph="&#xE8DC;" FontSize="12"/>
+                                    </ToggleButton>
+                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                        <FontIcon Glyph="&#xEDE0;" FontSize="12"/>
+                                    </ToggleButton>
+                                </StackPanel>
+                            </StackPanel>
+                        </controls:RibbonCollapsibleGroup>
                         <controls:RibbonCollapsibleGroup Label="Paragraph"></controls:RibbonCollapsibleGroup>
                     </controls:Ribbon>
                 </controls:Case>
@@ -113,7 +139,6 @@
                     </StackPanel>
                 </controls:Case>
             </controls:SwitchPresenter>
-            <RichEditBox x:Name="editor" VerticalAlignment="Stretch"/>
-        </StackPanel>
+            <RichEditBox x:Name="editor" VerticalAlignment="Stretch" Grid.Row="2"/>
     </Grid>
 </Page>
