@@ -62,26 +62,26 @@
                                      CornerRadius="8">
                         <controls:RibbonGroup Label="Clipboard">
                             <StackPanel Orientation="Vertical">
-                                <SplitButton Background="Transparent" BorderBrush="Transparent">
+                                <SplitButton Background="Transparent" BorderBrush="Transparent" Click="Paste">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                         <FontIcon Glyph="&#xE77F;" FontSize="12"/>
                                         <TextBlock Text="Paste"/>
                                     </StackPanel>
                                     <SplitButton.Flyout>
                                         <MenuFlyout>
-                                            <MenuFlyoutItem>Paste</MenuFlyoutItem>
-                                            <MenuFlyoutItem>Paste without formatting</MenuFlyoutItem>
+                                            <MenuFlyoutItem Click="Paste2">Paste</MenuFlyoutItem>
+                                            <MenuFlyoutItem Click="PasteNoFormat">Paste without formatting</MenuFlyoutItem>
                                         </MenuFlyout>
                                     </SplitButton.Flyout>
                                 </SplitButton>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Background="Transparent" BorderThickness="0">
+                                    <Button Background="Transparent" BorderThickness="0" Click="Copy">
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE8C8;" FontSize="12"/>
                                             <TextBlock>Copy</TextBlock>
                                         </StackPanel>
                                     </Button>
-                                    <Button Background="Transparent" BorderThickness="0">
+                                    <Button Background="Transparent" BorderThickness="0" Click="Cut">
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE8C6;" FontSize="12"/>
                                             <TextBlock>Cut</TextBlock>
