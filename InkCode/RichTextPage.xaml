@@ -97,16 +97,16 @@
                                     <NumberBox x:Name="fontSizeBox"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                    <ToggleButton x:Name="BoldButton" Background="Transparent" BorderBrush="Transparent" Click="Bold">
                                         <FontIcon Glyph="&#xE8DD;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                    <ToggleButton x:Name="ItalicButton" Background="Transparent" BorderBrush="Transparent" Click="Italic">
                                         <FontIcon Glyph="&#xE8DB;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                    <ToggleButton x:Name="UnderlineButton" Background="Transparent" BorderBrush="Transparent" Click="Underline">
                                         <FontIcon Glyph="&#xE8DC;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
+                                    <ToggleButton x:Name="StrikethroughButton" Background="Transparent" BorderBrush="Transparent" Click="Strikethrough">
                                         <FontIcon Glyph="&#xEDE0;" FontSize="12"/>
                                     </ToggleButton>
                                 </StackPanel>
@@ -139,6 +139,25 @@
                     </StackPanel>
                 </controls:Case>
             </controls:SwitchPresenter>
-            <RichEditBox x:Name="editor" VerticalAlignment="Stretch" Grid.Row="2"/>
+        <RichEditBox x:Name="editor" VerticalAlignment="Stretch" Grid.Row="2">
+            <RichEditBox.KeyboardAccelerators>
+                <KeyboardAccelerator
+                    Key="B"
+                    Invoked="OnKeyboardAcceleratorInvoked"
+                    Modifiers="Control" />
+                <KeyboardAccelerator
+                    Key="I"
+                    Invoked="OnKeyboardAcceleratorInvoked"
+                    Modifiers="Control" />
+                <KeyboardAccelerator
+                    Key="U"
+                    Invoked="OnKeyboardAcceleratorInvoked"
+                    Modifiers="Control" />
+                <KeyboardAccelerator
+                    Key="T"
+                    Invoked="OnKeyboardAcceleratorInvoked"
+                    Modifiers="Control" />
+            </RichEditBox.KeyboardAccelerators>
+        </RichEditBox>
     </Grid>
 </Page>
