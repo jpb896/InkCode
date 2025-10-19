@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InkCode"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:win2d="using:Microsoft.Graphics.Canvas.Text"
     mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="PanelStyle"
@@ -93,8 +93,14 @@
                         <controls:RibbonCollapsibleGroup Label="Font">
                             <StackPanel Orientation="Vertical" Spacing="8">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ComboBox x:Name="fontBox"/>
-                                    <NumberBox x:Name="fontSizeBox"/>
+                                <ComboBox x:Name="fontBox" ItemsSource="{x:Bind win2d:CanvasTextFormat.GetSystemFontFamilies()}" SelectedItem="Segoe UI" IsTextSearchEnabled="True" SelectionChanged="fontBox_SelectionChanged">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="x:String">
+                                            <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <NumberBox x:Name="fontSizeBox" Value="11" SpinButtonPlacementMode="Inline" SmallChange="4" LargeChange="16" Minimum="8" ValueChanged="fontSizeBox_ValueChanged"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <ToggleButton x:Name="BoldButton" Background="Transparent" BorderBrush="Transparent" Click="Bold">
