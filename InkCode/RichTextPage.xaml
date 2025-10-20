@@ -7,19 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:win2d="using:Microsoft.Graphics.Canvas.Text"
     mc:Ignorable="d">
-    <Page.Resources>
-        <Style x:Key="PanelStyle"
-               TargetType="StackPanel">
-            <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Padding" Value="16" />
-            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
-            <Setter Property="Orientation" Value="Horizontal" />
-            <Setter Property="Spacing" Value="8" />
-            <Setter Property="animations:Implicit.HideAnimations" Value="{StaticResource ShowTransitions}" />
-        </Style>
 
+    <Page.Resources>
         <animations:ImplicitAnimationSet x:Name="ShowTransitions">
             <animations:OffsetAnimation EasingMode="EaseOut"
                                         From="0,24,0"
@@ -42,15 +31,16 @@
         </animations:ImplicitAnimationSet>
     </Page.Resources>
 
+
     <Grid VerticalAlignment="Stretch" RowSpacing="8">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8" Padding="8,8,0,0">
             <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
-                SelectedIndex="0" Style="{StaticResource PivotSegmentedStyle}">
+                SelectedIndex="0" BorderBrush="Transparent" BorderThickness="0">
                 <controls:SegmentedItem Tag="home" Content="Home"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="insert" Content="Insert"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="dev" Content="Developer"></controls:SegmentedItem>
@@ -62,7 +52,6 @@
             <controls:Case Value="home">
                     <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                             animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
-                            Style="{StaticResource PanelStyle}"
                                      CornerRadius="8">
                         <controls:RibbonGroup Label="Clipboard">
                             <StackPanel Orientation="Vertical">
@@ -125,29 +114,10 @@
                         <controls:RibbonCollapsibleGroup Label="Paragraph"></controls:RibbonCollapsibleGroup>
                     </controls:Ribbon>
                 </controls:Case>
-                <controls:Case Value="insert">
-                    <StackPanel animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
-                            Style="{StaticResource PanelStyle}">
-
-                        <Ellipse Width="24"
-                             Height="24"
-                             Fill="{ThemeResource AccentFillColorDefaultBrush}" />
-                        <TextBlock VerticalAlignment="Center"
-                               Text="This is the Circle panel" />
-                    </StackPanel>
-                </controls:Case>
-                <controls:Case Value="dev">
-                    <StackPanel animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
-                            Style="{StaticResource PanelStyle}">
-                        <Rectangle Width="48"
-                               Height="24"
-                               Fill="{ThemeResource AccentFillColorDefaultBrush}" />
-                        <TextBlock VerticalAlignment="Center"
-                               Text="This is the Rectangle panel" />
-                    </StackPanel>
-                </controls:Case>
+            <controls:Case Value="insert">
+            </controls:Case>
+            <controls:Case Value="dev">
+            </controls:Case>
             </controls:SwitchPresenter>
         <RichEditBox x:Name="editor" VerticalAlignment="Stretch" Grid.Row="2">
             <RichEditBox.KeyboardAccelerators>
