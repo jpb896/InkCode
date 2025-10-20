@@ -11,4 +11,4 @@ This project wouldn't be possible without:
 - Windows Community Toolkit (extra components not available in the base WinUI3 set)
 - WinUIEdit (code editor component)
 - WinUI.Monaco (code editor component)
-- TowPad (includes tab styles derived from it, slightly adjusted)
+- TowPad (tab styles (slightly modified), copy/cut/paste command logic)
