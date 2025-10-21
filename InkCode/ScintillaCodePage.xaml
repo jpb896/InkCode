@@ -85,14 +85,7 @@
                     <controls:RibbonCollapsibleGroup Label="Font">
                         <StackPanel Orientation="Vertical" Spacing="8">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <ComboBox x:Name="fontBox" ItemsSource="{x:Bind win2d:CanvasTextFormat.GetSystemFontFamilies()}" SelectedItem="Segoe UI" IsTextSearchEnabled="True" SelectionChanged="fontBox_SelectionChanged">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate x:DataType="x:String">
-                                            <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                                <NumberBox x:Name="fontSizeBox" Value="11" SpinButtonPlacementMode="Inline" SmallChange="4" LargeChange="16" Minimum="8" ValueChanged="fontSizeBox_ValueChanged"/>
+                                
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Spacing="8">
                             </StackPanel>

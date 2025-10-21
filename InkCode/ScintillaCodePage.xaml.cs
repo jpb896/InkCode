@@ -52,18 +52,6 @@ namespace InkCode
             editor.Editor.Cut();
         }
 
-        private void fontBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-
-        private void fontSizeBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
-        {
-            if (editor != null)
-            {
-                editor.FontSize = fontSizeBox.Value;
-            }
-        }
-
         private async void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
