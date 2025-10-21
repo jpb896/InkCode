@@ -117,7 +117,7 @@ namespace InkCode
                 };
 
                 // Dropdown of file types the user can save the file as
-                savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+                savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
 
                 // Show picker
                 PickFileResult result = await savePicker.PickSaveFileAsync();
