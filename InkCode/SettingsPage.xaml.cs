@@ -12,6 +12,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Devices;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,6 +32,45 @@ namespace InkCode
         private void TitleBar_BackRequested(TitleBar sender, object args)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void SpatialSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (SoundSwitch.IsOn)
+            {
+                if (SpatialSwitch.IsOn)
+                {
+                    ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+                }
+                else
+                {
+                    ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.Off;
+                }
+            }
+            else
+            {
+                SpatialSwitch.IsEnabled = false;
+            }
+        }
+
+        private void SoundSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (SoundSwitch.IsOn) {
+                ElementSoundPlayer.State = ElementSoundPlayerState.On;
+            }
+            else {
+                ElementSoundPlayer.State = ElementSoundPlayerState.Off;
+            }
+        }
+
+        private void FocusSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FocusSwitch.IsOn) { 
+                App.Current.FocusVisualKind = FocusVisualKind.Reveal;
+            } else
+            {
+                App.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
+            }
         }
     }
 }
