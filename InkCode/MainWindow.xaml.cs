@@ -32,5 +32,21 @@ namespace InkCode
             micaAlt.Kind = MicaKind.BaseAlt;
             this.SystemBackdrop = micaAlt;
         }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            contentFrame.Navigate(typeof(SettingsPage));
+            settingsButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void SettingsButton_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            AnimatedIcon.SetState(this.SettingsAnimatedIcon, "PointerOver");
+        }
+
+        private void SettingsButton_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            AnimatedIcon.SetState(this.SettingsAnimatedIcon, "Normal");
+        }
     }
 }
