@@ -27,6 +27,14 @@ namespace InkCode
         public SettingsPage()
         {
             InitializeComponent();
+            if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
+            {
+                SoundSwitch.IsOn = true;
+            } else { SoundSwitch.IsOn = false; SpatialSwitch.IsEnabled = false; SpatialSwitch.IsOn = false; }
+            if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On) {
+                SpatialSwitch.IsOn = true;
+            } else { SpatialSwitch.IsOn = false; }
+            if (App.Current.FocusVisualKind == FocusVisualKind.Reveal) { FocusSwitch.IsOn = true; } else {  FocusSwitch.IsOn = false; }
         }
 
         private void TitleBar_BackRequested(TitleBar sender, object args)
@@ -49,6 +57,7 @@ namespace InkCode
             }
             else
             {
+                SpatialSwitch.IsOn = false;
                 SpatialSwitch.IsEnabled = false;
             }
         }
