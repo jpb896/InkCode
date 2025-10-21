@@ -75,6 +75,7 @@ namespace InkCode
                 };
 
                 // Add file type filters
+                picker.FileTypeFilter.Add("*");
                 picker.FileTypeFilter.Add(".txt");
 
                 // Show picker
@@ -94,7 +95,7 @@ namespace InkCode
                         editor.Editor.AddText((long)randAccStream.Size, streamReader.ReadToEnd());
                         switch (file.FileType)
                         {
-                            case "cs":
+                            case ".cs":
                                 editor.HighlightingLanguage = "csharp";
                                 break;
                             default:
@@ -117,7 +118,8 @@ namespace InkCode
                 };
 
                 // Dropdown of file types the user can save the file as
-                savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+                savePicker.FileTypeChoices.Add("All files", new List<string>() { "" });
+                savePicker.FileTypeChoices.Add("Plain text", new List<string>() { ".txt" });
 
                 // Show picker
                 PickFileResult result = await savePicker.PickSaveFileAsync();
