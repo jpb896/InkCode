@@ -102,15 +102,14 @@ namespace InkCode
             Frame? frame = this.Parent as Frame;
             frame.Navigate(typeof(SettingsPage));
         }
-
         private void SettingsButton_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-
+            AnimatedIcon.SetState(this.SettingsAnimatedIcon, "PointerOver");
         }
 
         private void SettingsButton_PointerExited(object sender, PointerRoutedEventArgs e)
         {
-
+            AnimatedIcon.SetState(this.SettingsAnimatedIcon, "Normal");
         }
     }
 }
