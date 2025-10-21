@@ -89,6 +89,15 @@ namespace InkCode
                             case ".cs":
                                 editor.HighlightingLanguage = "csharp";
                                 break;
+                            case ".rtf":
+                                ContentDialog rtf_dialog = new ContentDialog();
+                                rtf_dialog.Title = "Looking to edit an RTF file?";
+                                rtf_dialog.Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app, by opening a new tab having selected 'New rich text document' and opening the file from there.";
+                                rtf_dialog.XamlRoot = this.XamlRoot;
+                                rtf_dialog.IsPrimaryButtonEnabled = true;
+                                rtf_dialog.PrimaryButtonText = "Understood!";
+                                await rtf_dialog.ShowAsync();
+                                break;
                             default:
                                 break;
                         }
