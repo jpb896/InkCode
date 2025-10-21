@@ -5,10 +5,107 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InkCode"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:winuieditor="using:WinUIEditor"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:winuieditor="using:WinUIEditor" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:win2d="using:Microsoft.Graphics.Canvas.Text"
     mc:Ignorable="d">
 
-    <RelativePanel x:Name="panel">
-        <winuieditor:CodeEditorControl RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
-    </RelativePanel>
+    <Page.Resources>
+        <animations:ImplicitAnimationSet x:Name="ShowTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                     From="0,24,0"
+                                     To="0"
+                                     Duration="0:0:0.4" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                      From="0"
+                                      To="1"
+                                      Duration="0:0:0.2" />
+        </animations:ImplicitAnimationSet>
+        <animations:ImplicitAnimationSet x:Name="HideTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                     From="0"
+                                     To="0,24,0"
+                                     Duration="0:0:0.2" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                      From="1"
+                                      To="0"
+                                      Duration="0:0:0.1" />
+        </animations:ImplicitAnimationSet>
+    </Page.Resources>
+
+
+    <Grid VerticalAlignment="Stretch" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8" Padding="8,8,0,0">
+            <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
+             SelectedIndex="0" BorderBrush="Transparent" BorderThickness="0">
+                <controls:SegmentedItem Tag="home" Content="Home"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="insert" Content="Insert"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="dev" Content="Developer"></controls:SegmentedItem>
+            </controls:Segmented>
+            <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent">Open</Button>
+            <Button Click="SaveButton_Click" Background="Transparent" BorderBrush="Transparent">Save</Button>
+        </StackPanel>
+        <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}" x:Name="RibbonBar" Grid.Row="1" Margin="8,0,8,0" CornerRadius="8">
+            <controls:Case Value="home">
+                <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                         animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                                  CornerRadius="8">
+                    <controls:RibbonGroup Label="Clipboard">
+                        <StackPanel Orientation="Vertical">
+                            <SplitButton Background="Transparent" BorderBrush="Transparent" Click="Paste">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xE77F;" FontSize="12"/>
+                                    <TextBlock Text="Paste"/>
+                                </StackPanel>
+                                <SplitButton.Flyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Click="Paste2">Paste</MenuFlyoutItem>
+                                    </MenuFlyout>
+                                </SplitButton.Flyout>
+                            </SplitButton>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Background="Transparent" BorderThickness="0" Click="Copy">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon Glyph="&#xE8C8;" FontSize="12"/>
+                                        <TextBlock>Copy</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button Background="Transparent" BorderThickness="0" Click="Cut">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon Glyph="&#xE8C6;" FontSize="12"/>
+                                        <TextBlock>Cut</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </controls:RibbonGroup>
+                    <controls:RibbonCollapsibleGroup Label="Font">
+                        <StackPanel Orientation="Vertical" Spacing="8">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <ComboBox x:Name="fontBox" ItemsSource="{x:Bind win2d:CanvasTextFormat.GetSystemFontFamilies()}" SelectedItem="Segoe UI" IsTextSearchEnabled="True" SelectionChanged="fontBox_SelectionChanged">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="x:String">
+                                            <TextBlock FontFamily="{x:Bind}" Text="{x:Bind}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <NumberBox x:Name="fontSizeBox" Value="11" SpinButtonPlacementMode="Inline" SmallChange="4" LargeChange="16" Minimum="8" ValueChanged="fontSizeBox_ValueChanged"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                            </StackPanel>
+                        </StackPanel>
+                    </controls:RibbonCollapsibleGroup>
+                    <controls:RibbonCollapsibleGroup Label="Paragraph"></controls:RibbonCollapsibleGroup>
+                </controls:Ribbon>
+            </controls:Case>
+            <controls:Case Value="insert">
+            </controls:Case>
+            <controls:Case Value="dev">
+            </controls:Case>
+        </controls:SwitchPresenter>
+        <winuieditor:CodeEditorControl x:Name="editor" Grid.Row="2"/>
+    </Grid>
 </Page>
