@@ -5,9 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InkCode"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     mc:Ignorable="d">
-    <Frame x:Name="navFrame">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabView
         x:Name="Tabs"
@@ -22,6 +21,15 @@
                     <Grid x:Name="CustomDragRegion" Background="Transparent" />
                 </TabView.TabStripFooter>
             </TabView>
+            <Button x:Name="settingsButton" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Settings_Click" PointerEntered="SettingsButton_PointerEntered" PointerExited="SettingsButton_PointerExited" Margin="0,0,156,0" Background="Transparent" BorderBrush="Transparent" Width="40">
+                <AnimatedIcon x:Name="SettingsAnimatedIcon">
+                    <AnimatedIcon.Source>
+                        <animatedvisuals:AnimatedSettingsVisualSource/>
+                    </AnimatedIcon.Source>
+                    <AnimatedIcon.FallbackIconSource>
+                        <SymbolIconSource Symbol="Setting"/>
+                    </AnimatedIcon.FallbackIconSource>
+                </AnimatedIcon>
+            </Button>
         </Grid>
-    </Frame>
 </Page>
