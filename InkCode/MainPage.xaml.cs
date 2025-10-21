@@ -96,5 +96,21 @@ namespace InkCode
         {
             sender.TabItems.Remove(args.Tab);
         }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            Frame? frame = this.Parent as Frame;
+            frame.Navigate(typeof(SettingsPage));
+        }
+
+        private void SettingsButton_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+
+        }
+
+        private void SettingsButton_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+
+        }
     }
 }
