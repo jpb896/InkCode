@@ -7,19 +7,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <TabView
-            x:Name="Tabs"
-            VerticalAlignment="Stretch"
-            AddTabButtonClick="AddTabButtonClick"
-            TabCloseRequested="TabCloseRequested"
-            Style="{ThemeResource ModernTabViewStyle}">
-            <TabView.TabStripHeader>
-                <Grid x:Name="ShellTitleBarInset" Background="Transparent" />
-            </TabView.TabStripHeader>
-            <TabView.TabStripFooter>
-                <Grid x:Name="CustomDragRegion" Background="Transparent" />
-            </TabView.TabStripFooter>
-        </TabView>
-    </Grid>
+    <Frame x:Name="navFrame">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabView
+        x:Name="Tabs"
+        VerticalAlignment="Stretch"
+        AddTabButtonClick="AddTabButtonClick"
+        TabCloseRequested="TabCloseRequested"
+        Style="{ThemeResource ModernTabViewStyle}">
+                <TabView.TabStripHeader>
+                    <Grid x:Name="ShellTitleBarInset" Background="Transparent" />
+                </TabView.TabStripHeader>
+                <TabView.TabStripFooter>
+                    <Grid x:Name="CustomDragRegion" Background="Transparent" />
+                </TabView.TabStripFooter>
+            </TabView>
+        </Grid>
+    </Frame>
 </Page>

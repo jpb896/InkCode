@@ -45,18 +45,28 @@ namespace InkCode
             MenuFlyoutItem newrtf = new MenuFlyoutItem();
             MenuFlyoutItem newcode = new MenuFlyoutItem();
             MenuFlyoutItem newcode_m = new MenuFlyoutItem();
+            MenuFlyoutItem settings = new MenuFlyoutItem();
             newrtf.Text = "New rich text document";
             newrtf.Click += Newrtf_Click;
             newcode.Text = "New code file (Scintilla/WinUIEdit)";
             newcode.Click += Newcode_Click;
             newcode_m.Text = "New code file (Monaco)";
             newcode_m.Click += NewcodeM_Click;
+            settings.Text = "Settings";
+            settings.Click += Settings_Click;
             MenuFlyout menuFlyout = new MenuFlyout();
             menuFlyout.Items.Add(newcode);
             menuFlyout.Items.Add(newcode_m);
             menuFlyout.Items.Add(new MenuFlyoutSeparator());
             menuFlyout.Items.Add(newrtf);
+            menuFlyout.Items.Add(new MenuFlyoutSeparator());
+            menuFlyout.Items.Add(settings);
             menuFlyout.ShowAt(sender);
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            navFrame.Navigate(typeof(SettingsPage));
         }
 
         private void Newrtf_Click(object sender, RoutedEventArgs e)
