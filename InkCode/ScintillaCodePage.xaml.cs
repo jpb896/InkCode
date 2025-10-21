@@ -80,6 +80,9 @@ namespace InkCode
                     // Load file into the RichEditBox
                     using (StreamReader streamReader = new StreamReader(result.Path))
                     {
+                        if (editor.Editor.Length > 0) { 
+                            editor.Editor.ClearAll();
+                        }
                         editor.Editor.AddText((long)randAccStream.Size, streamReader.ReadToEnd());
                         switch (file.FileType)
                         {
