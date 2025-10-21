@@ -25,12 +25,10 @@ namespace InkCode
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private Window? tabTearOutWindow = null;
-
         public MainPage()
         {
             this.InitializeComponent();
-
+            NavigationCacheMode = NavigationCacheMode.Required;
             Loaded += MainPage_Loaded;
         }
 
