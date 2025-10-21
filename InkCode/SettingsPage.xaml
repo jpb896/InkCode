@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TitleBar Grid.Row="0" Title="InkCode" IsBackButtonEnabled="True" IsBackButtonVisible="True" BackRequested="TitleBar_BackRequested"/>
+        <TitleBar Grid.Row="0" Title="InkCode" Subtitle="Preview" IsBackButtonEnabled="True" IsBackButtonVisible="True" BackRequested="TitleBar_BackRequested"/>
         <TextBlock Style="{StaticResource TitleTextBlockStyle}" Grid.Row="1" Padding="8,0,8,0">Settings</TextBlock>
         <StackPanel Orientation="Vertical" Spacing="8" Grid.Row="2" Padding="8,0,8,0">
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">Appearance and behavior</TextBlock>
@@ -29,6 +29,15 @@
             <controls:SettingsCard Header="Reveal focus" Description="Enable reveal focus to clearly see the focused element. Well-adapted to 10ft display scenarios.">
                 <ToggleSwitch x:Name="FocusSwitch" Toggled="FocusSwitch_Toggled"/>
             </controls:SettingsCard>
+            <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
+            <controls:SettingsExpander Header="InkCode" Description="1.0 Preview">
+                <controls:SettingsExpander.Items>
+                    <StackPanel>
+                    <controls:SettingsCard Header="Licensed under the MIT License" Description="©️ 2025 jpb and contributors"></controls:SettingsCard>
+                    <controls:SettingsCard x:Name="AcknowledgementsCard" Header="Acknowledgements"/>
+                </StackPanel>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
         </StackPanel>
     </Grid>
 </Page>
