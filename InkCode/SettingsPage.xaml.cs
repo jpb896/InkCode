@@ -27,5 +27,10 @@ namespace InkCode
         {
             InitializeComponent();
         }
+
+        private void TitleBar_BackRequested(TitleBar sender, object args)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }
