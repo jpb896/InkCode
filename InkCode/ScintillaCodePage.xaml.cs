@@ -89,6 +89,33 @@ namespace InkCode
                             case ".cs":
                                 editor.HighlightingLanguage = "csharp";
                                 break;
+                            case ".xml":
+                                editor.HighlightingLanguage = "xml";
+                                break;
+                            case ".xaml":
+                                editor.HighlightingLanguage = "xml";
+                                break;
+                            case ".cpp":
+                                editor.HighlightingLanguage = "cpp";
+                                break;
+                            case ".cxx":
+                                editor.HighlightingLanguage = "cpp";
+                                break;
+                            case ".html":
+                                editor.HighlightingLanguage = "html";
+                                break;
+                            case ".json":
+                                editor.HighlightingLanguage = "json";
+                                break;
+                            case ".yml":
+                                editor.HighlightingLanguage = "yaml";
+                                break;
+                            case ".js":
+                                editor.HighlightingLanguage = "javascript";
+                                break;
+                            case ".txt":
+                                editor.HighlightingLanguage = "plaintext";
+                                break;
                             case ".rtf":
                                 ContentDialog rtf_dialog = new ContentDialog();
                                 rtf_dialog.Title = "Looking to edit an RTF file?";
@@ -99,6 +126,7 @@ namespace InkCode
                                 await rtf_dialog.ShowAsync();
                                 break;
                             default:
+                                editor.HighlightingLanguage = "plaintext";
                                 break;
                         }
                     }
