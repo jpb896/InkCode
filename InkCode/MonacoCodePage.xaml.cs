@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -33,6 +34,44 @@ namespace InkCode
             } else {
                 monaco.EditorTheme = Monaco.EditorThemes.VisualStudioDark;
             }
+        }
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void Paste(SplitButton sender, SplitButtonClickEventArgs args)
+        {
+            DataPackageView dataPackageView = Clipboard.GetContent();
+            if (dataPackageView.Contains(StandardDataFormats.Text))
+            {
+                monaco.PasteTextFromClipBoard(dataPackageView.GetTextAsync().ToString());
+            }
+        }
+
+        private async void Paste2(object sender, RoutedEventArgs e)
+        {
+            DataPackageView dataPackageView = Clipboard.GetContent();
+            if (dataPackageView.Contains(StandardDataFormats.Text))
+            {
+                monaco.PasteTextFromClipBoard(dataPackageView.GetTextAsync().ToString());
+            }
+        }
+
+        private void Copy(object sender, RoutedEventArgs e)
+        {
+            monaco.CopyTextToClipBoard();
+        }
+
+        private void Cut(object sender, RoutedEventArgs e)
+        {
+            monaco.CutTextToClipBoard();
         }
     }
 }
