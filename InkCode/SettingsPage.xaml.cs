@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -35,6 +36,7 @@ namespace InkCode
                 SpatialSwitch.IsOn = true;
             } else { SpatialSwitch.IsOn = false; }
             if (App.Current.FocusVisualKind == FocusVisualKind.Reveal) { FocusSwitch.IsOn = true; } else {  FocusSwitch.IsOn = false; }
+            BuildDateTextBlock.Text = "Built " + GetBuildDate(Assembly.GetExecutingAssembly()).ToString();
         }
 
         private void TitleBar_BackRequested(TitleBar sender, object args)
@@ -80,6 +82,12 @@ namespace InkCode
             {
                 App.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
             }
+        }
+
+        private static DateTime GetBuildDate(Assembly assembly)
+        {
+            var attribute = assembly.GetCustomAttribute<BuildDateAttribute>();
+            return attribute != null ? attribute.DateTime : default(DateTime);
         }
     }
 }

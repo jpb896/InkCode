@@ -31,6 +31,9 @@
             </controls:SettingsCard>
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
             <controls:SettingsExpander Header="InkCode" Description="1.0 Preview">
+                <controls:SettingsExpander.Content>
+                    <TextBlock x:Name="BuildDateTextBlock"/>
+                </controls:SettingsExpander.Content>
                 <controls:SettingsExpander.Items>
                     <controls:SettingsCard Header="Licensed under the MIT License" Description="©️ 2025 jpb and contributors"></controls:SettingsCard>
                     <controls:SettingsCard Header="Check out the code">
