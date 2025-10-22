@@ -27,7 +27,6 @@ namespace InkCode
         public SettingsPage()
         {
             InitializeComponent();
-            AcknowledgementsCard.Description = "This project would not be possible without:\n   - the Windows App SDK and WinUI3 UI framework\n   - WinUIEdit (code editor control)\n   - WinUI.Monaco (code editor control)\n   - TowPad (tab style (slightly modified), RTF cut/copy/paste logic)\n   - The support and encouragement of multiple people during early development phases";
             if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
             {
                 SoundSwitch.IsOn = true;
