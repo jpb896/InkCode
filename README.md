@@ -1,7 +1,19 @@
-# InkCode
+<div align="center">
+<img alt="StoreLogo scale-200" style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 10%;" src="https://github.com/user-attachments/assets/9f1d599b-0aa8-47a4-b382-a771e8aced2b" />
+</div>
+<h1 align="center">InkCode</h1>
+
+
 A modern, adaptive code and text editor.
 Uses RichEditBox for RTF support and Scintilla (via WinUIEdit) and Monaco (via WinUI.Monaco) for code and plain text editing support.
-### Install
+### Install 
+Latest releases: ![GitHub Release](https://img.shields.io/github/v/release/jpb896/inkcode?link=https%3A%2F%2Fgithub.com%2Fjpb896%2FInkCode%2Freleases%2Flatest) ![GitHub Release](https://img.shields.io/github/v/release/jpb896/inkcode?include_prereleases&link=https%3A%2F%2Fgithub.com%2Fjpb896%2FInkCode%2Freleases)
+
+Total downloads: ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/jpb896/inkcode/total)
+
 Get from GitHub releases: https://github.com/jpb896/InkCode/releases
 ### Screenshots
 <img width="356" height="205.5" alt="image" src="https://github.com/user-attachments/assets/3537fc3e-1d42-4f9c-9ba8-d999f373bd6f" />
