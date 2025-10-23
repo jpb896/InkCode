@@ -1,19 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Media.Devices;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,11 +19,29 @@ namespace InkCode
             if (ElementSoundPlayer.State == ElementSoundPlayerState.On)
             {
                 SoundSwitch.IsOn = true;
-            } else { SoundSwitch.IsOn = false; SpatialSwitch.IsEnabled = false; SpatialSwitch.IsOn = false; }
-            if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On) {
+            } 
+            else 
+            { 
+                SoundSwitch.IsOn = false; 
+                SpatialSwitch.IsEnabled = false; 
+                SpatialSwitch.IsOn = false; 
+            }
+            if (ElementSoundPlayer.SpatialAudioMode == ElementSpatialAudioMode.On) 
+            {
                 SpatialSwitch.IsOn = true;
-            } else { SpatialSwitch.IsOn = false; }
-            if (App.Current.FocusVisualKind == FocusVisualKind.Reveal) { FocusSwitch.IsOn = true; } else {  FocusSwitch.IsOn = false; }
+            } 
+            else 
+            { 
+                SpatialSwitch.IsOn = false;
+            }
+            if (App.Current.FocusVisualKind == FocusVisualKind.Reveal)
+            { 
+                FocusSwitch.IsOn = true;
+            } 
+            else 
+            {  
+                FocusSwitch.IsOn = false;
+            }
             BuildDateTextBlock.Text = "Built " + GetBuildDate(Assembly.GetExecutingAssembly()).ToString();
         }
 
@@ -66,19 +72,23 @@ namespace InkCode
 
         private void SoundSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-            if (SoundSwitch.IsOn) {
+            if (SoundSwitch.IsOn) 
+            {
                 ElementSoundPlayer.State = ElementSoundPlayerState.On;
             }
-            else {
+            else 
+            {
                 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
             }
         }
 
         private void FocusSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-            if (FocusSwitch.IsOn) { 
+            if (FocusSwitch.IsOn) 
+            { 
                 App.Current.FocusVisualKind = FocusVisualKind.Reveal;
-            } else
+            } 
+            else
             {
                 App.Current.FocusVisualKind = FocusVisualKind.HighVisibility;
             }
