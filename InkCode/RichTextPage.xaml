@@ -84,6 +84,9 @@
                             </StackPanel>
                         </controls:RibbonGroup>
                         <controls:RibbonCollapsibleGroup Label="Font">
+                        <controls:RibbonCollapsibleGroup.IconSource>
+                            <FontIconSource Glyph="&#xE8D2;"/>
+                        </controls:RibbonCollapsibleGroup.IconSource>
                             <StackPanel Orientation="Vertical" Spacing="8">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                 <ComboBox x:Name="fontBox" ItemsSource="{x:Bind win2d:CanvasTextFormat.GetSystemFontFamilies()}" SelectedItem="Segoe UI" IsTextSearchEnabled="True" SelectionChanged="fontBox_SelectionChanged">
@@ -111,12 +114,22 @@
                                 </StackPanel>
                             </StackPanel>
                         </controls:RibbonCollapsibleGroup>
-                        <controls:RibbonCollapsibleGroup Label="Paragraph"></controls:RibbonCollapsibleGroup>
+                        <controls:RibbonCollapsibleGroup Label="Paragraph">
+                        <controls:RibbonCollapsibleGroup.IconSource>
+                            <FontIconSource Glyph="&#xEA37;"/>
+                        </controls:RibbonCollapsibleGroup.IconSource>
+                        </controls:RibbonCollapsibleGroup>
                     </controls:Ribbon>
                 </controls:Case>
             <controls:Case Value="insert">
+                <controls:Ribbon>
+                    <controls:RibbonGroup/>
+                </controls:Ribbon>
             </controls:Case>
             <controls:Case Value="dev">
+                <controls:Ribbon>
+                    <controls:RibbonGroup/>
+                </controls:Ribbon>
             </controls:Case>
             </controls:SwitchPresenter>
         <RichEditBox x:Name="editor" VerticalAlignment="Stretch" Grid.Row="2">
