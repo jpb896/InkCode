@@ -14,7 +14,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TitleBar Grid.Row="0" Title="InkCode" Subtitle="Preview" IsBackButtonEnabled="True" IsBackButtonVisible="True" BackRequested="TitleBar_BackRequested"/>
+        <TitleBar Grid.Row="0" Title="InkCode" Subtitle="Preview" IsBackButtonEnabled="True" IsBackButtonVisible="True" BackRequested="TitleBar_BackRequested">
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="/inkcode.ico"/>
+            </TitleBar.IconSource>
+        </TitleBar>
         <TextBlock Style="{StaticResource TitleTextBlockStyle}" Grid.Row="1" Padding="8,0,8,0">Settings</TextBlock>
         <StackPanel Orientation="Vertical" Spacing="8" Grid.Row="2" Padding="8,0,8,0">
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">Appearance and behavior</TextBlock>
@@ -31,6 +35,9 @@
             </controls:SettingsCard>
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
             <controls:SettingsExpander Header="InkCode" Description="1.0 Preview">
+                <controls:SettingsExpander.HeaderIcon>
+                    <ImageIcon Source="/inkcode.ico"/>
+                </controls:SettingsExpander.HeaderIcon>
                 <controls:SettingsExpander.Content>
                     <TextBlock x:Name="BuildDateTextBlock"/>
                 </controls:SettingsExpander.Content>
