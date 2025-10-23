@@ -63,7 +63,7 @@
                                     <SplitButton.Flyout>
                                         <MenuFlyout>
                                             <MenuFlyoutItem Click="Paste2">Paste</MenuFlyoutItem>
-                                            <MenuFlyoutItem Click="PasteNoFormat">Paste without formatting</MenuFlyoutItem>
+                                            <MenuFlyoutItem IsEnabled="False">Paste without formatting</MenuFlyoutItem>
                                         </MenuFlyout>
                                     </SplitButton.Flyout>
                                 </SplitButton>
