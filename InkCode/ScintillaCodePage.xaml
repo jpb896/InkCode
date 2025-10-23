@@ -82,21 +82,17 @@
                             </StackPanel>
                         </StackPanel>
                     </controls:RibbonGroup>
-                    <controls:RibbonCollapsibleGroup Label="Font">
-                        <StackPanel Orientation="Vertical" Spacing="8">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                            </StackPanel>
-                        </StackPanel>
-                    </controls:RibbonCollapsibleGroup>
-                    <controls:RibbonCollapsibleGroup Label="Paragraph"></controls:RibbonCollapsibleGroup>
                 </controls:Ribbon>
             </controls:Case>
             <controls:Case Value="insert">
+                <controls:Ribbon>
+                    <controls:RibbonGroup/>
+                </controls:Ribbon>
             </controls:Case>
             <controls:Case Value="dev">
+                <controls:Ribbon>
+                    <controls:RibbonGroup/>
+                </controls:Ribbon>
             </controls:Case>
         </controls:SwitchPresenter>
         <winuieditor:CodeEditorControl x:Name="editor" Grid.Row="2"/>
