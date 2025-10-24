@@ -68,6 +68,9 @@ namespace InkCode
             tab.IconSource = iconSource;
             tab.Content = new RichTextPage();
             Tabs.TabItems.Add(tab);
+            if (Tabs.TabItems.Count == 1) { 
+                Tabs.SelectedItem = Tabs.TabItems[0];
+            }
         }
 
         private void Newcode_Click(object sender, RoutedEventArgs e)
