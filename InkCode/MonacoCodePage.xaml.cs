@@ -156,6 +156,8 @@ namespace InkCode
                     // Convert PickSaveFileResult to StorageFile
                     StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
 
+                    (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+
                     // Prevent updates to the remote version of the file until complete
                     CachedFileManager.DeferUpdates(file);
 

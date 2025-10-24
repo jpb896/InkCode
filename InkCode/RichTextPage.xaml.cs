@@ -121,6 +121,7 @@ namespace InkCode
                 {
                     // Open with StorageFile (needed for RichEditBox)
                     StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+                    (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
 
                     using IRandomAccessStream randAccStream =
                         await file.OpenAsync(FileAccessMode.Read);
