@@ -13,6 +13,7 @@
         VerticalAlignment="Stretch"
         AddTabButtonClick="AddTabButtonClick"
         TabCloseRequested="TabCloseRequested"
+        x:FieldModifier="public"
         Style="{ThemeResource ModernTabViewStyle}">
                 <TabView.TabStripHeader>
                     <Grid x:Name="ShellTitleBarInset" Background="Transparent" />
