@@ -82,6 +82,10 @@ namespace InkCode
             tab.IconSource = iconSource;
             tab.Content = new ScintillaCodePage();
             Tabs.TabItems.Add(tab);
+            if (Tabs.TabItems.Count == 1)
+            {
+                Tabs.SelectedItem = Tabs.TabItems[0];
+            }
         }
 
         private void NewcodeM_Click(object sender, RoutedEventArgs e)
@@ -93,6 +97,10 @@ namespace InkCode
             tab.IconSource = iconSource;
             tab.Content = new MonacoCodePage();
             Tabs.TabItems.Add(tab);
+            if (Tabs.TabItems.Count == 1)
+            {
+                Tabs.SelectedItem = Tabs.TabItems[0];
+            }
         }
 
         private void TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
