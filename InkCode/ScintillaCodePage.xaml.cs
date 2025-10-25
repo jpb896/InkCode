@@ -173,22 +173,9 @@ namespace InkCode
                     // Write content into the file
                     using IRandomAccessStream randAccStream =
                         await file.OpenAsync(FileAccessMode.ReadWrite);
-
-                    Windows.Storage.Streams.Buffer buffer = new Windows.Storage.Streams.Buffer((uint)editor.Editor.Length);
-                    editor.Editor.GetTextWriteBuffer(editor.Editor.Length, buffer);
+                    var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
+    editor.Editor.GetText(editor.Editor.Length), Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
                     await randAccStream.WriteAsync(buffer);
-
-                    // Finalize file updates
-                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-
-                    if (status != FileUpdateStatus.Complete)
-                    {
-                        var errorBox = new ContentDialog();
-                        errorBox.Title = "Error";
-                        errorBox.Content = $"File {file.Name} couldn't be saved.";
-                        errorBox.PrimaryButtonText = "OK";
-                        await errorBox.ShowAsync();
-                    }
                 }
             }
         }
