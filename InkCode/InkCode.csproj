@@ -15,6 +15,10 @@
 	  <SelfContained>true</SelfContained>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\changelog.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ChangelogDialog.xaml" />
     <None Remove="SettingsPage.xaml" />
   </ItemGroup>
 
@@ -43,6 +47,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.Controls.MarkdownTextBlock" Version="0.1.251101-build.2372" />
     <PackageReference Include="CommunityToolkit.Labs.WinUI.Controls.Ribbon" Version="0.1.251101-build.2372" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.2.250402" />
@@ -110,5 +115,17 @@
 		<AssemblyAttribute Include="InkCode.BuildDateAttribute">
 			<_Parameter1>$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</_Parameter1>
 		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Assets\changelog.md">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="ChangelogDialog.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 </Project>

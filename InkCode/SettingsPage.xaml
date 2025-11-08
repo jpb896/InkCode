@@ -46,6 +46,7 @@
                     <controls:SettingsCard Header="Check out the code">
                         <TextBlock FontFamily="Cascadia Code" IsTextSelectionEnabled="True">git clone https://github.com/jpb896/InkCode</TextBlock>
                     </controls:SettingsCard>
+                    <controls:SettingsCard Header="Changelog" Description="Find out what's new in this release of InkCode" Click="ShowChangelog" IsClickEnabled="True"></controls:SettingsCard>
                     <controls:SettingsCard x:Name="AcknowledgementsCard" Header="Acknowledgements" Description="This project would not be possible without:&#x0a;   - the Windows App SDK and WinUI3 UI framework&#x0a;   - WinUIEdit (code editor control)&#x0a;   - WinUI.Monaco (code editor control)&#x0a;   - TowPad (tab style (slightly modified), RTF cut/copy/paste logic)&#x0a;   - The support and encouragement of multiple people during early development phases"></controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>
