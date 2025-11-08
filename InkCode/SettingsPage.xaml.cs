@@ -106,6 +106,8 @@ namespace InkCode
             changelogDialog.Title = "What's new in this release";
             changelogDialog.XamlRoot = this.XamlRoot;
             changelogDialog.Content = new ChangelogDialog();
+            changelogDialog.IsPrimaryButtonEnabled = true;
+            changelogDialog.PrimaryButtonText = "OK";
             await changelogDialog.ShowAsync();
         }
     }
