@@ -99,5 +99,14 @@ namespace InkCode
             var attribute = assembly.GetCustomAttribute<BuildDateAttribute>();
             return attribute != null ? attribute.DateTime : default(DateTime);
         }
+
+        private async void ShowChangelog(object sender, RoutedEventArgs e)
+        {
+            ContentDialog changelogDialog = new ContentDialog();
+            changelogDialog.Title = "What's new in this release";
+            changelogDialog.XamlRoot = this.XamlRoot;
+            changelogDialog.Content = new ChangelogDialog();
+            await changelogDialog.ShowAsync();
+        }
     }
 }
