@@ -121,6 +121,8 @@ namespace InkCode
                                 monaco.EditorLanguage = "plaintext";
                                 break;
                         }
+
+                        (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
                     }
                 }
             }
