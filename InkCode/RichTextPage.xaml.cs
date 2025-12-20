@@ -182,5 +182,13 @@ namespace InkCode
                 }
             }
         }
+
+        private void ClearFormatting(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Off;
+            editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Off;
+            editor.Document.Selection.CharacterFormat.Underline = UnderlineType.None;
+            editor.Document.Selection.CharacterFormat.Strikethrough = FormatEffect.Off;
+        }
     }
 }

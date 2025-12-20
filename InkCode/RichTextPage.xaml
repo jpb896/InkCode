@@ -118,7 +118,12 @@
                         <controls:RibbonCollapsibleGroup.IconSource>
                             <FontIconSource Glyph="&#xEA37;"/>
                         </controls:RibbonCollapsibleGroup.IconSource>
-                        </controls:RibbonCollapsibleGroup>
+                        <Button Background="Transparent" BorderThickness="0" Click="ClearFormatting">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon Glyph="&#xED61;" FontSize="12"/>
+                            </StackPanel>
+                        </Button>
+                    </controls:RibbonCollapsibleGroup>
                     </controls:Ribbon>
                 </controls:Case>
             <controls:Case Value="insert">
