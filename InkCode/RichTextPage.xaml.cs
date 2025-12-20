@@ -34,6 +34,11 @@ namespace InkCode
             editor.Document.Selection.Paste(0);
         }
 
+        private void PasteNoFormat(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.Paste(13);
+        }
+
         private void Copy(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.Copy();
