@@ -1,40 +1,26 @@
+import { onUnexpectedExternalError } from '../../../../base/common/errors.js';
+import { HierarchicalKind } from '../../../../base/common/hierarchicalKind.js';
+
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { onUnexpectedExternalError } from '../../../../base/common/errors.js';
-export class CodeActionKind {
-    constructor(value) {
-        this.value = value;
+const CodeActionKind = new class {
+    constructor() {
+        this.QuickFix = new HierarchicalKind('quickfix');
+        this.Refactor = new HierarchicalKind('refactor');
+        this.RefactorExtract = this.Refactor.append('extract');
+        this.RefactorInline = this.Refactor.append('inline');
+        this.RefactorMove = this.Refactor.append('move');
+        this.RefactorRewrite = this.Refactor.append('rewrite');
+        this.Notebook = new HierarchicalKind('notebook');
+        this.Source = new HierarchicalKind('source');
+        this.SourceOrganizeImports = this.Source.append('organizeImports');
+        this.SourceFixAll = this.Source.append('fixAll');
+        this.SurroundWith = this.Refactor.append('surround');
     }
-    equals(other) {
-        return this.value === other.value;
-    }
-    contains(other) {
-        return this.equals(other) || this.value === '' || other.value.startsWith(this.value + CodeActionKind.sep);
-    }
-    intersects(other) {
-        return this.contains(other) || other.contains(this);
-    }
-    append(part) {
-        return new CodeActionKind(this.value + CodeActionKind.sep + part);
-    }
-}
-CodeActionKind.sep = '.';
-CodeActionKind.None = new CodeActionKind('@@none@@'); // Special code action that contains nothing
-CodeActionKind.Empty = new CodeActionKind('');
-CodeActionKind.QuickFix = new CodeActionKind('quickfix');
-CodeActionKind.Refactor = new CodeActionKind('refactor');
-CodeActionKind.RefactorExtract = CodeActionKind.Refactor.append('extract');
-CodeActionKind.RefactorInline = CodeActionKind.Refactor.append('inline');
-CodeActionKind.RefactorMove = CodeActionKind.Refactor.append('move');
-CodeActionKind.RefactorRewrite = CodeActionKind.Refactor.append('rewrite');
-CodeActionKind.Notebook = new CodeActionKind('notebook');
-CodeActionKind.Source = new CodeActionKind('source');
-CodeActionKind.SourceOrganizeImports = CodeActionKind.Source.append('organizeImports');
-CodeActionKind.SourceFixAll = CodeActionKind.Source.append('fixAll');
-CodeActionKind.SurroundWith = CodeActionKind.Refactor.append('surround');
-export var CodeActionTriggerSource;
+};
+var CodeActionTriggerSource;
 (function (CodeActionTriggerSource) {
     CodeActionTriggerSource["Refactor"] = "refactor";
     CodeActionTriggerSource["RefactorPreview"] = "refactor preview";
@@ -49,7 +35,7 @@ export var CodeActionTriggerSource;
     CodeActionTriggerSource["OnSave"] = "save participants";
     CodeActionTriggerSource["ProblemsView"] = "problems view";
 })(CodeActionTriggerSource || (CodeActionTriggerSource = {}));
-export function mayIncludeActionsOfKind(filter, providedKind) {
+function mayIncludeActionsOfKind(filter, providedKind) {
     // A provided kind may be a subset or superset of our filtered kind.
     if (filter.include && !filter.include.intersects(providedKind)) {
         return false;
@@ -65,8 +51,8 @@ export function mayIncludeActionsOfKind(filter, providedKind) {
     }
     return true;
 }
-export function filtersAction(filter, action) {
-    const actionKind = action.kind ? new CodeActionKind(action.kind) : undefined;
+function filtersAction(filter, action) {
+    const actionKind = action.kind ? new HierarchicalKind(action.kind) : undefined;
     // Filter out actions by kind
     if (filter.include) {
         if (!actionKind || !filter.include.contains(actionKind)) {
@@ -101,7 +87,7 @@ function excludesAction(providedKind, exclude, include) {
     }
     return true;
 }
-export class CodeActionCommandArgs {
+class CodeActionCommandArgs {
     static fromUser(arg, defaults) {
         if (!arg || typeof arg !== 'object') {
             return new CodeActionCommandArgs(defaults.kind, defaults.apply, false);
@@ -118,7 +104,7 @@ export class CodeActionCommandArgs {
     }
     static getKindFromUser(arg, defaultKind) {
         return typeof arg.kind === 'string'
-            ? new CodeActionKind(arg.kind)
+            ? new HierarchicalKind(arg.kind)
             : defaultKind;
     }
     static getPreferredUser(arg) {
@@ -132,15 +118,14 @@ export class CodeActionCommandArgs {
         this.preferred = preferred;
     }
 }
-export class CodeActionItem {
+class CodeActionItem {
     constructor(action, provider, highlightRange) {
         this.action = action;
         this.provider = provider;
         this.highlightRange = highlightRange;
     }
     async resolve(token) {
-        var _a;
-        if (((_a = this.provider) === null || _a === void 0 ? void 0 : _a.resolveCodeAction) && !this.action.edit) {
+        if (this.provider?.resolveCodeAction && !this.action.edit) {
             let action;
             try {
                 action = await this.provider.resolveCodeAction(this.action, token);
@@ -155,3 +140,5 @@ export class CodeActionItem {
         return this;
     }
 }
+
+export { CodeActionCommandArgs, CodeActionItem, CodeActionKind, CodeActionTriggerSource, filtersAction, mayIncludeActionsOfKind };

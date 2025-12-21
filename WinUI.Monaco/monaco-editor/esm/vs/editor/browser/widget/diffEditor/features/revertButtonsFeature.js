@@ -1,18 +1,22 @@
+import { h, addDisposableListener, EventType } from '../../../../../base/browser/dom.js';
+import { renderIcon } from '../../../../../base/browser/ui/iconLabel/iconLabels.js';
+import { Codicon } from '../../../../../base/common/codicons.js';
+import { Disposable, toDisposable } from '../../../../../base/common/lifecycle.js';
+import '../../../../../base/common/observableInternal/index.js';
+import { LineRangeSet, LineRange } from '../../../../common/core/ranges/lineRange.js';
+import { Range } from '../../../../common/core/range.js';
+import { LineRangeMapping } from '../../../../common/diff/rangeMapping.js';
+import { GlyphMarginLane } from '../../../../common/model.js';
+import { localize } from '../../../../../nls.js';
+import { derived } from '../../../../../base/common/observableInternal/observables/derived.js';
+import { autorunWithStore } from '../../../../../base/common/observableInternal/reactions/autorun.js';
+
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { addDisposableListener, h, EventType } from '../../../../../base/browser/dom.js';
-import { renderIcon } from '../../../../../base/browser/ui/iconLabel/iconLabels.js';
-import { Codicon } from '../../../../../base/common/codicons.js';
-import { Disposable, toDisposable } from '../../../../../base/common/lifecycle.js';
-import { autorunWithStore, derived } from '../../../../../base/common/observable.js';
-import { LineRange, LineRangeSet } from '../../../../common/core/lineRange.js';
-import { Range } from '../../../../common/core/range.js';
-import { GlyphMarginLane } from '../../../../common/model.js';
-import { localize } from '../../../../../nls.js';
 const emptyArr = [];
-export class RevertButtonsFeature extends Disposable {
+class RevertButtonsFeature extends Disposable {
     constructor(_editors, _diffModel, _options, _widget) {
         super();
         this._editors = _editors;
@@ -22,7 +26,7 @@ export class RevertButtonsFeature extends Disposable {
         this._selectedDiffs = derived(this, (reader) => {
             /** @description selectedDiffs */
             const model = this._diffModel.read(reader);
-            const diff = model === null || model === void 0 ? void 0 : model.diff.read(reader);
+            const diff = model?.diff.read(reader);
             // Return `emptyArr` because it is a constant. [] is always a new array and would trigger a change.
             if (!diff) {
                 return emptyArr;
@@ -43,11 +47,11 @@ export class RevertButtonsFeature extends Disposable {
             return result;
         });
         this._register(autorunWithStore((reader, store) => {
-            if (!this._options.shouldRenderRevertArrows.read(reader)) {
+            if (!this._options.shouldRenderOldRevertArrows.read(reader)) {
                 return;
             }
             const model = this._diffModel.read(reader);
-            const diff = model === null || model === void 0 ? void 0 : model.diff.read(reader);
+            const diff = model?.diff.read(reader);
             if (!model || !diff) {
                 return;
             }
@@ -69,7 +73,7 @@ export class RevertButtonsFeature extends Disposable {
                     continue;
                 }
                 if (!m.lineRangeMapping.modified.isEmpty && m.lineRangeMapping.innerChanges) {
-                    const btn = store.add(new RevertButton(m.lineRangeMapping.modified.startLineNumber, this._widget, m.lineRangeMapping.innerChanges, false));
+                    const btn = store.add(new RevertButton(m.lineRangeMapping.modified.startLineNumber, this._widget, m.lineRangeMapping, false));
                     this._editors.modified.addGlyphMarginWidget(btn);
                     glyphWidgetsModified.push(btn);
                 }
@@ -82,7 +86,8 @@ export class RevertButtonsFeature extends Disposable {
         }));
     }
 }
-export class RevertButton extends Disposable {
+class RevertButton extends Disposable {
+    static { this.counter = 0; }
     getId() { return this._id; }
     constructor(_lineNumber, _widget, _diffs, _revertSelection) {
         super();
@@ -93,8 +98,8 @@ export class RevertButton extends Disposable {
         this._id = `revertButton${RevertButton.counter++}`;
         this._domNode = h('div.revertButton', {
             title: this._revertSelection
-                ? localize('revertSelectedChanges', 'Revert Selected Changes')
-                : localize('revertChange', 'Revert Change')
+                ? localize(135, 'Revert Selected Changes')
+                : localize(136, 'Revert Change')
         }, [renderIcon(Codicon.arrowRight)]).root;
         this._register(addDisposableListener(this._domNode, EventType.MOUSE_DOWN, e => {
             // don't prevent context menu from showing up
@@ -108,7 +113,12 @@ export class RevertButton extends Disposable {
             e.preventDefault();
         }));
         this._register(addDisposableListener(this._domNode, EventType.CLICK, (e) => {
-            this._widget.revertRangeMappings(this._diffs);
+            if (this._diffs instanceof LineRangeMapping) {
+                this._widget.revert(this._diffs);
+            }
+            else {
+                this._widget.revertRangeMappings(this._diffs);
+            }
             e.stopPropagation();
             e.preventDefault();
         }));
@@ -135,4 +145,5 @@ export class RevertButton extends Disposable {
         };
     }
 }
-RevertButton.counter = 0;
+
+export { RevertButton, RevertButtonsFeature };
