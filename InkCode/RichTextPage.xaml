@@ -137,7 +137,7 @@
                 </controls:Ribbon>
             </controls:Case>
             </controls:SwitchPresenter>
-        <RichEditBox x:Name="editor" VerticalAlignment="Stretch" Grid.Row="2">
+        <RichEditBox x:Name="editor" VerticalAlignment="Stretch" Grid.Row="2" Style="{ThemeResource RichEditBoxStyle}" BorderThickness="0">
             <RichEditBox.KeyboardAccelerators>
                 <KeyboardAccelerator
                     Key="B"

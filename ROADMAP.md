@@ -8,7 +8,7 @@
 * Paste non-formatted text into RTF UI
 * Syntax highlighting for cc files (Scintilla editor)
 * Syntax highlighting for C/C++ header files (Scintilla editor)
-* Monaco update (most likely 0.55.1)
+* Monaco update (most likely 0.55.1; prospective)
 * Windows App SDK 2.0 Preview 3
 * Light/Dark mode settings in-app
 * New textbox style (RTF)
@@ -19,12 +19,13 @@
 ### 26H1 Update (1.5)
 
 * Syntax highlighting for Python files (Scintilla editor)
-* Attempts to fix the file dialog bugs
+* Attempts to fix the file dialog bugs (in 1.1.x patch updates)
 * Insert links into RTF
 * Insert images into RTF
 * Text highlighting (RTF)
 * Compute hash values of inputted text (both RTF and Scintilla; prospective for Monaco)
-* Monaco update
+* Monaco update (prospective)
+* Customizable RTB styles (RTF)
 
 ### 26H2 (2.0)
 
