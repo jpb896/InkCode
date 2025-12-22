@@ -50,6 +50,7 @@ namespace InkCode
                 picker.FileTypeFilter.Add(".xaml");
                 picker.FileTypeFilter.Add(".xml");
                 picker.FileTypeFilter.Add(".cpp");
+                picker.FileTypeFilter.Add(".cc");
                 picker.FileTypeFilter.Add(".cxx");
                 picker.FileTypeFilter.Add(".html");
                 picker.FileTypeFilter.Add(".js");
@@ -87,6 +88,9 @@ namespace InkCode
                                 monaco.EditorLanguage = "xml";
                                 break;
                             case ".cpp":
+                                monaco.EditorLanguage = "cpp";
+                                break;
+                            case ".cc":
                                 monaco.EditorLanguage = "cpp";
                                 break;
                             case ".cxx":
