@@ -59,6 +59,7 @@ namespace InkCode
                 picker.FileTypeFilter.Add(".cs");
                 picker.FileTypeFilter.Add(".xaml");
                 picker.FileTypeFilter.Add(".xml");
+                picker.FileTypeFilter.Add(".c");
                 picker.FileTypeFilter.Add(".cpp");
                 picker.FileTypeFilter.Add(".cc");
                 picker.FileTypeFilter.Add(".cxx");
@@ -99,6 +100,9 @@ namespace InkCode
                                 break;
                             case ".xaml":
                                 editor.HighlightingLanguage = "xml";
+                                break;
+                            case ".c":
+                                editor.HighlightingLanguage = "c";
                                 break;
                             case ".cpp":
                                 editor.HighlightingLanguage = "cpp";
