@@ -62,6 +62,10 @@ namespace InkCode
                 picker.FileTypeFilter.Add(".cpp");
                 picker.FileTypeFilter.Add(".cc");
                 picker.FileTypeFilter.Add(".cxx");
+                picker.FileTypeFilter.Add(".h");
+                picker.FileTypeFilter.Add(".hxx");
+                picker.FileTypeFilter.Add(".hpp");
+                picker.FileTypeFilter.Add(".hh");
                 picker.FileTypeFilter.Add(".html");
                 picker.FileTypeFilter.Add(".js");
                 picker.FileTypeFilter.Add(".yml");
@@ -104,6 +108,18 @@ namespace InkCode
                                 break;
                             case ".cxx":
                                 editor.HighlightingLanguage = "cpp";
+                                break;
+                            case ".h":
+                                editor.HighlightingLanguage = "c";
+                                break;
+                            case ".hh":
+                                editor.HighlightingLanguage = "c";
+                                break;
+                            case ".hxx":
+                                editor.HighlightingLanguage = "c";
+                                break;
+                            case ".hpp":
+                                editor.HighlightingLanguage = "c";
                                 break;
                             case ".html":
                                 editor.HighlightingLanguage = "html";
