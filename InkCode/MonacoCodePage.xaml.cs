@@ -168,8 +168,9 @@ namespace InkCode
                 savePicker.FileTypeChoices.Add("Plain text", new List<string>() { ".txt" });
                 savePicker.FileTypeChoices.Add("C#", new List<string>() { ".cs" });
                 savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", new List<string>() { ".xml", ".xaml" });
-                savePicker.FileTypeChoices.Add("C++", new List<string>() { ".cpp", ".cxx" });
-                savePicker.FileTypeChoices.Add("HyperText Markup Language", new List<string>() { ".html" });
+                savePicker.FileTypeChoices.Add("C", new List<string>() { ".c" });
+                savePicker.FileTypeChoices.Add("C++", new List<string>() { ".cpp", ".cxx", ".cc" });
+                savePicker.FileTypeChoices.Add("C/C++ header", new List<string>() { ".h", ".hh", ".hxx", ".hpp" }); savePicker.FileTypeChoices.Add("HyperText Markup Language", new List<string>() { ".html" });
                 savePicker.FileTypeChoices.Add("JavaScript", new List<string>() { ".js" });
                 savePicker.FileTypeChoices.Add("YAML", new List<string>() { ".yml" });
                 savePicker.FileTypeChoices.Add("JSON", new List<string>() { ".json" });
