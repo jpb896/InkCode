@@ -99,16 +99,16 @@
                                 <NumberBox x:Name="fontSizeBox" Value="11" SpinButtonPlacementMode="Inline" SmallChange="4" LargeChange="16" Minimum="8" ValueChanged="fontSizeBox_ValueChanged"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ToggleButton x:Name="BoldButton" Background="Transparent" BorderBrush="Transparent" Click="Bold">
+                                    <ToggleButton x:Name="BoldButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Bold (Ctrl+B)" Click="Bold">
                                         <FontIcon Glyph="&#xE8DD;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="ItalicButton" Background="Transparent" BorderBrush="Transparent" Click="Italic">
+                                    <ToggleButton x:Name="ItalicButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Italic (Ctrl+I)" Click="Italic">
                                         <FontIcon Glyph="&#xE8DB;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="UnderlineButton" Background="Transparent" BorderBrush="Transparent" Click="Underline">
+                                    <ToggleButton x:Name="UnderlineButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Underline (Ctrl+U)" Click="Underline">
                                         <FontIcon Glyph="&#xE8DC;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="StrikethroughButton" Background="Transparent" BorderBrush="Transparent" Click="Strikethrough">
+                                    <ToggleButton x:Name="StrikethroughButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Strikethrough (Ctrl+T)" Click="Strikethrough">
                                         <FontIcon Glyph="&#xEDE0;" FontSize="12"/>
                                     </ToggleButton>
                                 </StackPanel>
@@ -118,7 +118,7 @@
                         <controls:RibbonCollapsibleGroup.IconSource>
                             <FontIconSource Glyph="&#xEA37;"/>
                         </controls:RibbonCollapsibleGroup.IconSource>
-                        <Button Background="Transparent" BorderThickness="0" Click="ClearFormatting">
+                        <Button Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Clear formatting" Click="ClearFormatting">
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <FontIcon Glyph="&#xED61;" FontSize="12"/>
                             </StackPanel>
