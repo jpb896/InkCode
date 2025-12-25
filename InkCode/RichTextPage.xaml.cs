@@ -166,6 +166,8 @@ namespace InkCode
                     using IRandomAccessStream randAccStream =
                         await file.OpenAsync(FileAccessMode.ReadWrite);
 
+                    (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+
                     editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
 
                     // Finalize file updates
