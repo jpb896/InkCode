@@ -183,6 +183,71 @@ namespace InkCode
                     // Convert PickSaveFileResult to StorageFile
                     StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
 
+                    switch (file.FileType)
+                    {
+                        case ".cs":
+                            monaco.EditorLanguage = "csharp";
+                            break;
+                        case ".xml":
+                            monaco.EditorLanguage = "xml";
+                            break;
+                        case ".xaml":
+                            monaco.EditorLanguage = "xml";
+                            break;
+                        case ".c":
+                            monaco.EditorLanguage = "c";
+                            break;
+                        case ".cpp":
+                            monaco.EditorLanguage = "cpp";
+                            break;
+                        case ".cc":
+                            monaco.EditorLanguage = "cpp";
+                            break;
+                        case ".cxx":
+                            monaco.EditorLanguage = "cpp";
+                            break;
+                        case ".h":
+                            monaco.EditorLanguage = "c";
+                            break;
+                        case ".hh":
+                            monaco.EditorLanguage = "c";
+                            break;
+                        case ".hxx":
+                            monaco.EditorLanguage = "c";
+                            break;
+                        case ".hpp":
+                            monaco.EditorLanguage = "c";
+                            break;
+                        case ".html":
+                            monaco.EditorLanguage = "html";
+                            break;
+                        case ".json":
+                            monaco.EditorLanguage = "json";
+                            break;
+                        case ".yml":
+                            monaco.EditorLanguage = "yaml";
+                            break;
+                        case ".js":
+                            monaco.EditorLanguage = "javascript";
+                            break;
+                        case ".txt":
+                            monaco.EditorLanguage = "plaintext";
+                            break;
+                        case ".rtf":
+                            ContentDialog rtf_dialog = new ContentDialog();
+                            rtf_dialog.Title = "Looking to edit an RTF file?";
+                            rtf_dialog.Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.";
+                            rtf_dialog.XamlRoot = this.XamlRoot;
+                            rtf_dialog.IsPrimaryButtonEnabled = true;
+                            rtf_dialog.PrimaryButtonText = "Understood!";
+                            await rtf_dialog.ShowAsync();
+                            monaco.EditorLanguage = "plaintext";
+                            break;
+                        default:
+                            monaco.EditorLanguage = "plaintext";
+                            break;
+                    }
+
                     (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
 
                     // Prevent updates to the remote version of the file until complete

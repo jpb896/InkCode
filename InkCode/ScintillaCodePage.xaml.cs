@@ -193,6 +193,71 @@ namespace InkCode
                     // Convert PickSaveFileResult to StorageFile
                     StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
 
+                    switch (file.FileType)
+                    {
+                        case ".cs":
+                            editor.HighlightingLanguage = "csharp";
+                            break;
+                        case ".xml":
+                            editor.HighlightingLanguage = "xml";
+                            break;
+                        case ".xaml":
+                            editor.HighlightingLanguage = "xml";
+                            break;
+                        case ".c":
+                            editor.HighlightingLanguage = "c";
+                            break;
+                        case ".cpp":
+                            editor.HighlightingLanguage = "cpp";
+                            break;
+                        case ".cc":
+                            editor.HighlightingLanguage = "cpp";
+                            break;
+                        case ".cxx":
+                            editor.HighlightingLanguage = "cpp";
+                            break;
+                        case ".h":
+                            editor.HighlightingLanguage = "c";
+                            break;
+                        case ".hh":
+                            editor.HighlightingLanguage = "c";
+                            break;
+                        case ".hxx":
+                            editor.HighlightingLanguage = "c";
+                            break;
+                        case ".hpp":
+                            editor.HighlightingLanguage = "c";
+                            break;
+                        case ".html":
+                            editor.HighlightingLanguage = "html";
+                            break;
+                        case ".json":
+                            editor.HighlightingLanguage = "json";
+                            break;
+                        case ".yml":
+                            editor.HighlightingLanguage = "yaml";
+                            break;
+                        case ".js":
+                            editor.HighlightingLanguage = "javascript";
+                            break;
+                        case ".txt":
+                            editor.HighlightingLanguage = "plaintext";
+                            break;
+                        case ".rtf":
+                            ContentDialog rtf_dialog = new ContentDialog();
+                            rtf_dialog.Title = "Looking to edit an RTF file?";
+                            rtf_dialog.Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.";
+                            rtf_dialog.XamlRoot = this.XamlRoot;
+                            rtf_dialog.IsPrimaryButtonEnabled = true;
+                            rtf_dialog.PrimaryButtonText = "Understood!";
+                            await rtf_dialog.ShowAsync();
+                            editor.HighlightingLanguage = "plaintext";
+                            break;
+                        default:
+                            editor.HighlightingLanguage = "plaintext";
+                            break;
+                    }
+
                     (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
 
                     // Prevent updates to the remote version of the file until complete
