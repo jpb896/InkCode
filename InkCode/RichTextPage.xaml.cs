@@ -90,6 +90,14 @@ namespace InkCode
                     StrikethroughButton.IsChecked = editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On;
                     args.Handled = true;
                     break;
+                case Windows.System.VirtualKey.O:
+                    Open();
+                    args.Handled = true;
+                    break;
+                case Windows.System.VirtualKey.S:
+                    Save();
+                    args.Handled = true;
+                    break;
             }
         }
 
@@ -106,34 +114,11 @@ namespace InkCode
             }
         }
 
-        private async void OpenButton_Click(object sender, RoutedEventArgs e)
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
             {
-                // Create the picker using the AppWindowId from the element
-                var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId)
-                {
-                    SuggestedStartLocation = PickerLocationId.DocumentsLibrary
-                };
-
-                // Add file type filters
-                picker.FileTypeFilter.Add(".rtf");
-
-                // Show picker
-                PickFileResult result = await picker.PickSingleFileAsync();
-
-                if (result != null)
-                {
-                    // Open with StorageFile (needed for RichEditBox)
-                    StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
-                    (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
-
-                    using IRandomAccessStream randAccStream =
-                        await file.OpenAsync(FileAccessMode.Read);
-
-                    // Load file into the RichEditBox
-                    editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
-                }
+                Open();
             }
         }
 
@@ -141,46 +126,79 @@ namespace InkCode
         {
             if (sender is Button button)
             {
-                // Create the picker with AppWindowId
-                var savePicker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId)
+                Save();
+            }
+        }
+
+        private async void Open()
+        {
+            // Create the picker using the AppWindowId from the element
+            var picker = new FileOpenPicker(this.XamlRoot.ContentIslandEnvironment.AppWindowId)
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+
+            // Add file type filters
+            picker.FileTypeFilter.Add(".rtf");
+
+            // Show picker
+            PickFileResult result = await picker.PickSingleFileAsync();
+
+            if (result != null)
+            {
+                // Open with StorageFile (needed for RichEditBox)
+                StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+                (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+
+                using IRandomAccessStream randAccStream =
+                    await file.OpenAsync(FileAccessMode.Read);
+
+                // Load file into the RichEditBox
+                editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
+            }
+        }
+
+        private async void Save()
+        {
+            // Create the picker with AppWindowId
+            var savePicker = new FileSavePicker(this.XamlRoot.ContentIslandEnvironment.AppWindowId)
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
+                SuggestedFileName = "Untitled"
+            };
+
+            // Dropdown of file types the user can save the file as
+            savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+
+            // Show picker
+            PickFileResult result = await savePicker.PickSaveFileAsync();
+
+            if (result != null)
+            {
+                // Convert PickSaveFileResult to StorageFile
+                StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+
+                // Prevent updates to the remote version of the file until complete
+                CachedFileManager.DeferUpdates(file);
+
+                // Write content into the file
+                using IRandomAccessStream randAccStream =
+                    await file.OpenAsync(FileAccessMode.ReadWrite);
+
+                (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+
+                editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
+
+                // Finalize file updates
+                FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+
+                if (status != FileUpdateStatus.Complete)
                 {
-                    SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
-                    SuggestedFileName = "Untitled"
-                };
-
-                // Dropdown of file types the user can save the file as
-                savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
-
-                // Show picker
-                PickFileResult result = await savePicker.PickSaveFileAsync();
-
-                if (result != null)
-                {
-                    // Convert PickSaveFileResult to StorageFile
-                    StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
-
-                    // Prevent updates to the remote version of the file until complete
-                    CachedFileManager.DeferUpdates(file);
-
-                    // Write content into the file
-                    using IRandomAccessStream randAccStream =
-                        await file.OpenAsync(FileAccessMode.ReadWrite);
-
-                    (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
-
-                    editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
-
-                    // Finalize file updates
-                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-
-                    if (status != FileUpdateStatus.Complete)
-                    {
-                        var errorBox = new ContentDialog();
-                        errorBox.Title = "Error";
-                        errorBox.Content = $"File {file.Name} couldn't be saved.";
-                        errorBox.PrimaryButtonText = "OK";
-                        await errorBox.ShowAsync();
-                    }
+                    var errorBox = new ContentDialog();
+                    errorBox.Title = "Error";
+                    errorBox.Content = $"File {file.Name} couldn't be saved.";
+                    errorBox.PrimaryButtonText = "OK";
+                    await errorBox.ShowAsync();
                 }
             }
         }

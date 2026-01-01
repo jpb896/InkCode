@@ -95,6 +95,17 @@
                 </controls:Ribbon>
             </controls:Case>
         </controls:SwitchPresenter>
-        <winuieditor:CodeEditorControl x:Name="editor" Grid.Row="2"/>
+        <winuieditor:CodeEditorControl x:Name="editor" Grid.Row="2">
+            <winuieditor:CodeEditorControl.KeyboardAccelerators>
+                <KeyboardAccelerator
+        Key="O"
+        Invoked="OnKeyboardAcceleratorInvoked"
+        Modifiers="Control" />
+                <KeyboardAccelerator
+        Key="S"
+        Invoked="OnKeyboardAcceleratorInvoked"
+        Modifiers="Control" />
+            </winuieditor:CodeEditorControl.KeyboardAccelerators>
+        </winuieditor:CodeEditorControl>
     </Grid>
 </Page>

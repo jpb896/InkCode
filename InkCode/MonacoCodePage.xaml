@@ -95,6 +95,17 @@
                 </controls:Ribbon>
             </controls:Case>
         </controls:SwitchPresenter>
-        <monaco:MonacoEditor Background="Transparent" x:Name="monaco" Grid.Row="2"/>
+        <monaco:MonacoEditor Background="Transparent" x:Name="monaco" Grid.Row="2">
+            <monaco:MonacoEditor.KeyboardAccelerators>
+                <KeyboardAccelerator
+Key="O"
+Invoked="OnKeyboardAcceleratorInvoked"
+Modifiers="Control" />
+                <KeyboardAccelerator
+Key="S"
+Invoked="OnKeyboardAcceleratorInvoked"
+Modifiers="Control" />
+            </monaco:MonacoEditor.KeyboardAccelerators>
+        </monaco:MonacoEditor>
     </Grid>
 </Page>
