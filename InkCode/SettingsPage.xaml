@@ -42,7 +42,7 @@
                     <TextBlock x:Name="BuildDateTextBlock"/>
                 </controls:SettingsExpander.Content>
                 <controls:SettingsExpander.Items>
-                    <controls:SettingsCard Header="Licensed under the MIT License" Description="©️ 2025 jpb and contributors"></controls:SettingsCard>
+                    <controls:SettingsCard Header="Licensed under the MIT License" Description="©️ 2025-2026 jpb and contributors"></controls:SettingsCard>
                     <controls:SettingsCard Header="Check out the code">
                         <TextBlock FontFamily="Cascadia Code" IsTextSelectionEnabled="True">git clone https://github.com/jpb896/InkCode</TextBlock>
                     </controls:SettingsCard>
