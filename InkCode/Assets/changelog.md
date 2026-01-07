@@ -1,9 +1,4 @@
-﻿## InkCode 1.1, released December 31, 2025
-- RichEditBox redesign
-- Add support for syntax highlighting C code, header files and .cc C++ code
-- Syntax highlight on file save
-- Show file name of saved file in tab
-- Add support for pasting without formatting
-- Allow clearing formatting from a section of an RTF file
-- Add tooltips to buttons without labels
+﻿## InkCode 1.1.1, released January 13, 2026
+- Add support for opening and saving files via keyboard shortcuts (Ctrl+O for Open, Ctrl+S for Save)
+- Update copyright dates to 2026
 - Dependency updates

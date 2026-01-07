@@ -34,7 +34,7 @@
                 <ToggleSwitch x:Name="FocusSwitch" Toggled="FocusSwitch_Toggled"/>
             </controls:SettingsCard>
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
-            <controls:SettingsExpander Header="InkCode" Description="1.1">
+            <controls:SettingsExpander Header="InkCode" Description="1.1.1">
                 <controls:SettingsExpander.HeaderIcon>
                     <ImageIcon Source="/inkcode.ico"/>
                 </controls:SettingsExpander.HeaderIcon>
