@@ -188,18 +188,6 @@ namespace InkCode
                 (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
 
                 editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
-
-                // Finalize file updates
-                FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-
-                if (status != FileUpdateStatus.Complete)
-                {
-                    var errorBox = new ContentDialog();
-                    errorBox.Title = "Error";
-                    errorBox.Content = $"File {file.Name} couldn't be saved.";
-                    errorBox.PrimaryButtonText = "OK";
-                    await errorBox.ShowAsync();
-                }
             }
         }
 
