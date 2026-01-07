@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     mc:Ignorable="d"
-    Title="InkCode">
+    Title="InkCode Dev">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Frame x:Name="contentFrame"/>
     </Grid>

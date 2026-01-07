@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TitleBar Grid.Row="0" Title="InkCode" IsBackButtonEnabled="True" IsBackButtonVisible="True" BackRequested="TitleBar_BackRequested">
+        <TitleBar Grid.Row="0" Title="InkCode Dev" IsBackButtonEnabled="True" IsBackButtonVisible="True" BackRequested="TitleBar_BackRequested">
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="/inkcode.ico"/>
             </TitleBar.IconSource>
@@ -34,7 +34,7 @@
                 <ToggleSwitch x:Name="FocusSwitch" Toggled="FocusSwitch_Toggled"/>
             </controls:SettingsCard>
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
-            <controls:SettingsExpander Header="InkCode" Description="1.1">
+            <controls:SettingsExpander Header="InkCode Dev" Description="1.5-pre1">
                 <controls:SettingsExpander.HeaderIcon>
                     <ImageIcon Source="/inkcode.ico"/>
                 </controls:SettingsExpander.HeaderIcon>
