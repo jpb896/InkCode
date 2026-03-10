@@ -47,14 +47,10 @@ namespace InkCode
             MenuFlyoutItem newcode_m = new MenuFlyoutItem();
             newrtf.Text = "New rich text document";
             newrtf.Click += Newrtf_Click;
-            newcode.Text = "New code file (Scintilla/WinUIEdit)";
+            newcode.Text = "New code file";
             newcode.Click += Newcode_Click;
-            newcode_m.Text = "New code file (Monaco)";
-            newcode_m.Click += NewcodeM_Click;
             MenuFlyout menuFlyout = new MenuFlyout();
             menuFlyout.Items.Add(newcode);
-            menuFlyout.Items.Add(newcode_m);
-            menuFlyout.Items.Add(new MenuFlyoutSeparator());
             menuFlyout.Items.Add(newrtf);
             menuFlyout.ShowAt(sender);
         }
@@ -80,22 +76,7 @@ namespace InkCode
             var tab = new TabViewItem();
             tab.Header = "Untitled";
             tab.IconSource = iconSource;
-            tab.Content = new ScintillaCodePage();
-            Tabs.TabItems.Add(tab);
-            if (Tabs.TabItems.Count == 1)
-            {
-                Tabs.SelectedItem = Tabs.TabItems[0];
-            }
-        }
-
-        private void NewcodeM_Click(object sender, RoutedEventArgs e)
-        {
-            var iconSource = new FontIconSource();
-            iconSource.Glyph = "\uE943";
-            var tab = new TabViewItem();
-            tab.Header = "Untitled";
-            tab.IconSource = iconSource;
-            tab.Content = new MonacoCodePage();
+            tab.Content = new CodePage();
             Tabs.TabItems.Add(tab);
             if (Tabs.TabItems.Count == 1)
             {

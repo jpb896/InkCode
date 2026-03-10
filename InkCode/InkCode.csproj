@@ -61,25 +61,17 @@
     <PackageReference Include="WinUIEdit" Version="0.0.4-prerelease" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WinUI.Monaco\Monaco.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="ScintillaCodePage.xaml">
+    <Page Update="CodePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="RichTextPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="MonacoCodePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
