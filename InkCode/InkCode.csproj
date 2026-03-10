@@ -13,6 +13,7 @@
     <Nullable>enable</Nullable>
 	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
 	  <SelfContained>true</SelfContained>
+	  <PublishAot>true</PublishAot>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\changelog.md" />
