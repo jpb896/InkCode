@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -25,11 +26,16 @@ namespace InkCode
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        public static MainPage current;
+        public bool diagOpen;
+
         public MainPage()
         {
             this.InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
             Loaded += MainPage_Loaded;
+            current = this;
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
@@ -84,8 +90,9 @@ namespace InkCode
             }
         }
 
-        private void TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        private async void TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
+            await ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage).ShowUnsavedDialog();
             sender.TabItems.Remove(args.Tab);
         }
 

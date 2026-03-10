@@ -4,9 +4,11 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Provider;
 using Windows.Storage.Streams;
+using Windows.System;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -22,6 +24,11 @@ namespace InkCode
         public RichTextPage()
         {
             InitializeComponent();
+        }
+
+        private async void RichTextPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            await ShowUnsavedDialog();
         }
 
         private void Paste(SplitButton sender, SplitButtonClickEventArgs args)
@@ -197,6 +204,31 @@ namespace InkCode
             editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Off;
             editor.Document.Selection.CharacterFormat.Underline = UnderlineType.None;
             editor.Document.Selection.CharacterFormat.Strikethrough = FormatEffect.Off;
+        }
+
+        public async Task ShowUnsavedDialog()
+        {
+            string filename = (string)(VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header;
+            ContentDialog diag = new ContentDialog();
+            diag.Title = filename + " has not been saved";
+            diag.Content = "Do you want to save your changes?";
+            diag.CloseButtonText = "Cancel";
+            diag.PrimaryButtonText = "Save changes";
+            diag.SecondaryButtonText = "No";
+            diag.PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style;
+            diag.XamlRoot = this.XamlRoot;
+            diag.CloseButtonClick += Diag_CloseButtonClick;
+
+            ContentDialogResult result = await diag.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                Save();
+            }
+        }
+
+        private void Diag_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            MainPage.current.diagOpen = false;
         }
     }
 }

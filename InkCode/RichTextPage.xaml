@@ -31,8 +31,8 @@
         </animations:ImplicitAnimationSet>
     </Page.Resources>
 
-
-    <Grid VerticalAlignment="Stretch" RowSpacing="8">
+    <Frame VerticalAlignment="Stretch">
+        <Grid VerticalAlignment="Stretch" RowSpacing="8">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -166,4 +166,5 @@
             </RichEditBox.KeyboardAccelerators>
         </RichEditBox>
     </Grid>
+    </Frame>
 </Page>
