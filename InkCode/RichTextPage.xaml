@@ -41,9 +41,9 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8" Padding="8,8,0,0">
             <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
                 SelectedIndex="0" BorderBrush="Transparent" Background="Transparent" BorderThickness="0">
-                <controls:SegmentedItem Tag="home" Content="Home"></controls:SegmentedItem>
-                <controls:SegmentedItem Tag="insert" Content="Insert"></controls:SegmentedItem>
-                <controls:SegmentedItem Tag="dev" Content="Developer"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="home" Content="Home" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="insert" Content="Insert" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="dev" Content="Developer" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
             </controls:Segmented>
             <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent">Open</Button>
             <Button Click="SaveButton_Click" Background="Transparent" BorderBrush="Transparent">Save</Button>
