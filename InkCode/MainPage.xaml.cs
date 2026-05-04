@@ -92,7 +92,14 @@ namespace InkCode
 
         private async void TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
-            await ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage).ShowUnsavedDialog();
+            if ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage != null)
+            {
+                await ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage).ShowUnsavedDialog();
+            }
+            else
+            {
+                await ((Tabs.SelectedItem as TabViewItem).Content as CodePage).ShowUnsavedDialog();
+            }
             sender.TabItems.Remove(args.Tab);
         }
 

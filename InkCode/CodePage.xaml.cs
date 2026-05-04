@@ -4,6 +4,7 @@ using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Provider;
 using Windows.Storage.Streams;
@@ -297,6 +298,31 @@ editor.Editor.GetText(editor.Editor.Length), Windows.Security.Cryptography.Binar
                     args.Handled = true;
                     break;
             }
+        }
+
+        public async Task ShowUnsavedDialog()
+        {
+            string filename = (string)(VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header;
+            ContentDialog diag = new ContentDialog();
+            diag.Title = filename + " has not been saved";
+            diag.Content = "Do you want to save your changes?";
+            diag.CloseButtonText = "Cancel";
+            diag.PrimaryButtonText = "Save changes";
+            diag.SecondaryButtonText = "No";
+            diag.PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style;
+            diag.XamlRoot = this.XamlRoot;
+            diag.CloseButtonClick += Diag_CloseButtonClick;
+
+            ContentDialogResult result = await diag.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                Save();
+            }
+        }
+
+        private void Diag_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            MainPage.current.diagOpen = false;
         }
     }
 }
