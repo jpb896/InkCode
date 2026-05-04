@@ -40,7 +40,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8" Padding="8,8,0,0">
             <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
-                SelectedIndex="0" BorderBrush="Transparent" BorderThickness="0">
+                SelectedIndex="0" BorderBrush="Transparent" Background="Transparent" BorderThickness="0">
                 <controls:SegmentedItem Tag="home" Content="Home"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="insert" Content="Insert"></controls:SegmentedItem>
                 <controls:SegmentedItem Tag="dev" Content="Developer"></controls:SegmentedItem>
