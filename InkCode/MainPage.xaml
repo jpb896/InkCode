@@ -22,8 +22,8 @@
                     <Grid x:Name="CustomDragRegion" Background="Transparent" />
                 </TabView.TabStripFooter>
             </TabView>
-        <Button x:Name="settingsButton" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Settings_Click" PointerEntered="SettingsButton_PointerEntered" PointerExited="SettingsButton_PointerExited" Margin="0,0,156,0" Background="{ThemeResource WindowCaptionButtonBackground}" BorderBrush="Transparent" Width="32" Height="32" Foreground="{ThemeResource WindowCaptionForeground}">
-                <AnimatedIcon x:Name="SettingsAnimatedIcon">
+        <Button x:Name="settingsButton" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Settings_Click" PointerEntered="SettingsButton_PointerEntered" PointerExited="SettingsButton_PointerExited" Margin="0,0,156,0" Background="{ThemeResource TitleBarBackButtonBackground}" BorderBrush="{ThemeResource TitleBarBackButtonBackground}" Foreground="{ThemeResource TitleBarBackButtonForeground}" Width="{ThemeResource TitleBarBackButtonWidth}" Height="{ThemeResource TitleBarCompactHeight}" BorderThickness="0">
+            <AnimatedIcon x:Name="SettingsAnimatedIcon">
                     <AnimatedIcon.Source>
                         <animatedvisuals:AnimatedSettingsVisualSource/>
                     </AnimatedIcon.Source>
