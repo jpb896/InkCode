@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Windows.Storage.Provider;
 using Windows.Storage.Streams;
 
 // To learn more about WinUI, the WinUI project structure,
