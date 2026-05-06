@@ -5,7 +5,6 @@ using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
 using Windows.Storage;
-using Windows.Storage.Provider;
 using Windows.Storage.Streams;
 
 // To learn more about WinUI, the WinUI project structure,
