@@ -71,6 +71,23 @@ namespace InkCode
             editor.Document.Selection.CharacterFormat.Strikethrough = Microsoft.UI.Text.FormatEffect.Toggle;
         }
 
+        private void LeftAlign(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Left;
+        }
+        private void CenterAlign(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+        }
+        private void RightAlign(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Right;
+        }
+        private void JustifyAlign(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
+        }
+
         private void OnKeyboardAcceleratorInvoked(Microsoft.UI.Xaml.Input.KeyboardAccelerator sender, Microsoft.UI.Xaml.Input.KeyboardAcceleratorInvokedEventArgs args)
         {
             switch (sender.Key)
