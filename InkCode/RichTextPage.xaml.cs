@@ -62,18 +62,66 @@ namespace InkCode
         private void Bold(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Bold = Microsoft.UI.Text.FormatEffect.Toggle;
+            if (editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On)
+            {
+                BoldButton.IsChecked = true;
+            }
+            else
+            {
+                BoldButton.IsChecked = false;
+            }
+            if (editor.Document.Selection == null)
+            {
+                BoldButton.IsChecked = false;
+            }
         }
         private void Italic(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Italic = Microsoft.UI.Text.FormatEffect.Toggle;
+            if (editor.Document.Selection.CharacterFormat.Italic == FormatEffect.On)
+            {
+                ItalicButton.IsChecked = true;
+            }
+            else
+            {
+                ItalicButton.IsChecked = false;
+            }
+            if (editor.Document.Selection == null)
+            {
+                ItalicButton.IsChecked = false;
+            }
         }
         private void Underline(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Underline = Microsoft.UI.Text.UnderlineType.Single;
+            if (editor.Document.Selection.CharacterFormat.Underline == UnderlineType.None)
+            {
+                UnderlineButton.IsChecked = false;
+            }
+            else
+            {
+                UnderlineButton.IsChecked = true;
+            }
+            if (editor.Document.Selection == null)
+            {
+                ItalicButton.IsChecked = false;
+            }
         }
         private void Strikethrough(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Strikethrough = Microsoft.UI.Text.FormatEffect.Toggle;
+            if (editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On)
+            {
+                StrikethroughButton.IsChecked = true;
+            }
+            else
+            {
+                StrikethroughButton.IsChecked = false;
+            }
+            if (editor.Document.Selection == null)
+            {
+                StrikethroughButton.IsChecked = false;
+            }
         }
 
         private void LeftAlign(object sender, RoutedEventArgs e)
