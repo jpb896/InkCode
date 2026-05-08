@@ -119,18 +119,18 @@
                             <FontIconSource Glyph="&#xEA37;"/>
                         </controls:RibbonCollapsibleGroup.IconSource>
                             <StackPanel Orientation="Vertical" Spacing="8">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ToggleButton x:Name="LeftAlignButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Align to left" Click="LeftAlign">
+                                <StackPanel Orientation="Horizontal" Spacing="8" Name="textAlignPanel">
+                                    <ToggleButton x:Name="LeftAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Align to left" Click="LeftAlign" Checked="AlignmentSetup">
                                         <FontIcon Glyph="&#xE8E4;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="CenterAlignButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Align to center" Click="CenterAlign">
+                                    <ToggleButton x:Name="CenterAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Align to center" Click="CenterAlign" Checked="AlignmentSetup">
                                         <FontIcon Glyph="&#xE8E3;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="RightAlignButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Align to right" Click="RightAlign">
+                                    <ToggleButton x:Name="RightAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Align to right" Click="RightAlign" Checked="AlignmentSetup">
                                         <FontIcon Glyph="&#xE8E2;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="JustifyAlignButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Justify" Click="JustifyAlign">
-                                        <FontIcon Glyph="&#xE8E4;" FontSize="12"/>
+                                    <ToggleButton x:Name="JustifyAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Justify" Click="JustifyAlign" Checked="AlignmentSetup">
+                                        <FontIcon Glyph="&#xE700;" FontSize="12"/>
                                     </ToggleButton>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
