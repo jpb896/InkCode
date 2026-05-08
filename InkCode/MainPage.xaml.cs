@@ -14,6 +14,11 @@ namespace InkCode
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        public static MainPage current;
+        public bool diagOpen;
+        public bool notCancelClicked;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -102,7 +107,10 @@ namespace InkCode
             {
                 await ((Tabs.SelectedItem as TabViewItem).Content as ScintillaCodePage).ShowUnsavedDialog();
             }
-            sender.TabItems.Remove(args.Tab);
+            if (notCancelClicked) {
+                sender.TabItems.Remove(args.Tab);
+            }
+            notCancelClicked = false;
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)

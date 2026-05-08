@@ -18,6 +18,9 @@ namespace InkCode
 
     public sealed partial class RichTextPage : Page
     {
+
+        bool diag_open = false;
+
         public RichTextPage()
         {
             InitializeComponent();
@@ -200,8 +203,10 @@ namespace InkCode
                 // Write content into the file
                 using IRandomAccessStream randAccStream =
                     await file.OpenAsync(FileAccessMode.ReadWrite);
-
-                (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+                if (!diag_open)
+                {
+                    (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+                }
 
                 editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
             }
@@ -213,6 +218,35 @@ namespace InkCode
             editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Off;
             editor.Document.Selection.CharacterFormat.Underline = UnderlineType.None;
             editor.Document.Selection.CharacterFormat.Strikethrough = FormatEffect.Off;
+        }
+
+        public async Task ShowUnsavedDialog()
+        {
+            string filename = (string)(VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header;
+            ContentDialog diag = new ContentDialog();
+            diag.Title = filename + " has not been saved";
+            diag.Content = "Do you want to save your changes?";
+            diag.CloseButtonText = "Cancel";
+            diag.PrimaryButtonText = "Save changes";
+            diag.SecondaryButtonText = "No";
+            diag.PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style;
+            diag.XamlRoot = this.XamlRoot;
+            diag.SecondaryButtonClick += Diag_CloseButtonClick;
+            diag_open = true;
+
+            ContentDialogResult result = await diag.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                MainPage.current.notCancelClicked = true;
+                Save();
+            }
+            //diag_open = false;
+        }
+
+        private void Diag_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            MainPage.current.notCancelClicked = true;
+            MainPage.current.diagOpen = false;
         }
     }
 }
