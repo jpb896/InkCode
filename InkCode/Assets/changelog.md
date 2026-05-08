@@ -1,2 +1,3 @@
-﻿## InkCode 1.1.3, released March 10, 2026
-- Monaco update (v0.5.3)
+﻿## InkCode 1.1.4, released May 12, 2026
+- Dependency updates
+- Remove unnecessary imports
