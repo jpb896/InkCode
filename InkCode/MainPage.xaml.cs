@@ -17,6 +17,7 @@ namespace InkCode
 
         public static MainPage current;
         public bool diagOpen;
+        public bool notCancelClicked;
 
         public MainPage()
         {
@@ -88,7 +89,10 @@ namespace InkCode
             {
                 await ((Tabs.SelectedItem as TabViewItem).Content as CodePage).ShowUnsavedDialog();
             }
-            sender.TabItems.Remove(args.Tab);
+            if (notCancelClicked) {
+                sender.TabItems.Remove(args.Tab);
+            }
+            notCancelClicked = false;
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)

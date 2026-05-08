@@ -18,6 +18,9 @@ namespace InkCode
     /// </summary>
     public sealed partial class CodePage : Page
     {
+
+        bool diag_open = false;
+
         public CodePage()
         {
             InitializeComponent();
@@ -270,7 +273,10 @@ namespace InkCode
                         break;
                 }
 
-                (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+                if (!diag_open)
+                {
+                    (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
+                }
 
                 // Prevent updates to the remote version of the file until complete
                 CachedFileManager.DeferUpdates(file);
@@ -310,17 +316,21 @@ editor.Editor.GetText(editor.Editor.Length), Windows.Security.Cryptography.Binar
             diag.SecondaryButtonText = "No";
             diag.PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style;
             diag.XamlRoot = this.XamlRoot;
-            diag.CloseButtonClick += Diag_CloseButtonClick;
+            diag.SecondaryButtonClick += Diag_CloseButtonClick;
+            diag_open = true;
 
             ContentDialogResult result = await diag.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
+                MainPage.current.notCancelClicked = true;
                 Save();
             }
+            //diag_open = false;
         }
 
         private void Diag_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            MainPage.current.notCancelClicked = true;
             MainPage.current.diagOpen = false;
         }
     }
