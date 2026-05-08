@@ -62,95 +62,35 @@ namespace InkCode
         private void Bold(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Bold = Microsoft.UI.Text.FormatEffect.Toggle;
-            if (editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On)
-            {
-                BoldButton.IsChecked = true;
-            }
-            else
-            {
-                BoldButton.IsChecked = false;
-            }
-            if (editor.Document.Selection == null)
-            {
-                BoldButton.IsChecked = false;
-            }
         }
         private void Italic(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Italic = Microsoft.UI.Text.FormatEffect.Toggle;
-            if (editor.Document.Selection.CharacterFormat.Italic == FormatEffect.On)
-            {
-                ItalicButton.IsChecked = true;
-            }
-            else
-            {
-                ItalicButton.IsChecked = false;
-            }
-            if (editor.Document.Selection == null)
-            {
-                ItalicButton.IsChecked = false;
-            }
         }
         private void Underline(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Underline = Microsoft.UI.Text.UnderlineType.Single;
-            if (editor.Document.Selection.CharacterFormat.Underline == UnderlineType.None)
-            {
-                UnderlineButton.IsChecked = false;
-            }
-            else
-            {
-                UnderlineButton.IsChecked = true;
-            }
-            if (editor.Document.Selection == null)
-            {
-                ItalicButton.IsChecked = false;
-            }
         }
         private void Strikethrough(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.CharacterFormat.Strikethrough = Microsoft.UI.Text.FormatEffect.Toggle;
-            if (editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On)
-            {
-                StrikethroughButton.IsChecked = true;
-            }
-            else
-            {
-                StrikethroughButton.IsChecked = false;
-            }
-            if (editor.Document.Selection == null)
-            {
-                StrikethroughButton.IsChecked = false;
-            }
         }
 
         private void LeftAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Left;
-            RightAlignButton.IsChecked = false;
-            CenterAlignButton.IsChecked = false;
-            JustifyAlignButton.IsChecked = false;
         }
         private void CenterAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-            RightAlignButton.IsChecked = false;
-            LeftAlignButton.IsChecked = false;
-            JustifyAlignButton.IsChecked = false;
         }
         private void RightAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Right;
-            LeftAlignButton.IsChecked = false;
-            CenterAlignButton.IsChecked = false;
-            JustifyAlignButton.IsChecked = false;
         }
         private void JustifyAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
-            RightAlignButton.IsChecked = false;
-            CenterAlignButton.IsChecked = false;
-            LeftAlignButton.IsChecked = false;
         }
 
         private void OnKeyboardAcceleratorInvoked(Microsoft.UI.Xaml.Input.KeyboardAccelerator sender, Microsoft.UI.Xaml.Input.KeyboardAcceleratorInvokedEventArgs args)
@@ -329,6 +269,19 @@ namespace InkCode
                 toggleButton.IsChecked = toggleButton == checkedToggleButton;
                 toggleButton.IsHitTestVisible = toggleButton != checkedToggleButton;
             }
+        }
+
+        private void editor_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            BoldButton.IsChecked = editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On;
+            ItalicButton.IsChecked = editor.Document.Selection.CharacterFormat.Italic == FormatEffect.On;
+            UnderlineButton.IsChecked = editor.Document.Selection.CharacterFormat.Underline != UnderlineType.None && editor.Document.Selection.CharacterFormat.Underline != UnderlineType.Undefined;
+            StrikethroughButton.IsChecked = editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On;
+
+            LeftAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left;
+            CenterAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center;
+            RightAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right;
+            JustifyAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Justify;
         }
     }
 }
