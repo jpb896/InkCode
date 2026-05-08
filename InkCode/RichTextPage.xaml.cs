@@ -1,9 +1,11 @@
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
@@ -77,18 +79,30 @@ namespace InkCode
         private void LeftAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Left;
+            RightAlignButton.IsChecked = false;
+            CenterAlignButton.IsChecked = false;
+            JustifyAlignButton.IsChecked = false;
         }
         private void CenterAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+            RightAlignButton.IsChecked = false;
+            LeftAlignButton.IsChecked = false;
+            JustifyAlignButton.IsChecked = false;
         }
         private void RightAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Right;
+            LeftAlignButton.IsChecked = false;
+            CenterAlignButton.IsChecked = false;
+            JustifyAlignButton.IsChecked = false;
         }
         private void JustifyAlign(object sender, RoutedEventArgs e)
         {
             editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
+            RightAlignButton.IsChecked = false;
+            CenterAlignButton.IsChecked = false;
+            LeftAlignButton.IsChecked = false;
         }
 
         private void OnKeyboardAcceleratorInvoked(Microsoft.UI.Xaml.Input.KeyboardAccelerator sender, Microsoft.UI.Xaml.Input.KeyboardAcceleratorInvokedEventArgs args)
@@ -253,6 +267,20 @@ namespace InkCode
         {
             MainPage.current.notCancelClicked = true;
             MainPage.current.diagOpen = false;
+        }
+
+        private void AlignmentSetup(object sender, RoutedEventArgs e)
+        {
+            if (sender is not ToggleButton checkedToggleButton)
+            {
+                return;
+            }
+
+            foreach (ToggleButton toggleButton in textAlignPanel.Children.OfType<ToggleButton>())
+            {
+                toggleButton.IsChecked = toggleButton == checkedToggleButton;
+                toggleButton.IsHitTestVisible = toggleButton != checkedToggleButton;
+            }
         }
     }
 }
