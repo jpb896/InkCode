@@ -124,7 +124,7 @@
                             ResourceKey="SystemColorHighlightColor" />
                     <StaticResource x:Key="SegmentedItemBackgroundSelected2"
                             ResourceKey="SystemColorHighlightColor" />
-                    <StaticResource x:Key="SegmentedItemBackgrouin ndPressed"
+                    <StaticResource x:Key="SegmentedItemBackgroundPressed"
                             ResourceKey="SystemColorHighlightColor" />
                     <StaticResource x:Key="SegmentedItemBackgroundDisabled"
                             ResourceKey="SystemControlTransparentBrush" />
