@@ -79,6 +79,7 @@ namespace InkCode
             picker.FileTypeFilter.Add(".c");
             picker.FileTypeFilter.Add(".cpp");
             picker.FileTypeFilter.Add(".cc");
+            picker.FileTypeFilter.Add(".css");
             picker.FileTypeFilter.Add(".cxx");
             picker.FileTypeFilter.Add(".h");
             picker.FileTypeFilter.Add(".hxx");
@@ -127,6 +128,9 @@ namespace InkCode
                             break;
                         case ".cc":
                             editor.HighlightingLanguage = "cpp";
+                            break;
+                        case ".css":
+                            editor.HighlightingLanguage = "css";
                             break;
                         case ".cxx":
                             editor.HighlightingLanguage = "cpp";
@@ -196,6 +200,7 @@ namespace InkCode
             savePicker.FileTypeChoices.Add("C++", new List<string>() { ".cpp", ".cxx", ".cc" });
             savePicker.FileTypeChoices.Add("C/C++ header", new List<string>() { ".h", ".hh", ".hxx", ".hpp" });
             savePicker.FileTypeChoices.Add("HyperText Markup Language", new List<string>() { ".html" });
+            savePicker.FileTypeChoices.Add("Cascading Style Sheets", new List<string>() { ".css" });
             savePicker.FileTypeChoices.Add("JavaScript", new List<string>() { ".js" });
             savePicker.FileTypeChoices.Add("YAML", new List<string>() { ".yml" });
             savePicker.FileTypeChoices.Add("JSON", new List<string>() { ".json" });
@@ -227,6 +232,9 @@ namespace InkCode
                         break;
                     case ".cc":
                         editor.HighlightingLanguage = "cpp";
+                        break;
+                    case ".css":
+                        editor.HighlightingLanguage = "css";
                         break;
                     case ".cxx":
                         editor.HighlightingLanguage = "cpp";
