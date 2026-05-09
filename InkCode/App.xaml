@@ -124,7 +124,7 @@
                             ResourceKey="SystemColorHighlightColor" />
                     <StaticResource x:Key="SegmentedItemBackgroundSelected2"
                             ResourceKey="SystemColorHighlightColor" />
-                    <StaticResource x:Key="SegmentedItemBackgroundPressed"
+                    <StaticResource x:Key="SegmentedItemBackgrouin ndPressed"
                             ResourceKey="SystemColorHighlightColor" />
                     <StaticResource x:Key="SegmentedItemBackgroundDisabled"
                             ResourceKey="SystemControlTransparentBrush" />
@@ -168,6 +168,55 @@
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="tabColor" Color="#26535353" />
+
+                    <!--  Background  -->
+                    <StaticResource x:Key="SegmentedItemBackground"
+                            ResourceKey="ControlFillColorTransparentBrush" />
+                    <StaticResource x:Key="SegmentedItemBackgroundPointerOver"
+                            ResourceKey="SubtleFillColorSecondaryBrush" />
+                    <StaticResource x:Key="SegmentedItemBackgroundSelected2"
+                            ResourceKey="tabColor" />
+                    <StaticResource x:Key="SegmentedItemBackgroundPressed"
+                            ResourceKey="SubtleFillColorTertiaryBrush" />
+                    <StaticResource x:Key="SegmentedItemBackgroundDisabled"
+                            ResourceKey="ControlFillColorDisabledBrush" />
+
+                    <!--  BorderBrush  -->
+                    <StaticResource x:Key="SegmentedItemBorderBrush"
+                            ResourceKey="ControlFillColorTransparentBrush" />
+                    <StaticResource x:Key="SegmentedItemBorderBrushPointerOver"
+                            ResourceKey="SubtleFillColorSecondaryBrush" />
+                    <StaticResource x:Key="SegmentedItemBorderBrushSelected"
+                            ResourceKey="ControlElevationBorderBrush" />
+                    <StaticResource x:Key="SegmentedItemBorderBrushPressed"
+                            ResourceKey="SubtleFillColorTertiaryBrush" />
+                    <StaticResource x:Key="SegmentedItemBorderBrushDisabled"
+                            ResourceKey="ControlAltFillColorSecondaryBrush" />
+
+                    <!--  Foreground  -->
+                    <StaticResource x:Key="SegmentedItemForeground"
+                            ResourceKey="TextFillColorPrimaryBrush" />
+                    <StaticResource x:Key="SegmentedItemForegroundPointerOver"
+                            ResourceKey="TextFillColorPrimaryBrush" />
+                    <StaticResource x:Key="SegmentedItemForegroundSelected"
+                            ResourceKey="TextFillColorPrimaryBrush" />
+                    <StaticResource x:Key="SegmentedItemForegroundPressed"
+                            ResourceKey="TextFillColorSecondaryBrush" />
+                    <StaticResource x:Key="SegmentedItemForegroundDisabled"
+                            ResourceKey="TextFillColorDisabledBrush" />
+
+                    <!--  Pill  -->
+                    <StaticResource x:Key="SegmentedPillBackground"
+                            ResourceKey="AccentFillColorDefaultBrush" />
+                    <StaticResource x:Key="SegmentedPillBackgroundPointerOver"
+                            ResourceKey="AccentFillColorSecondaryBrush" />
+                    <StaticResource x:Key="SegmentedPillBackgroundPressed"
+                            ResourceKey="AccentFillColorTertiaryBrush" />
+                    <StaticResource x:Key="SegmentedPillBackgroundDisabled"
+                            ResourceKey="AccentFillColorDisabledBrush" />
+
+                    <Thickness x:Key="SegmentedItemBorderThickness">1</Thickness>
+                    <x:Double x:Key="SegmentedItemDisabledOpacity">0.55</x:Double>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
