@@ -23,7 +23,14 @@
     <None Remove="SettingsPage.xaml" />
   </ItemGroup>
 
-  <ItemGroup>
+	<!-- Copy all "Resources.resw" files in the "Strings" folder to the output folder. -->
+	<ItemGroup>
+		<Content Include="Strings\**\*.resw">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -58,6 +65,7 @@
     <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.4.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.1839" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260416003" />
+    <PackageReference Include="WinUI3Localizer" Version="2.3.0" />
     <PackageReference Include="WinUIEdit" Version="0.0.4-prerelease" />
   </ItemGroup>
   <ItemGroup>
