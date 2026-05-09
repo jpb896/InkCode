@@ -36,9 +36,9 @@ namespace InkCode
 
         private void AddTabButtonClick(TabView sender, object args)
         {
-            MenuFlyoutItem newrtf = new MenuFlyoutItem();
-            MenuFlyoutItem newcode = new MenuFlyoutItem();
-            MenuFlyoutItem newcode_m = new MenuFlyoutItem();
+            MenuFlyoutItem newrtf = new();
+            MenuFlyoutItem newcode = new();
+            MenuFlyoutItem newcode_m = new();
             newrtf.Text = "New rich text document";
             newrtf.Click += Newrtf_Click;
             newcode.Text = "New code file (Scintilla/WinUIEdit)";
@@ -55,12 +55,16 @@ namespace InkCode
 
         private void Newrtf_Click(object sender, RoutedEventArgs e)
         {
-            var iconSource = new FontIconSource();
-            iconSource.Glyph = "\uE8A5";
-            var tab = new TabViewItem();
-            tab.Header = "Untitled";
-            tab.IconSource = iconSource;
-            tab.Content = new RichTextPage();
+            var iconSource = new FontIconSource
+            {
+                Glyph = "\uE8A5"
+            };
+            var tab = new TabViewItem
+            {
+                Header = "Untitled",
+                IconSource = iconSource,
+                Content = new RichTextPage()
+            };
             Tabs.TabItems.Add(tab);
             if (Tabs.TabItems.Count == 1) { 
                 Tabs.SelectedItem = Tabs.TabItems[0];

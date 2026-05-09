@@ -97,17 +97,19 @@ namespace InkCode
         private static DateTime GetBuildDate(Assembly assembly)
         {
             var attribute = assembly.GetCustomAttribute<BuildDateAttribute>();
-            return attribute != null ? attribute.DateTime : default(DateTime);
+            return attribute != null ? attribute.DateTime : default;
         }
 
         private async void ShowChangelog(object sender, RoutedEventArgs e)
         {
-            ContentDialog changelogDialog = new ContentDialog();
-            changelogDialog.Title = "What's new in this release";
-            changelogDialog.XamlRoot = this.XamlRoot;
-            changelogDialog.Content = new ChangelogDialog();
-            changelogDialog.IsPrimaryButtonEnabled = true;
-            changelogDialog.PrimaryButtonText = "OK";
+            ContentDialog changelogDialog = new()
+            {
+                Title = "What's new in this release",
+                XamlRoot = this.XamlRoot,
+                Content = new ChangelogDialog(),
+                IsPrimaryButtonEnabled = true,
+                PrimaryButtonText = "OK"
+            };
             await changelogDialog.ShowAsync();
         }
     }

@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.Windows.Storage.Pickers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -56,19 +55,19 @@ namespace InkCode
 
         private void Bold(object sender, RoutedEventArgs e)
         {
-            editor.Document.Selection.CharacterFormat.Bold = Microsoft.UI.Text.FormatEffect.Toggle;
+            editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
         }
         private void Italic(object sender, RoutedEventArgs e)
         {
-            editor.Document.Selection.CharacterFormat.Italic = Microsoft.UI.Text.FormatEffect.Toggle;
+            editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Toggle;
         }
         private void Underline(object sender, RoutedEventArgs e)
         {
-            editor.Document.Selection.CharacterFormat.Underline = Microsoft.UI.Text.UnderlineType.Single;
+            editor.Document.Selection.CharacterFormat.Underline = UnderlineType.Single;
         }
         private void Strikethrough(object sender, RoutedEventArgs e)
         {
-            editor.Document.Selection.CharacterFormat.Strikethrough = Microsoft.UI.Text.FormatEffect.Toggle;
+            editor.Document.Selection.CharacterFormat.Strikethrough = FormatEffect.Toggle;
         }
 
         private void LeftAlign(object sender, RoutedEventArgs e)
@@ -93,7 +92,7 @@ namespace InkCode
             switch (sender.Key)
             {
                 case Windows.System.VirtualKey.B:
-                    editor.Document.Selection.CharacterFormat.Bold = Microsoft.UI.Text.FormatEffect.Toggle;
+                    editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
                     BoldButton.IsChecked = editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On;
                     args.Handled = true;
                     break;
@@ -130,15 +129,12 @@ namespace InkCode
 
         private void fontSizeBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
         {
-            if (editor != null)
-            {
-                editor.Document.Selection.CharacterFormat.Size = int.Parse(fontSizeBox.Text);
-            }
+            editor?.Document.Selection.CharacterFormat.Size = int.Parse(fontSizeBox.Text);
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is Button)
             {
                 Open();
             }
@@ -146,7 +142,7 @@ namespace InkCode
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is Button)
             {
                 Save();
             }
@@ -190,7 +186,7 @@ namespace InkCode
             };
 
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+            savePicker.FileTypeChoices.Add("Rich Text", [".rtf"]);
 
             // Show picker
             PickFileResult result = await savePicker.PickSaveFileAsync();
@@ -226,14 +222,16 @@ namespace InkCode
         public async Task ShowUnsavedDialog()
         {
             string filename = (string)(VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header;
-            ContentDialog diag = new ContentDialog();
-            diag.Title = filename + " has not been saved";
-            diag.Content = "Do you want to save your changes?";
-            diag.CloseButtonText = "Cancel";
-            diag.PrimaryButtonText = "Save changes";
-            diag.SecondaryButtonText = "No";
-            diag.PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style;
-            diag.XamlRoot = this.XamlRoot;
+            ContentDialog diag = new()
+            {
+                Title = filename + " has not been saved",
+                Content = "Do you want to save your changes?",
+                CloseButtonText = "Cancel",
+                PrimaryButtonText = "Save changes",
+                SecondaryButtonText = "No",
+                PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style,
+                XamlRoot = this.XamlRoot
+            };
             diag.SecondaryButtonClick += Diag_CloseButtonClick;
             diag_open = true;
 
@@ -243,7 +241,6 @@ namespace InkCode
                 MainPage.current.notCancelClicked = true;
                 Save();
             }
-            //diag_open = false;
         }
 
         private void Diag_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

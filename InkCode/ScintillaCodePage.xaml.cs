@@ -2,7 +2,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.Storage.Pickers;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -48,7 +47,7 @@ namespace InkCode
 
         private async void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is Button)
             {
                 Open();
             }
@@ -56,7 +55,7 @@ namespace InkCode
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is Button)
             {
                 Save();
             }
@@ -163,12 +162,14 @@ namespace InkCode
                             editor.HighlightingLanguage = "plaintext";
                             break;
                         case ".rtf":
-                            ContentDialog rtf_dialog = new ContentDialog();
-                            rtf_dialog.Title = "Looking to edit an RTF file?";
-                            rtf_dialog.Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.";
-                            rtf_dialog.XamlRoot = this.XamlRoot;
-                            rtf_dialog.IsPrimaryButtonEnabled = true;
-                            rtf_dialog.PrimaryButtonText = "Understood!";
+                            ContentDialog rtf_dialog = new()
+                            {
+                                Title = "Looking to edit an RTF file?",
+                                Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.",
+                                XamlRoot = this.XamlRoot,
+                                IsPrimaryButtonEnabled = true,
+                                PrimaryButtonText = "Understood!"
+                            };
                             await rtf_dialog.ShowAsync();
                             editor.HighlightingLanguage = "plaintext";
                             break;
@@ -192,18 +193,18 @@ namespace InkCode
             };
 
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("All files", new List<string>() { "." });
-            savePicker.FileTypeChoices.Add("Plain text", new List<string>() { ".txt" });
-            savePicker.FileTypeChoices.Add("C#", new List<string>() { ".cs" });
-            savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", new List<string>() { ".xml", ".xaml" });
-            savePicker.FileTypeChoices.Add("C", new List<string>() { ".c" });
-            savePicker.FileTypeChoices.Add("C++", new List<string>() { ".cpp", ".cxx", ".cc" });
-            savePicker.FileTypeChoices.Add("C/C++ header", new List<string>() { ".h", ".hh", ".hxx", ".hpp" });
-            savePicker.FileTypeChoices.Add("HyperText Markup Language", new List<string>() { ".html" });
-            savePicker.FileTypeChoices.Add("Cascading Style Sheets", new List<string>() { ".css" });
-            savePicker.FileTypeChoices.Add("JavaScript", new List<string>() { ".js" });
-            savePicker.FileTypeChoices.Add("YAML", new List<string>() { ".yml" });
-            savePicker.FileTypeChoices.Add("JSON", new List<string>() { ".json" });
+            savePicker.FileTypeChoices.Add("All files", ["."]);
+            savePicker.FileTypeChoices.Add("Plain text", [".txt"]);
+            savePicker.FileTypeChoices.Add("C#", [".cs"]);
+            savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", [".xml", ".xaml"]);
+            savePicker.FileTypeChoices.Add("C", [".c"]);
+            savePicker.FileTypeChoices.Add("C++", [".cpp", ".cxx", ".cc"]);
+            savePicker.FileTypeChoices.Add("C/C++ header", [".h", ".hh", ".hxx", ".hpp"]);
+            savePicker.FileTypeChoices.Add("HyperText Markup Language", [".html"]);
+            savePicker.FileTypeChoices.Add("Cascading Style Sheets", [".css"]);
+            savePicker.FileTypeChoices.Add("JavaScript", [".js"]);
+            savePicker.FileTypeChoices.Add("YAML", [".yml"]);
+            savePicker.FileTypeChoices.Add("JSON", [".json"]);
 
             // Show picker
             PickFileResult result = await savePicker.PickSaveFileAsync();
@@ -267,12 +268,14 @@ namespace InkCode
                         editor.HighlightingLanguage = "plaintext";
                         break;
                     case ".rtf":
-                        ContentDialog rtf_dialog = new ContentDialog();
-                        rtf_dialog.Title = "Looking to edit an RTF file?";
-                        rtf_dialog.Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.";
-                        rtf_dialog.XamlRoot = this.XamlRoot;
-                        rtf_dialog.IsPrimaryButtonEnabled = true;
-                        rtf_dialog.PrimaryButtonText = "Understood!";
+                        ContentDialog rtf_dialog = new()
+                        {
+                            Title = "Looking to edit an RTF file?",
+                            Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.",
+                            XamlRoot = this.XamlRoot,
+                            IsPrimaryButtonEnabled = true,
+                            PrimaryButtonText = "Understood!"
+                        };
                         await rtf_dialog.ShowAsync();
                         editor.HighlightingLanguage = "plaintext";
                         break;
@@ -316,14 +319,16 @@ editor.Editor.GetText(editor.Editor.Length), Windows.Security.Cryptography.Binar
         public async Task ShowUnsavedDialog()
         {
             string filename = (string)(VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header;
-            ContentDialog diag = new ContentDialog();
-            diag.Title = filename + " has not been saved";
-            diag.Content = "Do you want to save your changes?";
-            diag.CloseButtonText = "Cancel";
-            diag.PrimaryButtonText = "Save changes";
-            diag.SecondaryButtonText = "No";
-            diag.PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style;
-            diag.XamlRoot = this.XamlRoot;
+            ContentDialog diag = new()
+            {
+                Title = filename + " has not been saved",
+                Content = "Do you want to save your changes?",
+                CloseButtonText = "Cancel",
+                PrimaryButtonText = "Save changes",
+                SecondaryButtonText = "No",
+                PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style,
+                XamlRoot = this.XamlRoot
+            };
             diag.SecondaryButtonClick += Diag_CloseButtonClick;
             diag_open = true;
 
@@ -333,7 +338,6 @@ editor.Editor.GetText(editor.Editor.Length), Windows.Security.Cryptography.Binar
                 MainPage.current.notCancelClicked = true;
                 Save();
             }
-            //diag_open = false;
         }
 
         private void Diag_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

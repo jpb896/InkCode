@@ -15,12 +15,14 @@ namespace InkCode
     {
         public MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             contentFrame.Content = new MainPage();
-            MicaBackdrop micaAlt = new MicaBackdrop();
-            micaAlt.Kind = MicaKind.BaseAlt;
-            this.SystemBackdrop = micaAlt;
-            this.AppWindow.SetIcon("inkcode.ico");
+            MicaBackdrop micaAlt = new()
+            {
+                Kind = MicaKind.BaseAlt
+            };
+            SystemBackdrop = micaAlt;
+            AppWindow.SetIcon("inkcode.ico");
         }
     }
 }
