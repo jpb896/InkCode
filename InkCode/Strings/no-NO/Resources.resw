@@ -127,7 +127,7 @@
   <data name="RevealFocusCard.Description" xml:space="preserve">
     <value>Enable reveal focus to clearly see the focused element. Well-adapted to 10ft display scenarios.</value>
   </data>
-  <data name="RevealFocusCard.Title" xml:space="preserve">
+  <data name="RevealFocusCard.Header" xml:space="preserve">
     <value>Reveal focus</value>
   </data>
   <data name="SettingsTitle.Text" xml:space="preserve">
