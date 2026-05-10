@@ -118,34 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutTitle.Text" xml:space="preserve">
-    <value>About</value>
+    <value>O aplikacji</value>
   </data>
   <data name="AppearanceBehaviorTitle.Text" xml:space="preserve">
-    <value>Appearance and behavior</value>
+    <value>Wygląd i zachowanie</value>
     <comment>Title of Appearance and behavior section of Settings</comment>
   </data>
   <data name="RevealFocusCard.Description" xml:space="preserve">
-    <value>Enable reveal focus to clearly see the focused element. Well-adapted to 10ft display scenarios.</value>
+    <value>Włącz funkcję Reveal Focus, żeby wyraźniej widzieć wybrany element. Dobrze dostosowane to scenariuszy wyświetlania 10ft.</value>
   </data>
   <data name="RevealFocusCard.Title" xml:space="preserve">
     <value>Reveal focus</value>
   </data>
   <data name="SettingsTitle.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ustawienia</value>
     <comment>Title of Settings page</comment>
   </data>
   <data name="SoundExpander.Description" xml:space="preserve">
-    <value>Provide audible feedback on interaction with controls</value>
+    <value>Odtwarzaj dźwięki przy interakcji z elementami</value>
     <comment>Description of Sound expander in Settings page, Appearance and behavior section</comment>
   </data>
   <data name="SoundExpander.Header" xml:space="preserve">
-    <value>Sound</value>
+    <value>Dźwięk</value>
     <comment>Header of Sound expander in Settings page, Appearance and behavior section</comment>
   </data>
   <data name="SpatialAudioCard.Description" xml:space="preserve">
-    <value>Improves 10ft experiences with audio adapted to the physical location of the device</value>
+    <value>Ulepsza użycie przy odległości 10ft z dźwiękiem dostosowanym do fizycznego położenia urządzenia</value>
   </data>
   <data name="SpatialAudioCard.Header" xml:space="preserve">
-    <value>Spatial audio</value>
+    <value>Audio przestrzenne</value>
   </data>
 </root>
