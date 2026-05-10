@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InkCode"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:l="using:WinUI3Localizer"
     mc:Ignorable="d">
 
     <Grid RowSpacing="8">
@@ -19,21 +19,21 @@
                 <ImageIconSource ImageSource="/inkcode.ico"/>
             </TitleBar.IconSource>
         </TitleBar>
-        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Grid.Row="1" Padding="8,0,8,0">Settings</TextBlock>
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Grid.Row="1" Padding="8,0,8,0" l:Uids.Uid="SettingsTitle"/>
         <StackPanel Orientation="Vertical" Spacing="8" Grid.Row="2" Padding="8,0,8,0">
-            <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">Appearance and behavior</TextBlock>
-            <controls:SettingsExpander Header="Sound" Description="Provide audible feedback on interaction with controls">
+            <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" l:Uids.Uid="AppearanceBehaviorTitle"/>
+            <controls:SettingsExpander l:Uids.Uid="SoundExpander">
                 <ToggleSwitch x:Name="SoundSwitch" Toggled="SoundSwitch_Toggled"/>
                 <controls:SettingsExpander.Items>
-                    <controls:SettingsCard Header="Spatial audio" Description="Improves 10ft experiences with audio adapted to the physical location of the device">
+                    <controls:SettingsCard l:Uids.Uid="SpatialAudioCard">
                         <ToggleSwitch x:Name="SpatialSwitch" Toggled="SpatialSwitch_Toggled"/>
                     </controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>
-            <controls:SettingsCard Header="Reveal focus" Description="Enable reveal focus to clearly see the focused element. Well-adapted to 10ft display scenarios.">
+            <controls:SettingsCard l:Uids.Uid="RevealFocusCard">
                 <ToggleSwitch x:Name="FocusSwitch" Toggled="FocusSwitch_Toggled"/>
             </controls:SettingsCard>
-            <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
+            <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" l:Uids.Uid="AboutTitle"/>
             <controls:SettingsExpander Header="InkCode Dev" Description="2.0">
                 <controls:SettingsExpander.HeaderIcon>
                     <ImageIcon Source="/inkcode.ico"/>
