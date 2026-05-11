@@ -5,5 +5,5 @@
 - Show file name of saved file in tab
 - Add support for pasting without formatting
 - Allow clearing formatting from a section of an RTF file
-- Add tooltips to buttons without labels
+- Add ToolTips to buttons without labels
 - Dependency updates

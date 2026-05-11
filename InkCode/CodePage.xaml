@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InkCode"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:winuieditor="using:WinUIEditor" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:win2d="using:Microsoft.Graphics.Canvas.Text"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:winuieditor="using:WinUIEditor" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:win2d="using:Microsoft.Graphics.Canvas.Text" xmlns:l="using:WinUI3Localizer"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -41,12 +41,12 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8" Padding="8,8,0,0">
             <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
              SelectedIndex="0" BorderBrush="Transparent" Background="Transparent" BorderThickness="0">
-                <controls:SegmentedItem Tag="home" Content="Home" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
-                <controls:SegmentedItem Tag="insert" Content="Insert" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
-                <controls:SegmentedItem Tag="dev" Content="Developer" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="home" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="HomeRibbonTab"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="insert" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="InsertRibbonTab"></controls:SegmentedItem>
+                <controls:SegmentedItem Tag="dev" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="DevRibbonTab"></controls:SegmentedItem>
             </controls:Segmented>
-            <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent">Open</Button>
-            <Button Click="SaveButton_Click" Background="Transparent" BorderBrush="Transparent">Save</Button>
+            <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent" l:Uids.Uid="OpenButton"/>
+            <Button Click="SaveButton_Click" Background="Transparent" BorderBrush="Transparent" l:Uids.Uid="SaveButton"/>
         </StackPanel>
         <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}" x:Name="RibbonBar" Grid.Row="1" Margin="8,0,8,0" CornerRadius="8">
             <controls:Case Value="home">
@@ -58,11 +58,11 @@
                             <SplitButton Background="Transparent" BorderBrush="Transparent" Click="Paste">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <FontIcon Glyph="&#xE77F;" FontSize="12"/>
-                                    <TextBlock Text="Paste"/>
+                                    <TextBlock l:Uids.Uid="PasteSplitButton"/>
                                 </StackPanel>
                                 <SplitButton.Flyout>
                                     <MenuFlyout>
-                                        <MenuFlyoutItem Click="Paste2">Paste</MenuFlyoutItem>
+                                        <MenuFlyoutItem Click="Paste2" l:Uids.Uid="PasteMenuItem"/>
                                     </MenuFlyout>
                                 </SplitButton.Flyout>
                             </SplitButton>
@@ -70,13 +70,13 @@
                                 <Button Background="Transparent" BorderThickness="0" Click="Copy">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                         <FontIcon Glyph="&#xE8C8;" FontSize="12"/>
-                                        <TextBlock>Copy</TextBlock>
+                                        <TextBlock l:Uids.Uid="CopyButton"/>
                                     </StackPanel>
                                 </Button>
                                 <Button Background="Transparent" BorderThickness="0" Click="Cut">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                         <FontIcon Glyph="&#xE8C6;" FontSize="12"/>
-                                        <TextBlock>Cut</TextBlock>
+                                        <TextBlock l:Uids.Uid="CutButton"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>

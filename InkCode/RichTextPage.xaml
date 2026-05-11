@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InkCode"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:win2d="using:Microsoft.Graphics.Canvas.Text"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animations="using:CommunityToolkit.WinUI.Animations" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:win2d="using:Microsoft.Graphics.Canvas.Text" xmlns:l="using:WinUI3Localizer"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -41,29 +41,29 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Spacing="8" Padding="8,8,0,0">
             <controls:Segmented x:Name="segmentedControl" HorizontalAlignment="Stretch"
                 SelectedIndex="0" BorderBrush="Transparent" Background="Transparent" BorderThickness="0">
-                <controls:SegmentedItem Tag="home" Content="Home" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
-                <controls:SegmentedItem Tag="insert" Content="Insert" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
-                <controls:SegmentedItem Tag="dev" Content="Developer" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}"></controls:SegmentedItem>
+                    <controls:SegmentedItem Tag="home" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="HomeRibbonTab"></controls:SegmentedItem>
+                    <controls:SegmentedItem Tag="insert" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="InsertRibbonTab"></controls:SegmentedItem>
+                    <controls:SegmentedItem Tag="dev" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="DevRibbonTab"></controls:SegmentedItem>
             </controls:Segmented>
-            <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent">Open</Button>
-            <Button Click="SaveButton_Click" Background="Transparent" BorderBrush="Transparent">Save</Button>
-        </StackPanel>
+                <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent" l:Uids.Uid="OpenButton"/>
+                <Button Click="SaveButton_Click" Background="Transparent" BorderBrush="Transparent" l:Uids.Uid="SaveButton"/>
+            </StackPanel>
         <controls:SwitchPresenter Value="{Binding SelectedItem.Tag, ElementName=segmentedControl}" x:Name="RibbonBar" Grid.Row="1" Margin="8,0,8,0" CornerRadius="8">
             <controls:Case Value="home">
                     <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                             animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
                                      CornerRadius="8">
-                        <controls:RibbonGroup Label="Clipboard">
+                        <controls:RibbonGroup l:Uids.Uid="ClipboardRibbonGroup">
                             <StackPanel Orientation="Vertical">
                                 <SplitButton Background="Transparent" BorderBrush="Transparent" Click="Paste">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                         <FontIcon Glyph="&#xE77F;" FontSize="12"/>
-                                        <TextBlock Text="Paste"/>
+                                        <TextBlock l:Uids.Uid="PasteSplitButton"/>
                                     </StackPanel>
                                     <SplitButton.Flyout>
                                         <MenuFlyout>
-                                            <MenuFlyoutItem Click="Paste2">Paste</MenuFlyoutItem>
-                                            <MenuFlyoutItem Click="PasteNoFormat">Paste without formatting</MenuFlyoutItem>
+                                            <MenuFlyoutItem Click="Paste2" l:Uids.Uid="PasteMenuItem"/>
+                                            <MenuFlyoutItem Click="PasteNoFormat" l:Uids.Uid="PasteNoFormatMenuItem"/>
                                         </MenuFlyout>
                                     </SplitButton.Flyout>
                                 </SplitButton>
@@ -71,19 +71,19 @@
                                     <Button Background="Transparent" BorderThickness="0" Click="Copy">
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE8C8;" FontSize="12"/>
-                                            <TextBlock>Copy</TextBlock>
+                                            <TextBlock l:Uids.Uid="CopyButton"/>
                                         </StackPanel>
                                     </Button>
                                     <Button Background="Transparent" BorderThickness="0" Click="Cut">
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE8C6;" FontSize="12"/>
-                                            <TextBlock>Cut</TextBlock>
+                                            <TextBlock l:Uids.Uid="CutButton"/>
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
                             </StackPanel>
                         </controls:RibbonGroup>
-                        <controls:RibbonCollapsibleGroup Label="Font">
+                        <controls:RibbonCollapsibleGroup l:Uids.Uid="FontRibbonGroup">
                         <controls:RibbonCollapsibleGroup.IconSource>
                             <FontIconSource Glyph="&#xE8D2;"/>
                         </controls:RibbonCollapsibleGroup.IconSource>
@@ -99,42 +99,42 @@
                                 <NumberBox x:Name="fontSizeBox" Value="11" SpinButtonPlacementMode="Inline" SmallChange="4" LargeChange="16" Minimum="8" ValueChanged="fontSizeBox_ValueChanged"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <ToggleButton x:Name="BoldButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Bold (Ctrl+B)" Click="Bold">
+                                    <ToggleButton x:Name="BoldButton" Background="Transparent" BorderBrush="Transparent" Click="Bold" l:Uids.Uid="BoldButton">
                                         <FontIcon Glyph="&#xE8DD;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="ItalicButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Italic (Ctrl+I)" Click="Italic">
+                                    <ToggleButton x:Name="ItalicButton" Background="Transparent" BorderBrush="Transparent" Click="Italic" l:Uids.Uid="ItalicButton">
                                         <FontIcon Glyph="&#xE8DB;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="UnderlineButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Underline (Ctrl+U)" Click="Underline">
+                                    <ToggleButton x:Name="UnderlineButton" Background="Transparent" BorderBrush="Transparent" Click="Underline" l:Uids.Uid="UnderlineButton">
                                         <FontIcon Glyph="&#xE8DC;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="StrikethroughButton" Background="Transparent" BorderBrush="Transparent" ToolTipService.ToolTip="Strikethrough (Ctrl+T)" Click="Strikethrough">
+                                    <ToggleButton x:Name="StrikethroughButton" Background="Transparent" BorderBrush="Transparent" Click="Strikethrough" l:Uids.Uid="StrikethroughButton">
                                         <FontIcon Glyph="&#xEDE0;" FontSize="12"/>
                                     </ToggleButton>
                                 </StackPanel>
                             </StackPanel>
                         </controls:RibbonCollapsibleGroup>
-                        <controls:RibbonCollapsibleGroup Label="Paragraph">
+                        <controls:RibbonCollapsibleGroup l:Uids.Uid="ParagraphRibbonGroup">
                         <controls:RibbonCollapsibleGroup.IconSource>
                             <FontIconSource Glyph="&#xEA37;"/>
                         </controls:RibbonCollapsibleGroup.IconSource>
                             <StackPanel Orientation="Vertical" Spacing="8">
                                 <StackPanel Orientation="Horizontal" Spacing="8" Name="textAlignPanel">
-                                    <ToggleButton x:Name="LeftAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Align to left" Click="LeftAlign" Checked="AlignmentSetup">
+                                    <ToggleButton x:Name="LeftAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="LeftAlign" Checked="AlignmentSetup" l:Uids.Uid="LeftAlignmentToggleButton">
                                         <FontIcon Glyph="&#xE8E4;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="CenterAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Align to center" Click="CenterAlign" Checked="AlignmentSetup">
+                                    <ToggleButton x:Name="CenterAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="CenterAlign" Checked="AlignmentSetup" l:Uids.Uid="CenterAlignmentToggleButton">
                                         <FontIcon Glyph="&#xE8E3;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="RightAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Align to right" Click="RightAlign" Checked="AlignmentSetup">
+                                    <ToggleButton x:Name="RightAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="RightAlign" Checked="AlignmentSetup" l:Uids.Uid="RightAlignmentToggleButton">
                                         <FontIcon Glyph="&#xE8E2;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="JustifyAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Justify" Click="JustifyAlign" Checked="AlignmentSetup">
+                                    <ToggleButton x:Name="JustifyAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="JustifyAlign" Checked="AlignmentSetup" l:Uids.Uid="JustifyToggleButton">
                                         <FontIcon Glyph="&#xE700;" FontSize="12"/>
                                     </ToggleButton>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Button Background="Transparent" BorderThickness="0" ToolTipService.ToolTip="Clear formatting" Click="ClearFormatting">
+                                    <Button Background="Transparent" BorderThickness="0" Click="ClearFormatting" l:Uids.Uid="ClearFormattingButton">
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xED61;" FontSize="12"/>
                                         </StackPanel>
