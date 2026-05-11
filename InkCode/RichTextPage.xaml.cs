@@ -265,20 +265,6 @@ namespace InkCode
             MainPage.current.diagOpen = false;
         }
 
-        private void AlignmentSetup(object sender, RoutedEventArgs e)
-        {
-            if (sender is not ToggleButton checkedToggleButton)
-            {
-                return;
-            }
-
-            foreach (ToggleButton toggleButton in textAlignPanel.Children.OfType<ToggleButton>())
-            {
-                toggleButton.IsChecked = toggleButton == checkedToggleButton;
-                toggleButton.IsHitTestVisible = toggleButton != checkedToggleButton;
-            }
-        }
-
         private void editor_SelectionChanged(object sender, RoutedEventArgs e)
         {
             BoldButton.IsChecked = editor.Document.Selection.CharacterFormat.Bold == FormatEffect.On;
