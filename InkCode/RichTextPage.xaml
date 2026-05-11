@@ -173,7 +173,23 @@
                     Key="T"
                     Invoked="OnKeyboardAcceleratorInvoked"
                     Modifiers="Control" />
-                <KeyboardAccelerator
+                    <KeyboardAccelerator
+    Key="L"
+    Invoked="OnKeyboardAcceleratorInvoked"
+    Modifiers="Control" />
+                    <KeyboardAccelerator
+    Key="E"
+    Invoked="OnKeyboardAcceleratorInvoked"
+    Modifiers="Control" />
+                    <KeyboardAccelerator
+    Key="R"
+    Invoked="OnKeyboardAcceleratorInvoked"
+    Modifiers="Control" />
+                    <KeyboardAccelerator
+    Key="J"
+    Invoked="OnKeyboardAcceleratorInvoked"
+    Modifiers="Control" />
+                    <KeyboardAccelerator
     Key="O"
     Invoked="OnKeyboardAcceleratorInvoked"
     Modifiers="Control" />

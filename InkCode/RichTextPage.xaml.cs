@@ -119,6 +119,22 @@ namespace InkCode
                     Save();
                     args.Handled = true;
                     break;
+                case Windows.System.VirtualKey.L:
+                    editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Left;
+                    args.Handled = true;
+                    break;
+                case Windows.System.VirtualKey.E:
+                    editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+                    args.Handled = true;
+                    break;
+                case Windows.System.VirtualKey.R:
+                    editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Right;
+                    args.Handled = true;
+                    break;
+                case Windows.System.VirtualKey.J:
+                    editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
+                    args.Handled = true;
+                    break;
             }
         }
 
