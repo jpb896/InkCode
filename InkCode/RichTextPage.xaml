@@ -120,16 +120,16 @@
                         </controls:RibbonCollapsibleGroup.IconSource>
                             <StackPanel Orientation="Vertical" Spacing="8">
                                 <StackPanel Orientation="Horizontal" Spacing="8" Name="textAlignPanel">
-                                    <ToggleButton x:Name="LeftAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="LeftAlign" Checked="AlignmentSetup" l:Uids.Uid="LeftAlignmentToggleButton">
+                                    <ToggleButton x:Name="LeftAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="LeftAlign" l:Uids.Uid="LeftAlignmentToggleButton">
                                         <FontIcon Glyph="&#xE8E4;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="CenterAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="CenterAlign" Checked="AlignmentSetup" l:Uids.Uid="CenterAlignmentToggleButton">
+                                    <ToggleButton x:Name="CenterAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="CenterAlign" l:Uids.Uid="CenterAlignmentToggleButton">
                                         <FontIcon Glyph="&#xE8E3;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="RightAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="RightAlign" Checked="AlignmentSetup" l:Uids.Uid="RightAlignmentToggleButton">
+                                    <ToggleButton x:Name="RightAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="RightAlign" l:Uids.Uid="RightAlignmentToggleButton">
                                         <FontIcon Glyph="&#xE8E2;" FontSize="12"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="JustifyAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="JustifyAlign" Checked="AlignmentSetup" l:Uids.Uid="JustifyToggleButton">
+                                    <ToggleButton x:Name="JustifyAlignButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="JustifyAlign" l:Uids.Uid="JustifyToggleButton">
                                         <FontIcon Glyph="&#xE700;" FontSize="12"/>
                                     </ToggleButton>
                                 </StackPanel>
