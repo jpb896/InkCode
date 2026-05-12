@@ -125,61 +125,61 @@
     <comment>Title of Appearance and behavior section of Settings</comment>
   </data>
   <data name="BoldButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Bold (Ctrl+B)</value>
+    <value>Pogrubienie (Ctrl+B)</value>
   </data>
   <data name="CenterAlignmentToggleButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Align to center (Ctrl+E)</value>
+    <value>Wyśrodkuj (Ctrl+E)</value>
   </data>
   <data name="ClipboardRibbonGroup.Label" xml:space="preserve">
-    <value>Clipboard</value>
+    <value>Schowek</value>
   </data>
   <data name="CopyButton.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>Kopiuj</value>
   </data>
   <data name="CutButton.Text" xml:space="preserve">
-    <value>Cut</value>
+    <value>Wytnij</value>
   </data>
   <data name="DevRibbonTab.Content" xml:space="preserve">
-    <value>Developer</value>
+    <value>Programista</value>
   </data>
   <data name="FontRibbonGroup.Label" xml:space="preserve">
-    <value>Font</value>
+    <value>Czcionka</value>
   </data>
   <data name="HomeRibbonTab.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Strona główna</value>
   </data>
   <data name="InsertRibbonTab.Content" xml:space="preserve">
-    <value>Insert</value>
+    <value>Wstaw</value>
   </data>
   <data name="ItalicButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Italic (Ctrl+I)</value>
+    <value>Kursywa (Ctrl+I)</value>
   </data>
   <data name="JustifyToggleButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Justify (Ctrl+J)</value>
+    <value>Wyrównaj (Ctrl+J)</value>
   </data>
   <data name="LeftAlignmentToggleButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Align to left (Ctrl+L)</value>
+    <value>Wyrównaj do lewej (Ctrl+L)</value>
   </data>
   <data name="OpenButton.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>Otwórz</value>
   </data>
   <data name="ParagraphRibbonGroup.Label" xml:space="preserve">
-    <value>Paragraph</value>
+    <value>Akapit</value>
   </data>
   <data name="PasteSplitButton.Text" xml:space="preserve">
-    <value>Paste</value>
+    <value>Wklej</value>
   </data>
   <data name="RevealFocusCard.Description" xml:space="preserve">
     <value>Włącz funkcję Reveal Focus, żeby wyraźniej widzieć wybrany element. Dobrze dostosowane to scenariuszy wyświetlania 10ft.</value>
   </data>
   <data name="RevealFocusCard.Header" xml:space="preserve">
-    <value>Reveal focus</value>
+    <value>Reveal Focus</value>
   </data>
   <data name="RightAlignmentToggleButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Align to right (Ctrl+R)</value>
+    <value>Wyrównaj do prawej (Ctrl+R)</value>
   </data>
   <data name="SaveButton.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Zapisz</value>
   </data>
   <data name="SettingsTitle.Text" xml:space="preserve">
     <value>Ustawienia</value>
@@ -200,18 +200,18 @@
     <value>Audio przestrzenne</value>
   </data>
   <data name="StrikethroughButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Strikethrough (Ctrl+T)</value>
+    <value>Przekreślenie (Ctrl+T)</value>
   </data>
   <data name="UnderlineButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Underline (Ctrl+U)</value>
+    <value>Podkreślenie (Ctrl+U)</value>
   </data>
   <data name="PasteMenuItem.Text" xml:space="preserve">
-    <value>Paste</value>
+    <value>Wklej</value>
   </data>
   <data name="PasteNoFormatMenuItem.Text" xml:space="preserve">
-    <value>Paste without formatting</value>
+    <value>Wklej bez formatowania</value>
   </data>
   <data name="ClearFormattingButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Clear formatting</value>
+    <value>Wyczyść formatowanie</value>
   </data>
 </root>
