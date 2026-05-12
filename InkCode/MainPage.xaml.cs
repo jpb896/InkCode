@@ -91,11 +91,11 @@ namespace InkCode
         {
             if ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage != null)
             {
-                await ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage).ShowUnsavedDialog();
+                await ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage).ShowUnsavedDialog(args.Tab);
             }
             else
             {
-                await ((Tabs.SelectedItem as TabViewItem).Content as CodePage).ShowUnsavedDialog();
+                await ((Tabs.SelectedItem as TabViewItem).Content as CodePage).ShowUnsavedDialog(args.Tab);
             }
             if (notCancelClicked) {
                 sender.TabItems.Remove(args.Tab);

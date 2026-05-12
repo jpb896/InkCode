@@ -235,9 +235,9 @@ namespace InkCode
             editor.Document.Selection.CharacterFormat.Strikethrough = FormatEffect.Off;
         }
 
-        public async Task ShowUnsavedDialog()
+        public async Task ShowUnsavedDialog(TabViewItem tab)
         {
-            string filename = (string)(VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header;
+            string filename = (string)(tab as TabViewItem).Header;
             ContentDialog diag = new()
             {
                 Title = filename + " has not been saved",
