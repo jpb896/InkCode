@@ -105,7 +105,7 @@ namespace InkCode
         {
             if ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage != null)
             {
-                await ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage).ShowUnsavedDialog();
+                await ((Tabs.SelectedItem as TabViewItem).Content as RichTextPage).ShowUnsavedDialog(args.Tab);
             }
             else
             {
