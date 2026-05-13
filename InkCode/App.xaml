@@ -811,7 +811,7 @@
                                     IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
                                     VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
                                     VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
-                                    ZoomMode="Disabled" />
+                                    ZoomMode="Enabled" />
                                 <ContentControl
                                     x:Name="PlaceholderTextContentPresenter"
                                     Grid.Row="1"
