@@ -1,3 +1,4 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -32,6 +33,8 @@ namespace InkCode
             var currentWindow = App.window;
             currentWindow.ExtendsContentIntoTitleBar = true;
             currentWindow.SetTitleBar(CustomDragRegion);
+            currentWindow.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+            currentWindow.AppWindow.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             CustomDragRegion.MinWidth = 188;
         }
 
