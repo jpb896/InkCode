@@ -197,7 +197,7 @@
     <value>Améliore les expériences de 10ft avec l'audio adapté à l'emplacement physique de l'appareil</value>
   </data>
   <data name="SpatialAudioCard.Header" xml:space="preserve">
-    <value>Audio dimensionel</value>
+    <value>Audio dimensionnel</value>
   </data>
   <data name="StrikethroughButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Traverser (Ctrl+T)</value>
@@ -209,7 +209,7 @@
     <value>Coller</value>
   </data>
   <data name="PasteNoFormatMenuItem.Text" xml:space="preserve">
-    <value>Coller sans mise en forme</value>
+    <value>Coller sans mettre en forme</value>
   </data>
   <data name="ClearFormattingButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Effacer la mise en forme</value>
