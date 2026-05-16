@@ -202,7 +202,7 @@ namespace InkCode
             };
 
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("Rich Text", [".rtf"]);
+            //savePicker.FileTypeChoices.Add("Rich Text", [".rtf"]);
 
             // Show picker
             PickFileResult result = await savePicker.PickSaveFileAsync();
