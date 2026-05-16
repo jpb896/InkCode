@@ -193,18 +193,18 @@ namespace InkCode
             };
 
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("All files", ["."]);
-            savePicker.FileTypeChoices.Add("Plain text", [".txt"]);
-            savePicker.FileTypeChoices.Add("C#", [".cs"]);
-            savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", [".xml", ".xaml"]);
-            savePicker.FileTypeChoices.Add("C", [".c"]);
-            savePicker.FileTypeChoices.Add("C++", [".cpp", ".cxx", ".cc"]);
-            savePicker.FileTypeChoices.Add("C/C++ header", [".h", ".hh", ".hxx", ".hpp"]);
-            savePicker.FileTypeChoices.Add("HyperText Markup Language", [".html"]);
-            savePicker.FileTypeChoices.Add("Cascading Style Sheets", [".css"]);
-            savePicker.FileTypeChoices.Add("JavaScript", [".js"]);
-            savePicker.FileTypeChoices.Add("YAML", [".yml"]);
-            savePicker.FileTypeChoices.Add("JSON", [".json"]);
+            //savePicker.FileTypeChoices.Add("All files", ["."]);
+            //savePicker.FileTypeChoices.Add("Plain text", [".txt"]);
+            //savePicker.FileTypeChoices.Add("C#", [".cs"]);
+            //savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", [".xml", ".xaml"]);
+            //savePicker.FileTypeChoices.Add("C", [".c"]);
+            //savePicker.FileTypeChoices.Add("C++", [".cpp", ".cxx", ".cc"]);
+            //savePicker.FileTypeChoices.Add("C/C++ header", [".h", ".hh", ".hxx", ".hpp"]);
+            //savePicker.FileTypeChoices.Add("HyperText Markup Language", [".html"]);
+            //savePicker.FileTypeChoices.Add("Cascading Style Sheets", [".css"]);
+            //savePicker.FileTypeChoices.Add("JavaScript", [".js"]);
+            //savePicker.FileTypeChoices.Add("YAML", [".yml"]);
+            //savePicker.FileTypeChoices.Add("JSON", [".json"]);
 
             // Show picker
             PickFileResult result = await savePicker.PickSaveFileAsync();
