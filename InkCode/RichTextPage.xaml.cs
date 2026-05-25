@@ -4,10 +4,12 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.Windows.Storage.Pickers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using WinRT.Interop;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -194,36 +196,33 @@ namespace InkCode
 
         private async void Save()
         {
-            // Create the picker with AppWindowId
-            var savePicker = new FileSavePicker(this.XamlRoot.ContentIslandEnvironment.AppWindowId)
-            {
-                SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
-                SuggestedFileName = "Untitled"
-            };
+            Windows.Storage.Pickers.FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            var hwnd = WindowNative.GetWindowHandle(App.window);
+            InitializeWithWindow.Initialize(savePicker, hwnd);
 
             // Dropdown of file types the user can save the file as
-            //savePicker.FileTypeChoices.Add("Rich Text", [".rtf"]);
+            savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
 
-            // Show picker
-            PickFileResult result = await savePicker.PickSaveFileAsync();
+            // Default file name if the user does not type one in or select a file to replace
+            savePicker.SuggestedFileName = "New Document";
 
-            if (result != null)
+            Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
             {
-                // Convert PickSaveFileResult to StorageFile
-                StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+                // Prevent updates to the remote version of the file until we
+                // finish making changes and call CompleteUpdatesAsync.
+                Windows.Storage.CachedFileManager.DeferUpdates(file);
+                // write to file
+                Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                    await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite);
 
-                // Prevent updates to the remote version of the file until complete
-                CachedFileManager.DeferUpdates(file);
+                editor.Document.SaveToStream(Microsoft.UI.Text.TextGetOptions.FormatRtf, randAccStream);
 
-                // Write content into the file
-                using IRandomAccessStream randAccStream =
-                    await file.OpenAsync(FileAccessMode.ReadWrite);
                 if (!diag_open)
                 {
                     (VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.TabItems[VisualTreeHelperExtensions.FindParent<MainPage>(this).Tabs.SelectedIndex] as TabViewItem).Header = file.Name;
                 }
-
-                editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
             }
         }
 

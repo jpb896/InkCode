@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using WinRT.Interop;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -186,35 +187,30 @@ namespace InkCode
         private async void Save()
         {
             // Create the picker with AppWindowId
-            var savePicker = new FileSavePicker(this.XamlRoot.ContentIslandEnvironment.AppWindowId)
-            {
-                SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
-                SuggestedFileName = "Untitled"
-            };
+            Windows.Storage.Pickers.FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            var hwnd = WindowNative.GetWindowHandle(App.window);
+            InitializeWithWindow.Initialize(savePicker, hwnd);
 
             // Dropdown of file types the user can save the file as
-            //savePicker.FileTypeChoices.Add("All files", ["."]);
-            //savePicker.FileTypeChoices.Add("Plain text", [".txt"]);
-            //savePicker.FileTypeChoices.Add("C#", [".cs"]);
-            //savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", [".xml", ".xaml"]);
-            //savePicker.FileTypeChoices.Add("C", [".c"]);
-            //savePicker.FileTypeChoices.Add("C++", [".cpp", ".cxx", ".cc"]);
-            //savePicker.FileTypeChoices.Add("C/C++ header", [".h", ".hh", ".hxx", ".hpp"]);
-            //savePicker.FileTypeChoices.Add("HyperText Markup Language", [".html"]);
-            //savePicker.FileTypeChoices.Add("Cascading Style Sheets", [".css"]);
-            //savePicker.FileTypeChoices.Add("JavaScript", [".js"]);
-            //savePicker.FileTypeChoices.Add("YAML", [".yml"]);
-            //savePicker.FileTypeChoices.Add("JSON", [".json"]);
+            savePicker.FileTypeChoices.Add("All files", ["."]);
+            savePicker.FileTypeChoices.Add("Plain text", [".txt"]);
+            savePicker.FileTypeChoices.Add("C#", [".cs"]);
+            savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", [".xml", ".xaml"]);
+            savePicker.FileTypeChoices.Add("C", [".c"]);
+            savePicker.FileTypeChoices.Add("C++", [".cpp", ".cxx", ".cc"]);
+            savePicker.FileTypeChoices.Add("C/C++ header", [".h", ".hh", ".hxx", ".hpp"]);
+            savePicker.FileTypeChoices.Add("HyperText Markup Language", [".html"]);
+            savePicker.FileTypeChoices.Add("Cascading Style Sheets", [".css"]);
+            savePicker.FileTypeChoices.Add("JavaScript", [".js"]);
+            savePicker.FileTypeChoices.Add("YAML", [".yml"]);
+            savePicker.FileTypeChoices.Add("JSON", [".json"]);
 
-            // Show picker
-            PickFileResult result = await savePicker.PickSaveFileAsync();
+            // Convert PickSaveFileResult to StorageFile
+            Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
 
-            if (result != null)
-            {
-                // Convert PickSaveFileResult to StorageFile
-                StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
 
-                switch (file.FileType)
+            switch (file.FileType)
                 {
                     case ".cs":
                         editor.HighlightingLanguage = "csharp";
@@ -299,7 +295,6 @@ namespace InkCode
 editor.Editor.GetText(editor.Editor.Length), Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
                 await randAccStream.WriteAsync(buffer);
             }
-        }
 
         private void OnKeyboardAcceleratorInvoked(Microsoft.UI.Xaml.Input.KeyboardAccelerator sender, Microsoft.UI.Xaml.Input.KeyboardAcceleratorInvokedEventArgs args)
         {
