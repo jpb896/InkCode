@@ -5,7 +5,9 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
@@ -196,6 +198,20 @@ namespace InkCode
 
         private async void Save()
         {
+            string rtfContent;
+            editor.Document.GetText(TextGetOptions.FormatRtf, out rtfContent);
+            // Replace or insert the \generator tag
+            // Pattern matches: {\*\generator ...;}
+            string newGenerator = @"{\*\generator InkCode Dev 2.1;}";
+            if (Regex.IsMatch(rtfContent, @"\{\\\*\\generator.*?\}"))
+            {
+                rtfContent = Regex.Replace(rtfContent, @"\{\\\*\\generator.*?\}", newGenerator);
+            }
+            else
+            {
+                // Insert after the RTF header (\rtf1...)
+                rtfContent = Regex.Replace(rtfContent, @"(\\rtf\d+)", "$1 " + newGenerator);
+            }
             Windows.Storage.Pickers.FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
             savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
             var hwnd = WindowNative.GetWindowHandle(App.window);
@@ -213,11 +229,11 @@ namespace InkCode
                 // Prevent updates to the remote version of the file until we
                 // finish making changes and call CompleteUpdatesAsync.
                 Windows.Storage.CachedFileManager.DeferUpdates(file);
-                // write to file
-                Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                    await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite);
 
-                editor.Document.SaveToStream(Microsoft.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+                // write to file
+                File.WriteAllText(file.Path, rtfContent);
+
+                //editor.Document.SaveToStream(Microsoft.UI.Text.TextGetOptions.FormatRtf, randAccStream);
 
                 if (!diag_open)
                 {
