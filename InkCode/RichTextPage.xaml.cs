@@ -1,12 +1,10 @@
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -202,7 +200,7 @@ namespace InkCode
             editor.Document.GetText(TextGetOptions.FormatRtf, out rtfContent);
             // Replace or insert the \generator tag
             // Pattern matches: {\*\generator ...;}
-            string newGenerator = @"{\*\generator InkCode Dev 2.1;}";
+            string newGenerator = @"{\*\generator InkCode Dev 2.1}";
             if (Regex.IsMatch(rtfContent, @"\{\\\*\\generator.*?\}"))
             {
                 rtfContent = Regex.Replace(rtfContent, @"\{\\\*\\generator.*?\}", newGenerator);
@@ -230,10 +228,8 @@ namespace InkCode
                 // finish making changes and call CompleteUpdatesAsync.
                 Windows.Storage.CachedFileManager.DeferUpdates(file);
 
-                // write to file
+                // Write to file
                 File.WriteAllText(file.Path, rtfContent);
-
-                //editor.Document.SaveToStream(Microsoft.UI.Text.TextGetOptions.FormatRtf, randAccStream);
 
                 if (!diag_open)
                 {
