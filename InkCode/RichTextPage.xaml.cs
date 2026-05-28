@@ -299,6 +299,8 @@ namespace InkCode
             ItalicButton.IsChecked = editor.Document.Selection.CharacterFormat.Italic == FormatEffect.On;
             UnderlineButton.IsChecked = editor.Document.Selection.CharacterFormat.Underline != UnderlineType.None && editor.Document.Selection.CharacterFormat.Underline != UnderlineType.Undefined;
             StrikethroughButton.IsChecked = editor.Document.Selection.CharacterFormat.Strikethrough == FormatEffect.On;
+            SuperscriptButton.IsChecked = editor.Document.Selection.CharacterFormat.Superscript == FormatEffect.On;
+            SubscriptButton.IsChecked = editor.Document.Selection.CharacterFormat.Subscript == FormatEffect.On;
 
             LeftAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Left;
             CenterAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center;
@@ -326,6 +328,16 @@ namespace InkCode
             {
                 author = authorBox.Text;
             }
+        }
+
+        private void SuperScriptButton_Click(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.CharacterFormat.Superscript = FormatEffect.Toggle;
+        }
+
+        private void SubscriptButton_Click(object sender, RoutedEventArgs e)
+        {
+            editor.Document.Selection.CharacterFormat.Subscript = FormatEffect.Toggle;
         }
     }
 }

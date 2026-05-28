@@ -112,6 +112,20 @@
                                     <ToggleButton x:Name="StrikethroughButton" Background="Transparent" BorderBrush="Transparent" Click="Strikethrough" l:Uids.Uid="StrikethroughButton">
                                         <FontIcon Glyph="&#xEDE0;" FontSize="12"/>
                                     </ToggleButton>
+                                    <ToggleButton
+                    x:Name="SuperscriptButton"
+                    Click="SuperScriptButton_Click"
+                                        Background="Transparent" BorderBrush="Transparent"
+                    ToolTipService.ToolTip="Superscript">
+                                        <TextBlock FontSize="12" Text="X²" />
+                                    </ToggleButton>
+                                    <ToggleButton
+                    x:Name="SubscriptButton"
+                    Click="SubscriptButton_Click"
+                                        Background="Transparent" BorderBrush="Transparent"
+                    ToolTipService.ToolTip="Subscript">
+                                        <TextBlock FontSize="12" Text="X₂" />
+                                    </ToggleButton>
                                 </StackPanel>
                             </StackPanel>
                         </controls:RibbonCollapsibleGroup>
