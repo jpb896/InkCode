@@ -1,6 +1,7 @@
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Markup;
 using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI;
 using WinRT.Interop;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -379,6 +381,21 @@ namespace InkCode
                 editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, "Image", randAccStream);
 
             }
+        }
+
+        private void InsertLink(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(hyperlinkText.Text))
+            {
+                if (editor.Document.Selection.Length == 0)
+                {
+                    editor.Document.Selection.Text = hyperlinkText.Text;
+                }
+                editor.Document.Selection.Link = $"\"{hyperlinkText.Text}\"";
+                editor.Document.Selection.CharacterFormat.ForegroundColor = (Color)XamlBindingHelper.ConvertValue(typeof(Color), "#6194c7");
+            }
+            LinkButton.Flyout.Hide();
+            editor.Focus(FocusState.Programmatic);
         }
     }
 }

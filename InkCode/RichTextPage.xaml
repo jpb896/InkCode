@@ -163,12 +163,28 @@
                     <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                          animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
                         <controls:RibbonGroup>
-                            <Button Background="Transparent" BorderThickness="0" Click="InsertImage">
-                                <StackPanel>
-                                    <FontIcon Glyph="&#xE91B;"/>
-                                    <TextBlock>Image</TextBlock>
-                                </StackPanel>
-                            </Button>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Background="Transparent" BorderThickness="0" Click="InsertImage">
+                                    <StackPanel>
+                                        <FontIcon Glyph="&#xE91B;"/>
+                                        <TextBlock>Image</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="LinkButton" Background="Transparent" BorderThickness="0">
+                                    <StackPanel>
+                                        <FontIcon Glyph="&#xE71B;"/>
+                                        <TextBlock>Link</TextBlock>
+                                    </StackPanel>
+                                    <Button.Flyout>
+                                        <Flyout Placement="Bottom">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBox x:Name="hyperlinkText" PlaceholderText="Link" />
+                                                <Button Margin="0,10,0,0" Click="InsertLink">Add hyperlink to selected text</Button>
+                                            </StackPanel>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                </Button>
+                            </StackPanel>
                         </controls:RibbonGroup>
                 </controls:Ribbon>
             </controls:Case>
