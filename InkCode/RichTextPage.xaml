@@ -43,6 +43,7 @@
                 SelectedIndex="0" BorderBrush="Transparent" Background="Transparent" BorderThickness="0">
                     <controls:SegmentedItem Tag="home" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="HomeRibbonTab"></controls:SegmentedItem>
                     <controls:SegmentedItem Tag="insert" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="InsertRibbonTab"></controls:SegmentedItem>
+                    <controls:SegmentedItem Tag="refs" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="ReferencesRibbonTab"></controls:SegmentedItem>
                     <controls:SegmentedItem Tag="dev" Background="Transparent" Style="{ThemeResource RibbonSegmentedItemStyle}" l:Uids.Uid="DevRibbonTab"></controls:SegmentedItem>
             </controls:Segmented>
                 <Button Click="OpenButton_Click" Background="Transparent" BorderBrush="Transparent" l:Uids.Uid="OpenButton"/>
@@ -149,7 +150,21 @@
                     <controls:RibbonGroup/>
                 </controls:Ribbon>
             </controls:Case>
-            <controls:Case Value="dev">
+                <controls:Case Value="refs">
+                    <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                         CornerRadius="8">
+                        <controls:RibbonGroup>
+                            <Button Background="Transparent" BorderThickness="0" Click="IncludeAuthorInformation">
+                                <StackPanel>
+                                    <FontIcon Glyph="&#xE716;"/>
+                                    <TextBlock>Author</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </controls:RibbonGroup>
+                    </controls:Ribbon>
+                </controls:Case>
+                <controls:Case Value="dev">
                 <controls:Ribbon>
                     <controls:RibbonGroup/>
                 </controls:Ribbon>
