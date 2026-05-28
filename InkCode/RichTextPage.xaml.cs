@@ -24,6 +24,8 @@ namespace InkCode
     {
 
         bool diag_open = false;
+        string author = Environment.UserName;
+        TextBox authorBox = new TextBox();
 
         public RichTextPage()
         {
@@ -210,6 +212,21 @@ namespace InkCode
                 // Insert after the RTF header (\rtf1...)
                 rtfContent = Regex.Replace(rtfContent, @"(\\rtf\d+)", "$1 " + newGenerator);
             }
+            editor.Document.GetText(TextGetOptions.FormatRtf, out rtfContent);
+
+            // Check if an author already exists, and remove it
+            int authorIndex = rtfContent.IndexOf(@"{\author ");
+            if (authorIndex >= 0)
+            {
+                int endIndex = rtfContent.IndexOf("}", authorIndex);
+                rtfContent = rtfContent.Remove(authorIndex, endIndex - authorIndex + 1);
+            }
+
+            // Insert the author metadata after the initial {\rtf1
+            int insertIndex = rtfContent.IndexOf(@"{\rtf1");
+            int insertPos = rtfContent.IndexOf(" ", insertIndex) + 1; // after {\rtf1 
+            string authorEntry = @"{\author " + author + "}";
+            rtfContent = rtfContent.Insert(insertPos, authorEntry);
             Windows.Storage.Pickers.FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
             savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
             var hwnd = WindowNative.GetWindowHandle(App.window);
@@ -287,6 +304,28 @@ namespace InkCode
             CenterAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Center;
             RightAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Right;
             JustifyAlignButton.IsChecked = editor.Document.Selection.ParagraphFormat.Alignment == ParagraphAlignment.Justify;
+        }
+
+        private async void IncludeAuthorInformation(object sender, RoutedEventArgs e)
+        {
+            authorBox.PlaceholderText = author;
+            ContentDialog authorDialog = new ContentDialog();
+            authorDialog.Title = "Set document author";
+            authorDialog.Content = authorBox;
+            authorDialog.PrimaryButtonText = "Set author";
+            authorDialog.PrimaryButtonClick += AuthorDialog_PrimaryButtonClick;
+            authorDialog.PrimaryButtonStyle = (Style)Application.Current.Resources["AccentButtonStyle"];
+            authorDialog.CloseButtonText = "Cancel";
+            authorDialog.XamlRoot = this.XamlRoot;
+            await authorDialog.ShowAsync();
+        }
+
+        private void AuthorDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            if (authorBox.Text != "")
+            {
+                author = authorBox.Text;
+            }
         }
     }
 }
