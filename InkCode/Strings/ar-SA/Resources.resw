@@ -220,4 +220,7 @@
   <data name="LocalizationCard.Description" xml:space="preserve">
     <value>Change the app language. This does not require app restart.</value>
   </data>
+  <data name="ReferencesRibbonTab.Content" xml:space="preserve">
+    <value>References</value>
+  </data>
 </root>
