@@ -339,5 +339,48 @@ namespace InkCode
         {
             editor.Document.Selection.CharacterFormat.Subscript = FormatEffect.Toggle;
         }
+
+        private async void InsertImage(object sender, RoutedEventArgs e)
+        {
+            // Open an image file.
+            FileOpenPicker open = new(this.XamlRoot.ContentIslandEnvironment.AppWindowId)
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+
+            open.FileTypeFilter.Add(".png");
+            open.FileTypeFilter.Add(".jpg");
+            open.FileTypeFilter.Add(".jpeg");
+
+            PickFileResult picker = await open.PickSingleFileAsync();
+            StorageFile file = await StorageFile.GetFileFromPathAsync(picker.Path);
+
+            if (file != null)
+            {
+                using IRandomAccessStream randAccStream = await file.OpenAsync(FileAccessMode.Read);
+                var properties = await file.Properties.GetImagePropertiesAsync();
+                int width = (int)properties.Width;
+                int height = (int)properties.Height;
+
+                ImageOptionsDialog dialog = new()
+                {
+                    DefaultWidth = width,
+                    DefaultHeight = height,
+                    XamlRoot = this.XamlRoot
+                };
+
+                ContentDialogResult result = await dialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    editor.Document.Selection.InsertImage((int)dialog.DefaultWidth, (int)dialog.DefaultHeight, 0, VerticalCharacterAlignment.Baseline, string.IsNullOrWhiteSpace(dialog.Tag) ? "Image" : dialog.Tag, randAccStream);
+                    return;
+                }
+
+                // Insert an image
+                editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, "Image", randAccStream);
+
+            }
+        }
     }
 }

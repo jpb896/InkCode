@@ -162,7 +162,14 @@
             <controls:Case Value="insert">
                     <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                          animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
-                    <controls:RibbonGroup/>
+                        <controls:RibbonGroup>
+                            <Button Background="Transparent" BorderThickness="0" Click="InsertImage">
+                                <StackPanel>
+                                    <FontIcon Glyph="&#xE91B;"/>
+                                    <TextBlock>Image</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </controls:RibbonGroup>
                 </controls:Ribbon>
             </controls:Case>
                 <controls:Case Value="refs">
