@@ -42,6 +42,9 @@ namespace InkCode
             {  
                 FocusSwitch.IsOn = false;
             }
+            var languages = App.Localizer.GetAvailableLanguages();
+            LocalizationComboBox.ItemsSource = languages;
+            LocalizationComboBox.SelectedItem = App.Localizer.GetCurrentLanguage();
             BuildDateTextBlock.Text = "Built " + GetBuildDate(Assembly.GetExecutingAssembly()).ToString();
         }
 
@@ -111,6 +114,14 @@ namespace InkCode
                 PrimaryButtonText = "OK"
             };
             await changelogDialog.ShowAsync();
+        }
+
+        private void LocalizationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (LocalizationComboBox.SelectedItem is string selectedLang)
+            {
+                App.Localizer.SetLanguage(selectedLang);
+            }
         }
     }
 }

@@ -214,4 +214,10 @@
   <data name="ClearFormattingButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Nyaaaaaaa mew</value>
   </data>
+<data name="LocalizationCard.Header" xml:space="preserve">
+  <value>Meow mew mew</value>
+</data>
+<data name="LocalizationCard.Description" xml:space="preserve">
+  <value>Meow mew mew meow meow. Meow mew uwu nyaaa.</value>
+</data>
 </root>

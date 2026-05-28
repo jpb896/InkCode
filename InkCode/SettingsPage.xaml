@@ -33,6 +33,9 @@
             <controls:SettingsCard l:Uids.Uid="RevealFocusCard">
                 <ToggleSwitch x:Name="FocusSwitch" Toggled="FocusSwitch_Toggled"/>
             </controls:SettingsCard>
+            <controls:SettingsCard l:Uids.Uid="LocalizationCard">
+                <ComboBox x:Name="LocalizationComboBox" SelectionChanged="LocalizationComboBox_SelectionChanged"/>
+            </controls:SettingsCard>
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" l:Uids.Uid="AboutTitle"/>
             <controls:SettingsExpander Header="InkCode Dev" Description="2.1">
                 <controls:SettingsExpander.HeaderIcon>
