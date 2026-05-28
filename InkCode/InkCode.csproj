@@ -127,6 +127,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Update="Strings\mw-MW\Resources.resw">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Update="Assets\changelog.md">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
