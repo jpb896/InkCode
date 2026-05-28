@@ -53,7 +53,7 @@
                 <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                          animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
                                   CornerRadius="8">
-                    <controls:RibbonGroup Label="Clipboard">
+                    <controls:RibbonGroup l:Uids.Uid="ClipboardRibbonGroup">
                         <StackPanel Orientation="Vertical">
                             <SplitButton Background="Transparent" BorderBrush="Transparent" Click="Paste">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
