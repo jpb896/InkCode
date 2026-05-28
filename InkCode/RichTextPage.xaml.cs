@@ -212,8 +212,6 @@ namespace InkCode
                 // Insert after the RTF header (\rtf1...)
                 rtfContent = Regex.Replace(rtfContent, @"(\\rtf\d+)", "$1 " + newGenerator);
             }
-            editor.Document.GetText(TextGetOptions.FormatRtf, out rtfContent);
-
             // Check if an author already exists, and remove it
             int authorIndex = rtfContent.IndexOf(@"{\author ");
             if (authorIndex >= 0)
