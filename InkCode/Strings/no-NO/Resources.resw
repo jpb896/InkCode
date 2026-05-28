@@ -214,4 +214,10 @@
   <data name="ClearFormattingButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Clear formatting</value>
   </data>
+  <data name="LocalizationCard.Header" xml:space="preserve">
+    <value>Localization</value>
+  </data>
+  <data name="LocalizationCard.Description" xml:space="preserve">
+    <value>Change the app language. This does not require app restart.</value>
+  </data>
 </root>
