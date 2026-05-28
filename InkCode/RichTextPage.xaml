@@ -127,11 +127,13 @@
                     </controls:Ribbon>
                 </controls:Case>
             <controls:Case Value="insert">
-                <controls:Ribbon>
+                    <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                         animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
                     <controls:RibbonGroup/>
                 </controls:Ribbon>
             </controls:Case>
-            <controls:Case Value="dev">
+                <controls:Case Value="dev" animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                         animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
                 <controls:Ribbon>
                     <controls:RibbonGroup/>
                 </controls:Ribbon>
