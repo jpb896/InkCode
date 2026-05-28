@@ -16,6 +16,7 @@ namespace InkCode
     public partial class App : Application
     {
         public static Window? window;
+        public static ILocalizer Localizer { get; private set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -43,7 +44,7 @@ namespace InkCode
             string stringsFolderPath = Path.Combine(AppContext.BaseDirectory, "Strings");
             StorageFolder stringsFolder = await StorageFolder.GetFolderFromPathAsync(stringsFolderPath);
 
-            ILocalizer localizer = await new LocalizerBuilder()
+            Localizer = await new LocalizerBuilder()
                 .AddStringResourcesFolderForLanguageDictionaries(stringsFolderPath)
                 .SetOptions(options =>
                 {
