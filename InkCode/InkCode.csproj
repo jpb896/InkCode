@@ -66,6 +66,7 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.1839" />
     <PackageReference Include="WinUI3Localizer" Version="2.3.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.1.4-experimental8" />
+	<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="SettingsPage.xaml">
@@ -142,4 +143,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\InkCode-CodeControl\WinUIEditor\WinUIEditor.vcxproj" />
 	</ItemGroup>
+
+	<PropertyGroup>
+		<CsWinRTIncludes>WinUIEditor</CsWinRTIncludes>
+	</PropertyGroup>
 </Project>
