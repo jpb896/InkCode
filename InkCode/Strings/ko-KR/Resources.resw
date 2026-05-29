@@ -259,4 +259,58 @@
   <data name="AuthorButton.Text" xml:space="preserve">
     <value>Author</value>
   </data>
+  <data name="NewRTF" xml:space="preserve">
+    <value>New rich text document</value>
+  </data>
+  <data name="NewCode" xml:space="preserve">
+    <value>New code file</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="RTFCodeDiagTitle" xml:space="preserve">
+    <value>Looking to edit an RTF file?</value>
+  </data>
+  <data name="RTFCodeDiagContent" xml:space="preserve">
+    <value>If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.</value>
+  </data>
+  <data name="RTFCodeDiagPrimaryButtonText" xml:space="preserve">
+    <value>Understood!</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>All files</value>
+  </data>
+  <data name="PlainText" xml:space="preserve">
+    <value>Plain text</value>
+  </data>
+  <data name="CHeader" xml:space="preserve">
+    <value>C/C++ header</value>
+  </data>
+  <data name="UnsavedDiagTitle" xml:space="preserve">
+    <value> has not been saved</value>
+  </data>
+  <data name="UnsavedDiagContent" xml:space="preserve">
+    <value>Do you want to save your changes?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UnsavedDiagPrimaryButtonText" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="RichText" xml:space="preserve">
+    <value>Rich text</value>
+  </data>
+  <data name="NewDoc" xml:space="preserve">
+    <value>New Document</value>
+  </data>
+  <data name="AuthorDiagTitle" xml:space="preserve">
+    <value>Set document author</value>
+  </data>
+  <data name="AuthorDiagPrimaryButtonText" xml:space="preserve">
+    <value>Set author</value>
+  </data>
 </root>
