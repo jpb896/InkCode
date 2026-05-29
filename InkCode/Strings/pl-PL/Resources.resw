@@ -215,102 +215,102 @@
     <value>Wyczyść formatowanie</value>
   </data>
   <data name="LocalizationCard.Header" xml:space="preserve">
-    <value>Localization</value>
+    <value>Język</value>
   </data>
   <data name="LocalizationCard.Description" xml:space="preserve">
-    <value>Change the app language. This does not require app restart.</value>
+    <value>Zmień język aplikacji. Nie wymaga to restartu aplikacji.</value>
   </data>
   <data name="ReferencesRibbonTab.Content" xml:space="preserve">
-    <value>References</value>
+    <value>Odniesienia</value>
   </data>
   <data name="ImageOptionsDialog.Title" xml:space="preserve">
-    <value>Image options</value>
+    <value>Opcje zdjęcia</value>
   </data>
   <data name="ImageOptionsDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Insert</value>
+    <value>Wstaw</value>
   </data>
   <data name="ImageOptionsDialog.SecondaryButtonText" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Anuluj</value>
   </data>
   <data name="WidthBox.Header" xml:space="preserve">
-    <value>Width</value>
+    <value>Szerokość</value>
   </data>
   <data name="HeightBox.Header" xml:space="preserve">
-    <value>Height</value>
+    <value>Wysokość</value>
   </data>
   <data name="TagBox.Header" xml:space="preserve">
-    <value>Tag</value>
+    <value>Etykieta</value>
   </data>
   <data name="SuperscriptButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Superscript</value>
+    <value>Indeks górny</value>
   </data>
   <data name="SubscriptButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Subscript</value>
+    <value>Indeks dolny</value>
   </data>
   <data name="ImageButton.Text" xml:space="preserve">
-    <value>Image</value>
+    <value>Zdjęcie</value>
   </data>
   <data name="LinkButton.Text" xml:space="preserve">
     <value>Link</value>
   </data>
   <data name="LinkInsertButton.Content" xml:space="preserve">
-    <value>Add hyperlink to selected text</value>
+    <value>Dodaj hiperłącze do zaznaczonego tekstu</value>
   </data>
   <data name="AuthorButton.Text" xml:space="preserve">
-    <value>Author</value>
+    <value>Autor</value>
   </data>
   <data name="NewRTF" xml:space="preserve">
-    <value>New rich text document</value>
+    <value>Nowy dokument formatu rich text</value>
   </data>
   <data name="NewCode" xml:space="preserve">
-    <value>New code file</value>
+    <value>Nowy plik z kodem</value>
   </data>
   <data name="Untitled" xml:space="preserve">
-    <value>Untitled</value>
+    <value>Bez tytułu</value>
   </data>
   <data name="RTFCodeDiagTitle" xml:space="preserve">
-    <value>Looking to edit an RTF file?</value>
+    <value>Chcesz edytować plik RTF?</value>
   </data>
   <data name="RTFCodeDiagContent" xml:space="preserve">
-    <value>If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.</value>
+    <value>Jeśli chcesz szybko i płynnie edytować plik RTF za pomocą narzędzi WYSIWYG, użyj tryb edytowania RTF. Aby jego użyć, utwórz nową kartę, wybierając 'Nowy dokument formatu rich text' z menu nowej karty i otwórz plik stamtąd.</value>
   </data>
   <data name="RTFCodeDiagPrimaryButtonText" xml:space="preserve">
-    <value>Understood!</value>
+    <value>Zrozumiano!</value>
   </data>
   <data name="AllFiles" xml:space="preserve">
-    <value>All files</value>
+    <value>Wszystkie pliki</value>
   </data>
   <data name="PlainText" xml:space="preserve">
-    <value>Plain text</value>
+    <value>Tekst</value>
   </data>
   <data name="CHeader" xml:space="preserve">
-    <value>C/C++ header</value>
+    <value>Nagłówek C/C++</value>
   </data>
   <data name="UnsavedDiagTitle" xml:space="preserve">
-    <value> has not been saved</value>
+    <value> nie było zapisane</value>
   </data>
   <data name="UnsavedDiagContent" xml:space="preserve">
-    <value>Do you want to save your changes?</value>
+    <value>Chcesz zapisać swoje zmiany?</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Anuluj</value>
   </data>
   <data name="UnsavedDiagPrimaryButtonText" xml:space="preserve">
-    <value>Save changes</value>
+    <value>Zapisz zmiany</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>No</value>
+    <value>Nie</value>
   </data>
   <data name="RichText" xml:space="preserve">
     <value>Rich text</value>
   </data>
   <data name="NewDoc" xml:space="preserve">
-    <value>New Document</value>
+    <value>Nowy dokument</value>
   </data>
   <data name="AuthorDiagTitle" xml:space="preserve">
-    <value>Set document author</value>
+    <value>Ustaw autora dokumentu</value>
   </data>
   <data name="AuthorDiagPrimaryButtonText" xml:space="preserve">
-    <value>Set author</value>
+    <value>Ustaw autora</value>
   </data>
 </root>
