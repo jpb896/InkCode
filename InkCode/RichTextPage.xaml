@@ -115,15 +115,13 @@
                                     <ToggleButton
                     x:Name="SuperscriptButton"
                     Click="SuperScriptButton_Click"
-                                        Background="Transparent" BorderBrush="Transparent"
-                    ToolTipService.ToolTip="Superscript">
+                    Background="Transparent" BorderBrush="Transparent" l:Uids.Uid="SuperscriptButton">
                                         <TextBlock FontSize="12" Text="X²" />
                                     </ToggleButton>
                                     <ToggleButton
                     x:Name="SubscriptButton"
                     Click="SubscriptButton_Click"
-                                        Background="Transparent" BorderBrush="Transparent"
-                    ToolTipService.ToolTip="Subscript">
+                    Background="Transparent" BorderBrush="Transparent" l:Uids.Uid="SubscriptButton">
                                         <TextBlock FontSize="12" Text="X₂" />
                                     </ToggleButton>
                                 </StackPanel>
@@ -167,19 +165,19 @@
                                 <Button Background="Transparent" BorderThickness="0" Click="InsertImage">
                                     <StackPanel>
                                         <FontIcon Glyph="&#xE91B;"/>
-                                        <TextBlock>Image</TextBlock>
+                                        <TextBlock l:Uids.Uid="ImageButton"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="LinkButton" Background="Transparent" BorderThickness="0">
                                     <StackPanel>
                                         <FontIcon Glyph="&#xE71B;"/>
-                                        <TextBlock>Link</TextBlock>
+                                        <TextBlock l:Uids.Uid="LinkButton"/>
                                     </StackPanel>
                                     <Button.Flyout>
                                         <Flyout Placement="Bottom">
                                             <StackPanel Orientation="Vertical">
                                                 <TextBox x:Name="hyperlinkText" PlaceholderText="Link" />
-                                                <Button Margin="0,10,0,0" Click="InsertLink">Add hyperlink to selected text</Button>
+                                                <Button Margin="0,10,0,0" Click="InsertLink" l:Uids.Uid="LinkInsertButton"/>
                                             </StackPanel>
                                         </Flyout>
                                     </Button.Flyout>
@@ -196,7 +194,7 @@
                             <Button Background="Transparent" BorderThickness="0" Click="IncludeAuthorInformation">
                                 <StackPanel>
                                     <FontIcon Glyph="&#xE716;"/>
-                                    <TextBlock>Author</TextBlock>
+                                    <TextBlock l:Uids.Uid="AuthorButton"/>
                                 </StackPanel>
                             </Button>
                         </controls:RibbonGroup>

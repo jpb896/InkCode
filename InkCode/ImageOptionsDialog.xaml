@@ -5,13 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:InkCode"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Image Options"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     PrimaryButtonStyle="{ThemeResource AccentButtonStyle}"
-    PrimaryButtonText="Insert"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
-    SecondaryButtonText="Cancel"
     Style="{ThemeResource DefaultContentDialogStyle}"
+    xmlns:l="using:WinUI3Localizer"
+    l:Uids.Uid="ImageOptionsDialog"
     mc:Ignorable="d">
 
     <StackPanel>
@@ -23,16 +22,16 @@
 
             <NumberBox
                 x:Name="WidthBox"
-                Header="Width"
-                SpinButtonPlacementMode="Compact" />
+                SpinButtonPlacementMode="Compact"
+                l:Uids.Uid="WidthBox"/>
 
             <NumberBox
                 x:Name="HeightBox"
                 Grid.Column="1"
-                Header="Height"
-                SpinButtonPlacementMode="Compact" />
+                SpinButtonPlacementMode="Compact"
+                l:Uids.Uid="HeightBox"/>
         </Grid>
 
-        <TextBox Text="{x:Bind Tag, Mode=TwoWay}" Header="Tag" Margin="0,8,0,0" />
+        <TextBox Text="{x:Bind Tag, Mode=TwoWay}" Margin="0,8,0,0" l:Uids.Uid="TagBox" />
     </StackPanel>
 </ContentDialog>
