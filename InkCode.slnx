@@ -1,13 +1,20 @@
 <Solution>
   <Configurations>
+    <Platform Name="ARM" />
     <Platform Name="ARM64" />
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="InkCode-CodeControl/WinUIEditor/WinUIEditor.vcxproj" Id="290647e3-d8cb-46b5-87ce-409f721e441a">
+    <Platform Solution="*|ARM64" Project="arm64" />
+  </Project>
   <Project Path="InkCode/InkCode.csproj">
+    <Platform Solution="*|ARM" Project="x64" />
     <Platform Solution="*|ARM64" Project="ARM64" />
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />
-    <Deploy />
+    <Deploy Solution="*|ARM64" />
+    <Deploy Solution="*|x64" />
+    <Deploy Solution="*|x86" />
   </Project>
 </Solution>
