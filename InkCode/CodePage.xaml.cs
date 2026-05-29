@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using WinRT.Interop;
+using WinUI3Localizer;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -163,13 +164,14 @@ namespace InkCode
                             editor.HighlightingLanguage = "plaintext";
                             break;
                         case ".rtf":
+                            ILocalizer localizer = Localizer.Get();
                             ContentDialog rtf_dialog = new()
                             {
-                                Title = "Looking to edit an RTF file?",
-                                Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.",
+                                Title = localizer.GetLocalizedString("RTFCodeDiagTitle"),
+                                Content = localizer.GetLocalizedString("RTFCodeDiagContent"),
                                 XamlRoot = this.XamlRoot,
                                 IsPrimaryButtonEnabled = true,
-                                PrimaryButtonText = "Understood!"
+                                PrimaryButtonText = localizer.GetLocalizedString("RTFCodeDiagPrimaryButtonText")
                             };
                             await rtf_dialog.ShowAsync();
                             editor.HighlightingLanguage = "plaintext";
@@ -192,14 +194,16 @@ namespace InkCode
             var hwnd = WindowNative.GetWindowHandle(App.window);
             InitializeWithWindow.Initialize(savePicker, hwnd);
 
+            ILocalizer localizer = Localizer.Get();
+
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("All files", ["."]);
-            savePicker.FileTypeChoices.Add("Plain text", [".txt"]);
+            savePicker.FileTypeChoices.Add(localizer.GetLocalizedString("AllFiles"), ["."]);
+            savePicker.FileTypeChoices.Add(localizer.GetLocalizedString("PlainText"), [".txt"]);
             savePicker.FileTypeChoices.Add("C#", [".cs"]);
             savePicker.FileTypeChoices.Add("Extensible (Application) Markup Language", [".xml", ".xaml"]);
             savePicker.FileTypeChoices.Add("C", [".c"]);
             savePicker.FileTypeChoices.Add("C++", [".cpp", ".cxx", ".cc"]);
-            savePicker.FileTypeChoices.Add("C/C++ header", [".h", ".hh", ".hxx", ".hpp"]);
+            savePicker.FileTypeChoices.Add(localizer.GetLocalizedString("CHeader"), [".h", ".hh", ".hxx", ".hpp"]);
             savePicker.FileTypeChoices.Add("HyperText Markup Language", [".html"]);
             savePicker.FileTypeChoices.Add("Cascading Style Sheets", [".css"]);
             savePicker.FileTypeChoices.Add("JavaScript", [".js"]);
@@ -264,15 +268,15 @@ namespace InkCode
                         editor.HighlightingLanguage = "plaintext";
                         break;
                     case ".rtf":
-                        ContentDialog rtf_dialog = new()
-                        {
-                            Title = "Looking to edit an RTF file?",
-                            Content = "If you want to edit an RTF file quickly and seamlessly using WYSIWYG tools, use the RTF editing mode of the app. To use it, open a new tab selecting 'New rich text document' from the new tab menu and opening the file from there.",
-                            XamlRoot = this.XamlRoot,
-                            IsPrimaryButtonEnabled = true,
-                            PrimaryButtonText = "Understood!"
-                        };
-                        await rtf_dialog.ShowAsync();
+                    ContentDialog rtf_dialog = new()
+                    {
+                        Title = localizer.GetLocalizedString("RTFCodeDiagTitle"),
+                        Content = localizer.GetLocalizedString("RTFCodeDiagContent"),
+                        XamlRoot = this.XamlRoot,
+                        IsPrimaryButtonEnabled = true,
+                        PrimaryButtonText = localizer.GetLocalizedString("RTFCodeDiagPrimaryButtonText")
+                    };
+                    await rtf_dialog.ShowAsync();
                         editor.HighlightingLanguage = "plaintext";
                         break;
                     default:
@@ -313,14 +317,15 @@ editor.Editor.GetText(editor.Editor.Length), Windows.Security.Cryptography.Binar
 
         public async Task ShowUnsavedDialog(TabViewItem tab)
         {
+            ILocalizer localizer = Localizer.Get();
             string filename = (string)(tab as TabViewItem).Header;
             ContentDialog diag = new()
             {
-                Title = filename + " has not been saved",
-                Content = "Do you want to save your changes?",
-                CloseButtonText = "Cancel",
-                PrimaryButtonText = "Save changes",
-                SecondaryButtonText = "No",
+                Title = filename + localizer.GetLocalizedString("UnsavedDiagTitle"),
+                Content = localizer.GetLocalizedString("UnsavedDiagContent"),
+                CloseButtonText = localizer.GetLocalizedString("Cancel"),
+                PrimaryButtonText = localizer.GetLocalizedString("UnsavedDiagPrimaryButtonText"),
+                SecondaryButtonText = localizer.GetLocalizedString("No"),
                 PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style,
                 XamlRoot = this.XamlRoot
             };

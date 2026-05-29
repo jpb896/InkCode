@@ -12,6 +12,7 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI;
 using WinRT.Interop;
+using WinUI3Localizer;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -232,11 +233,13 @@ namespace InkCode
             var hwnd = WindowNative.GetWindowHandle(App.window);
             InitializeWithWindow.Initialize(savePicker, hwnd);
 
+            ILocalizer localizer = Localizer.Get();
+
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+            savePicker.FileTypeChoices.Add(localizer.GetLocalizedString("RichText"), new List<string>() { ".rtf" });
 
             // Default file name if the user does not type one in or select a file to replace
-            savePicker.SuggestedFileName = "New Document";
+            savePicker.SuggestedFileName = localizer.GetLocalizedString("NewDoc");
 
             Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
@@ -265,14 +268,15 @@ namespace InkCode
 
         public async Task ShowUnsavedDialog(TabViewItem tab)
         {
+            ILocalizer localizer = Localizer.Get();
             string filename = (string)(tab as TabViewItem).Header;
             ContentDialog diag = new()
             {
-                Title = filename + " has not been saved",
-                Content = "Do you want to save your changes?",
-                CloseButtonText = "Cancel",
-                PrimaryButtonText = "Save changes",
-                SecondaryButtonText = "No",
+                Title = filename + localizer.GetLocalizedString("UnsavedDiagTitle"),
+                Content = localizer.GetLocalizedString("UnsavedDiagContent"),
+                CloseButtonText = localizer.GetLocalizedString("Cancel"),
+                PrimaryButtonText = localizer.GetLocalizedString("UnsavedDiagPrimaryButtonText"),
+                SecondaryButtonText = localizer.GetLocalizedString("No"),
                 PrimaryButtonStyle = Resources["AccentButtonStyle"] as Style,
                 XamlRoot = this.XamlRoot
             };
@@ -310,14 +314,15 @@ namespace InkCode
 
         private async void IncludeAuthorInformation(object sender, RoutedEventArgs e)
         {
+            ILocalizer localizer = Localizer.Get();
             authorBox.PlaceholderText = author;
             ContentDialog authorDialog = new ContentDialog();
-            authorDialog.Title = "Set document author";
+            authorDialog.Title = localizer.GetLocalizedString("AuthorDiagTitle");
             authorDialog.Content = authorBox;
-            authorDialog.PrimaryButtonText = "Set author";
+            authorDialog.PrimaryButtonText = localizer.GetLocalizedString("AuthorDiagPrimaryButtonText");
             authorDialog.PrimaryButtonClick += AuthorDialog_PrimaryButtonClick;
             authorDialog.PrimaryButtonStyle = (Style)Application.Current.Resources["AccentButtonStyle"];
-            authorDialog.CloseButtonText = "Cancel";
+            authorDialog.CloseButtonText = localizer.GetLocalizedString("Cancel");
             authorDialog.XamlRoot = this.XamlRoot;
             await authorDialog.ShowAsync();
         }
@@ -342,6 +347,8 @@ namespace InkCode
 
         private async void InsertImage(object sender, RoutedEventArgs e)
         {
+            ILocalizer localizer = Localizer.Get();
+
             // Open an image file.
             FileOpenPicker open = new(this.XamlRoot.ContentIslandEnvironment.AppWindowId)
             {
@@ -373,12 +380,12 @@ namespace InkCode
 
                 if (result == ContentDialogResult.Primary)
                 {
-                    editor.Document.Selection.InsertImage((int)dialog.DefaultWidth, (int)dialog.DefaultHeight, 0, VerticalCharacterAlignment.Baseline, string.IsNullOrWhiteSpace(dialog.Tag) ? "Image" : dialog.Tag, randAccStream);
+                    editor.Document.Selection.InsertImage((int)dialog.DefaultWidth, (int)dialog.DefaultHeight, 0, VerticalCharacterAlignment.Baseline, string.IsNullOrWhiteSpace(dialog.Tag) ? localizer.GetLocalizedString("ImageButton.Text") : dialog.Tag, randAccStream);
                     return;
                 }
 
                 // Insert an image
-                editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, "Image", randAccStream);
+                editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, localizer.GetLocalizedString("ImageButton.Text"), randAccStream);
 
             }
         }

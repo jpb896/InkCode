@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using WinUI3Localizer;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -40,12 +41,13 @@ namespace InkCode
 
         private void AddTabButtonClick(TabView sender, object args)
         {
+            ILocalizer localizer = Localizer.Get();
             MenuFlyoutItem newrtf = new();
             MenuFlyoutItem newcode = new();
             MenuFlyoutItem newcode_m = new();
-            newrtf.Text = "New rich text document";
+            newrtf.Text = localizer.GetLocalizedString("NewRTF");
             newrtf.Click += Newrtf_Click;
-            newcode.Text = "New code file";
+            newcode.Text = localizer.GetLocalizedString("NewCode");
             newcode.Click += Newcode_Click;
             MenuFlyout menuFlyout = new();
             menuFlyout.Items.Add(newcode);
@@ -55,13 +57,14 @@ namespace InkCode
 
         private void Newrtf_Click(object sender, RoutedEventArgs e)
         {
+            ILocalizer localizer = Localizer.Get();
             var iconSource = new FontIconSource
             {
                 Glyph = "\uE8A5"
             };
             var tab = new TabViewItem
             {
-                Header = "Untitled",
+                Header = localizer.GetLocalizedString("Untitled"),
                 IconSource = iconSource,
                 Content = new RichTextPage()
             };
@@ -73,13 +76,14 @@ namespace InkCode
 
         private void Newcode_Click(object sender, RoutedEventArgs e)
         {
+            ILocalizer localizer = Localizer.Get();
             var iconSource = new FontIconSource
             {
                 Glyph = "\uE943"
             };
             var tab = new TabViewItem
             {
-                Header = "Untitled",
+                Header = localizer.GetLocalizedString("Untitled"),
                 IconSource = iconSource,
                 Content = new CodePage()
             };
