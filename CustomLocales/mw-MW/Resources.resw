@@ -164,7 +164,7 @@
     <value>Mrrrp</value>
   </data>
   <data name="ParagraphRibbonGroup.Label" xml:space="preserve">
-    <value>Mew mewo</value>
+    <value>Mew mrrr</value>
   </data>
   <data name="PasteSplitButton.Text" xml:space="preserve">
     <value>Mrrrrrr</value>
@@ -220,4 +220,97 @@
 <data name="LocalizationCard.Description" xml:space="preserve">
   <value>Meow mew mew meow meow. Meow mew uwu nyaaa.</value>
 </data>
+  <data name="ReferencesRibbonTab.Content" xml:space="preserve">
+    <value>Mrreow</value>
+  </data>
+  <data name="ImageOptionsDialog.Title" xml:space="preserve">
+    <value>Mew meow mew</value>
+  </data>
+  <data name="ImageOptionsDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Meow mewo</value>
+  </data>
+  <data name="ImageOptionsDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Mrrow</value>
+  </data>
+  <data name="WidthBox.Header" xml:space="preserve">
+    <value>Mew</value>
+  </data>
+  <data name="HeightBox.Header" xml:space="preserve">
+    <value>Mrrreow</value>
+  </data>
+  <data name="TagBox.Header" xml:space="preserve">
+    <value>Mewo meow mew</value>
+  </data>
+  <data name="SuperscriptButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Mew meow mrrow</value>
+  </data>
+  <data name="SubscriptButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Mewo meow mrrow</value>
+  </data>
+  <data name="ImageButton.Text" xml:space="preserve">
+    <value>Mew meow</value>
+  </data>
+  <data name="LinkButton.Text" xml:space="preserve">
+    <value>Mrrrrp meow</value>
+  </data>
+  <data name="LinkInsertButton.Content" xml:space="preserve">
+    <value>Meow mew mrrrrp meow mrrow meow</value>
+  </data>
+  <data name="AuthorButton.Text" xml:space="preserve">
+    <value>Meow mew</value>
+  </data>
+  <data name="NewRTF" xml:space="preserve">
+    <value>Meow mew mewo mrrrp prrr meow</value>
+  </data>
+  <data name="NewCode" xml:space="preserve">
+    <value>Meow mew mrrp prr mewo meow</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Nyaa~</value>
+  </data>
+  <data name="RTFCodeDiagTitle" xml:space="preserve">
+    <value>Meow mrrp prrr myaow mewo mrrrp mew mrrp mewo?</value>
+  </data>
+  <data name="RTFCodeDiagContent" xml:space="preserve">
+    <value>Meow mew mrrrow mewo mew meow 'Meow mew mewo mrrrp prrr meow' mew mrrp mewo nyaa meow</value>
+  </data>
+  <data name="RTFCodeDiagPrimaryButtonText" xml:space="preserve">
+    <value>Prrrrr!</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>Mew meow mewo</value>
+  </data>
+  <data name="PlainText" xml:space="preserve">
+    <value>Meuw nya</value>
+  </data>
+  <data name="CHeader" xml:space="preserve">
+    <value>mrrp/mrrp++ mewou</value>
+  </data>
+  <data name="UnsavedDiagTitle" xml:space="preserve">
+    <value> meow mrrp nyaaaa mewoooo</value>
+  </data>
+  <data name="UnsavedDiagContent" xml:space="preserve">
+    <value>Meow mew meow meow mrrp mewo?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Meoooowww</value>
+  </data>
+  <data name="UnsavedDiagPrimaryButtonText" xml:space="preserve">
+    <value>Meow mew mewo</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nyaaaa</value>
+  </data>
+  <data name="RichText" xml:space="preserve">
+    <value>Mew mewo</value>
+  </data>
+  <data name="NewDoc" xml:space="preserve">
+    <value>Mew prrr meow</value>
+  </data>
+  <data name="AuthorDiagTitle" xml:space="preserve">
+    <value>Meow mew prrr meow meow mew</value>
+  </data>
+  <data name="AuthorDiagPrimaryButtonText" xml:space="preserve">
+    <value>Mrrow meow mew</value>
+  </data>
 </root>
