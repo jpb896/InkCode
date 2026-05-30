@@ -242,6 +242,14 @@
     Invoked="OnKeyboardAcceleratorInvoked"
     Modifiers="Control" />
                     <KeyboardAccelerator
+Key="Up"
+Invoked="OnKeyboardAcceleratorInvoked"
+Modifiers="Control" />
+                    <KeyboardAccelerator
+Key="Down"
+Invoked="OnKeyboardAcceleratorInvoked"
+Modifiers="Control" />
+                    <KeyboardAccelerator
     Key="O"
     Invoked="OnKeyboardAcceleratorInvoked"
     Modifiers="Control" />

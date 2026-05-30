@@ -142,6 +142,16 @@ namespace InkCode
                     editor.Document.Selection.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
                     args.Handled = true;
                     break;
+                case Windows.System.VirtualKey.Up:
+                    editor.Document.Selection.CharacterFormat.Superscript = FormatEffect.Toggle;
+                    SuperscriptButton.IsChecked = editor.Document.Selection.CharacterFormat.Superscript == FormatEffect.On;
+                    args.Handled = true;
+                    break;
+                case Windows.System.VirtualKey.Down:
+                    editor.Document.Selection.CharacterFormat.Subscript = FormatEffect.Toggle;
+                    SubscriptButton.IsChecked = editor.Document.Selection.CharacterFormat.Subscript == FormatEffect.On;
+                    args.Handled = true;
+                    break;
             }
         }
 
