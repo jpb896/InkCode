@@ -242,10 +242,10 @@
     <value>Etykieta</value>
   </data>
   <data name="SuperscriptButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Indeks górny</value>
+    <value>Superscript (Ctrl+↑)</value>
   </data>
   <data name="SubscriptButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Indeks dolny</value>
+    <value>Subscript (Ctrl+↓)</value>
   </data>
   <data name="ImageButton.Text" xml:space="preserve">
     <value>Zdjęcie</value>
