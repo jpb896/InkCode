@@ -88,6 +88,8 @@ namespace InkCode
             picker.FileTypeFilter.Add(".hh");
             picker.FileTypeFilter.Add(".html");
             picker.FileTypeFilter.Add(".js");
+            picker.FileTypeFilter.Add(".py");
+            picker.FileTypeFilter.Add(".pyw");
             picker.FileTypeFilter.Add(".yml");
             picker.FileTypeFilter.Add(".json");
 
@@ -160,6 +162,12 @@ namespace InkCode
                         case ".js":
                             editor.HighlightingLanguage = "javascript";
                             break;
+                        case ".py":
+                            editor.HighlightingLanguage = "python";
+                            break;
+                        case ".pyw":
+                            editor.HighlightingLanguage = "python";
+                            break;
                         case ".txt":
                             editor.HighlightingLanguage = "plaintext";
                             break;
@@ -207,6 +215,7 @@ namespace InkCode
             savePicker.FileTypeChoices.Add("HyperText Markup Language", [".html"]);
             savePicker.FileTypeChoices.Add("Cascading Style Sheets", [".css"]);
             savePicker.FileTypeChoices.Add("JavaScript", [".js"]);
+            savePicker.FileTypeChoices.Add("Python", [".py", ".pyw"]);
             savePicker.FileTypeChoices.Add("YAML", [".yml"]);
             savePicker.FileTypeChoices.Add("JSON", [".json"]);
 
@@ -264,7 +273,13 @@ namespace InkCode
                     case ".js":
                         editor.HighlightingLanguage = "javascript";
                         break;
-                    case ".txt":
+                case ".py":
+                    editor.HighlightingLanguage = "python";
+                    break;
+                case ".pyw":
+                    editor.HighlightingLanguage = "python";
+                    break;
+                case ".txt":
                         editor.HighlightingLanguage = "plaintext";
                         break;
                     case ".rtf":
