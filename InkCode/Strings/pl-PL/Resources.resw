@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -215,12 +215,102 @@
     <value>Wyczyść formatowanie</value>
   </data>
   <data name="LocalizationCard.Header" xml:space="preserve">
-    <value>Localization</value>
+    <value>Język</value>
   </data>
   <data name="LocalizationCard.Description" xml:space="preserve">
-    <value>Change the app language. This does not require app restart.</value>
+    <value>Zmień język aplikacji. Nie wymaga to restartu aplikacji.</value>
   </data>
   <data name="ReferencesRibbonTab.Content" xml:space="preserve">
-    <value>References</value>
+    <value>Odniesienia</value>
+  </data>
+  <data name="ImageOptionsDialog.Title" xml:space="preserve">
+    <value>Opcje zdjęcia</value>
+  </data>
+  <data name="ImageOptionsDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Wstaw</value>
+  </data>
+  <data name="ImageOptionsDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="WidthBox.Header" xml:space="preserve">
+    <value>Szerokość</value>
+  </data>
+  <data name="HeightBox.Header" xml:space="preserve">
+    <value>Wysokość</value>
+  </data>
+  <data name="TagBox.Header" xml:space="preserve">
+    <value>Etykieta</value>
+  </data>
+  <data name="SuperscriptButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Indeks górny (Ctrl+↑)</value>
+  </data>
+  <data name="SubscriptButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Indeks dolny (Ctrl+↓)</value>
+  </data>
+  <data name="ImageButton.Text" xml:space="preserve">
+    <value>Zdjęcie</value>
+  </data>
+  <data name="LinkButton.Text" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="LinkInsertButton.Content" xml:space="preserve">
+    <value>Dodaj hiperłącze do zaznaczonego tekstu</value>
+  </data>
+  <data name="AuthorButton.Text" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="NewRTF" xml:space="preserve">
+    <value>Nowy dokument formatu rich text</value>
+  </data>
+  <data name="NewCode" xml:space="preserve">
+    <value>Nowy plik z kodem</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Bez tytułu</value>
+  </data>
+  <data name="RTFCodeDiagTitle" xml:space="preserve">
+    <value>Chcesz edytować plik RTF?</value>
+  </data>
+  <data name="RTFCodeDiagContent" xml:space="preserve">
+    <value>Jeśli chcesz szybko i płynnie edytować plik RTF za pomocą narzędzi WYSIWYG, użyj tryb edytowania RTF. Aby jego użyć, utwórz nową kartę, wybierając 'Nowy dokument formatu rich text' z menu nowej karty i otwórz plik stamtąd.</value>
+  </data>
+  <data name="RTFCodeDiagPrimaryButtonText" xml:space="preserve">
+    <value>Zrozumiano!</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>Wszystkie pliki</value>
+  </data>
+  <data name="PlainText" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="CHeader" xml:space="preserve">
+    <value>Nagłówek C/C++</value>
+  </data>
+  <data name="UnsavedDiagTitle" xml:space="preserve">
+    <value> nie było zapisane</value>
+  </data>
+  <data name="UnsavedDiagContent" xml:space="preserve">
+    <value>Chcesz zapisać swoje zmiany?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="UnsavedDiagPrimaryButtonText" xml:space="preserve">
+    <value>Zapisz zmiany</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="RichText" xml:space="preserve">
+    <value>Rich text</value>
+  </data>
+  <data name="NewDoc" xml:space="preserve">
+    <value>Nowy dokument</value>
+  </data>
+  <data name="AuthorDiagTitle" xml:space="preserve">
+    <value>Ustaw autora dokumentu</value>
+  </data>
+  <data name="AuthorDiagPrimaryButtonText" xml:space="preserve">
+    <value>Ustaw autora</value>
   </data>
 </root>
