@@ -393,10 +393,6 @@ namespace InkCode
                     editor.Document.Selection.InsertImage((int)dialog.DefaultWidth, (int)dialog.DefaultHeight, 0, VerticalCharacterAlignment.Baseline, string.IsNullOrWhiteSpace(dialog.Tag) ? localizer.GetLocalizedString("ImageButton.Text") : dialog.Tag, randAccStream);
                     return;
                 }
-
-                // Insert an image
-                editor.Document.Selection.InsertImage(width, height, 0, VerticalCharacterAlignment.Baseline, localizer.GetLocalizedString("ImageButton.Text"), randAccStream);
-
             }
         }
 
