@@ -37,7 +37,7 @@
                 <ComboBox x:Name="LocalizationComboBox" SelectionChanged="LocalizationComboBox_SelectionChanged"/>
             </controls:SettingsCard>
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" l:Uids.Uid="AboutTitle"/>
-            <controls:SettingsExpander Header="InkCode Dev" Description="2.1">
+            <controls:SettingsExpander Header="InkCode Dev" Description="2.5">
                 <controls:SettingsExpander.HeaderIcon>
                     <ImageIcon Source="/inkcode.ico"/>
                 </controls:SettingsExpander.HeaderIcon>

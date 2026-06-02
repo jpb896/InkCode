@@ -215,7 +215,7 @@ namespace InkCode
             editor.Document.GetText(TextGetOptions.FormatRtf, out rtfContent);
             // Replace or insert the \generator tag
             // Pattern matches: {\*\generator ...;}
-            string newGenerator = @"{\*\generator InkCode Dev 2.1}";
+            string newGenerator = @"{\*\generator InkCode Dev 2.5}";
             if (Regex.IsMatch(rtfContent, @"\{\\\*\\generator.*?\}"))
             {
                 rtfContent = Regex.Replace(rtfContent, @"\{\\\*\\generator.*?\}", newGenerator);
