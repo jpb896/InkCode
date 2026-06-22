@@ -132,9 +132,9 @@
                     <controls:RibbonGroup/>
                 </controls:Ribbon>
             </controls:Case>
-                <controls:Case Value="dev" animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+            <controls:Case Value="dev">
+                    <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                          animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
-                <controls:Ribbon>
                     <controls:RibbonGroup/>
                 </controls:Ribbon>
             </controls:Case>
