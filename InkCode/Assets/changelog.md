@@ -1,3 +1,3 @@
-﻿## InkCode 1.1.4, released May 12, 2026
+﻿## InkCode 1.1.5, released June 24, 2026
+- Add animations to all Ribbon tabs
 - Dependency updates
-- Remove unnecessary imports
