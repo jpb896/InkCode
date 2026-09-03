@@ -29,6 +29,7 @@ namespace InkCode
         bool diag_open = false;
         string author = Environment.UserName;
         TextBox authorBox = new TextBox();
+        public string docText;
 
         public RichTextPage()
         {
@@ -409,6 +410,18 @@ namespace InkCode
             }
             LinkButton.Flyout.Hide();
             editor.Focus(FocusState.Programmatic);
+        }
+
+        private void OpenHashDialog(object sender, RoutedEventArgs e)
+        {
+            editor.TextDocument.GetText(TextGetOptions.NoHidden, out docText);
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = "Encode and decode Base64 strings, compute hashes";
+            dialog.Content = new ComputeHashDialogContent();
+            dialog.CloseButtonText = "Close";
+            dialog.DefaultButton = ContentDialogButton.Close;
+            dialog.XamlRoot = this.XamlRoot;
+            dialog.ShowAsync();
         }
     }
 }

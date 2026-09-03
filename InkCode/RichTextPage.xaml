@@ -203,7 +203,14 @@
                 <controls:Case Value="dev">
                     <controls:Ribbon animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                          animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
-                    <controls:RibbonGroup/>
+                        <controls:RibbonGroup>
+                            <Button Background="Transparent" BorderThickness="0" Click="OpenHashDialog">
+                                <StackPanel>
+                                    <FontIcon Glyph="&#x0023;"/>
+                                    <TextBlock l:Uids.Uid="HashButton"/>
+                                </StackPanel>
+                            </Button>
+                        </controls:RibbonGroup>
                 </controls:Ribbon>
             </controls:Case>
             </controls:SwitchPresenter>

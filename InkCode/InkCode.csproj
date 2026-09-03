@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="ChangelogDialog.xaml" />
+    <None Remove="ComputeHashDialogContent.xaml" />
     <None Remove="SettingsPage.xaml" />
   </ItemGroup>
 
@@ -129,6 +130,9 @@
 	  <None Update="Assets\changelog.md">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <Page Update="ComputeHashDialogContent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	  <None Update="ImageOptionsDialog.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
